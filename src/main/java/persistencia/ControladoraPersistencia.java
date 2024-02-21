@@ -94,5 +94,13 @@ public class ControladoraPersistencia {
         }
     }
 
+    public void borrarAuto(int idAuto) {
+        try {
+            autoJpa.destroy(idAuto);
+        } catch (NonexistentEntityException ex) {
+            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
     
 }

@@ -145,10 +145,10 @@ public class ConsultaAuto extends javax.swing.JFrame {
         if(tablaAutos.getRowCount() > 0){
             if(tablaAutos.getSelectedRow() != -1){
 
-                int idInspector = Integer.parseInt(String.valueOf(tablaAutos.getValueAt(tablaAutos.getSelectedRow(), 0)));
-                control.borrarInspector(idInspector);
+                int idAuto = Integer.parseInt(String.valueOf(tablaAutos.getValueAt(tablaAutos.getSelectedRow(), 0)));
+                control.borrarAuto(idAuto);
 
-                mostrarMensaje("Se ha eliminado al inspector exitosamente", "INFO", "Eliminado exitoso");
+                mostrarMensaje("Se ha eliminado al auto exitosamente", "INFO", "Eliminado exitoso");
 
                 cargarTabla();
 
