@@ -4,6 +4,9 @@
  */
 package igu;
 
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+
 /**
  *
  * @author Ian
@@ -13,6 +16,7 @@ public class Principal extends javax.swing.JFrame {
 
     public Principal() {
         initComponents();
+        setResizable(false);
     }
 
     @SuppressWarnings("unchecked")
@@ -114,7 +118,15 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnGestionAltasActionPerformed
     
     private void btnGestionModificacionesYBajasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionModificacionesYBajasActionPerformed
-       GestionModificadoYBorrado gestionModificadoYBorrado= new GestionModificadoYBorrado();
+       this.setEnabled(false);
+       GestionModificadoYBorrado gestionModificadoYBorrado = new GestionModificadoYBorrado();
+       gestionModificadoYBorrado.addWindowListener(new WindowAdapter() {
+        @Override
+        public void windowClosed(WindowEvent e) {
+            // Reactivar la ventana principal cuando se cierre el modal
+            Principal.this.setEnabled(true);
+        }
+    });
        gestionModificadoYBorrado.setVisible(true);
        gestionModificadoYBorrado.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnGestionModificacionesYBajasActionPerformed

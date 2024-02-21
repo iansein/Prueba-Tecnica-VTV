@@ -32,5 +32,17 @@ public class ControladoraPersistencia {
             Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
+    public Propietario traerPropietario(int idPropietario) {
+       return propietarioJpa.findPropietario(idPropietario);
+    }
+
+    public void modificarPropietario(Propietario propietario) {
+        try {
+            propietarioJpa.edit(propietario);
+        } catch (Exception ex) {
+            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     
 }

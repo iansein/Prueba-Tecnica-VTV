@@ -72,6 +72,11 @@ public class ConsultaPropietario extends javax.swing.JFrame {
         });
 
         btnModificarPropietario.setText("MODIFICAR");
+        btnModificarPropietario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarPropietarioActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -163,6 +168,28 @@ public class ConsultaPropietario extends javax.swing.JFrame {
             mostrarMensaje("No se puede eliminar, la tabla esta vacía", "ERROR", "Eliminado fallido");
         }
     }//GEN-LAST:event_btnEliminarPropietarioActionPerformed
+
+    private void btnModificarPropietarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarPropietarioActionPerformed
+        
+           if(tablaPropietarios.getRowCount() > 0){
+            if(tablaPropietarios.getSelectedRow() != -1){
+                int idPropietario = Integer.parseInt(String.valueOf(tablaPropietarios.getValueAt(tablaPropietarios.getSelectedRow(), 0)));
+                
+                ModificarPropietario modificar = new ModificarPropietario(idPropietario);
+                modificar.setVisible(true);
+                modificar.setLocationRelativeTo(null);
+                
+                this.dispose();
+            }
+            else{
+                mostrarMensaje("No se ha seleccionado un registro", "ERROR", "Modificado fallido");
+            }
+        }
+        else{
+            mostrarMensaje("No se puede modificar, la tabla esta vacía", "ERROR", "Modificado fallido");
+        }
+        
+    }//GEN-LAST:event_btnModificarPropietarioActionPerformed
     
     public void mostrarMensaje(String mensaje, String tipo, String titulo){
         JOptionPane optionPane = new JOptionPane(mensaje);

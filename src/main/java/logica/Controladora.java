@@ -29,5 +29,18 @@ public class Controladora {
        controlPersis.borrarPropietario(idPropietario);
     }
 
+    public Propietario traerPropietario(int idPropietario) {
+        return controlPersis.traerPropietario(idPropietario);
+    }
+
+    public void modificarPropietario(Propietario propietario, String nombre, String apellido, int dni) {
+        propietario.setNombre(nombre);
+        propietario.setApellido(apellido);
+        propietario.setDni(dni);
+        
+        controlPersis.modificarPropietario(propietario);
+    }
+
+
        
 }
