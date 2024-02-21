@@ -22,8 +22,7 @@ public class Principal extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         btnGestionAltas = new javax.swing.JButton();
-        btnGestionBajas = new javax.swing.JButton();
-        btnGestionModificaciones = new javax.swing.JButton();
+        btnGestionModificacionesYBajas = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
 
@@ -46,18 +45,10 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        btnGestionBajas.setText("BAJAS");
-        btnGestionBajas.setToolTipText("");
-        btnGestionBajas.addActionListener(new java.awt.event.ActionListener() {
+        btnGestionModificacionesYBajas.setText("MODIFICACIONES Y BAJAS");
+        btnGestionModificacionesYBajas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGestionBajasActionPerformed(evt);
-            }
-        });
-
-        btnGestionModificaciones.setText("MODIFICACIONES");
-        btnGestionModificaciones.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGestionModificacionesActionPerformed(evt);
+                btnGestionModificacionesYBajasActionPerformed(evt);
             }
         });
 
@@ -81,9 +72,8 @@ public class Principal extends javax.swing.JFrame {
                         .addGap(33, 33, 33)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel3)
-                            .addComponent(btnGestionAltas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnGestionModificaciones, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
-                            .addComponent(btnGestionBajas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(btnGestionAltas, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
+                            .addComponent(btnGestionModificacionesYBajas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(317, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -98,10 +88,8 @@ public class Principal extends javax.swing.JFrame {
                         .addGap(66, 66, 66))
                     .addComponent(btnGestionAltas, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnGestionModificaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnGestionBajas, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addComponent(btnGestionModificacionesYBajas, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -125,19 +113,16 @@ public class Principal extends javax.swing.JFrame {
          gestionAltas.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnGestionAltasActionPerformed
     
-    private void btnGestionBajasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionBajasActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnGestionBajasActionPerformed
-
-    private void btnGestionModificacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionModificacionesActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnGestionModificacionesActionPerformed
+    private void btnGestionModificacionesYBajasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionModificacionesYBajasActionPerformed
+       GestionModificadoYBorrado gestionModificadoYBorrado= new GestionModificadoYBorrado();
+       gestionModificadoYBorrado.setVisible(true);
+       gestionModificadoYBorrado.setLocationRelativeTo(null);
+    }//GEN-LAST:event_btnGestionModificacionesYBajasActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGestionAltas;
-    private javax.swing.JButton btnGestionBajas;
-    private javax.swing.JButton btnGestionModificaciones;
+    private javax.swing.JButton btnGestionModificacionesYBajas;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     public javax.swing.JLabel jLabel4;

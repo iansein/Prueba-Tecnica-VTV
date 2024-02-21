@@ -1,5 +1,6 @@
 package logica;
 
+import java.util.List;
 import persistencia.ControladoraPersistencia;
 
 /**
@@ -18,6 +19,10 @@ public class Controladora {
         
         controlPersis.agregarPropietario(propietario);
         
+    }
+
+    public List<Propietario> traerPropietarios() {
+        return controlPersis.traerAutos();
     }
 
        
