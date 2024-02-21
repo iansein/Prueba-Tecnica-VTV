@@ -230,8 +230,6 @@ public class ConsultaPropietario extends javax.swing.JFrame {
       }
       
       
-      tablaPropietarios.setModel(modeloTabla);
-      
-      
+      tablaPropietarios.setModel(modeloTabla);    
     }
 }

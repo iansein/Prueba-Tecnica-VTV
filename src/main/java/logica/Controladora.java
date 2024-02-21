@@ -84,6 +84,17 @@ public class Controladora {
  
         controlPersis.agregarAuto(auto);
     }
-   
+
+    public List<Auto> traerAutos() {
+         return controlPersis.traerAutos();
+    }   
+
+    public void modificarAuto(Auto auto, String dominio, String marca, String modelo, Propietario propietarioSeleccionado) {
+        auto.setDominio(dominio);
+        auto.setMarca(marca);
+        auto.setModelo(modelo);
+        auto.setPropietario(propietarioSeleccionado);
+        controlPersis.modificarAuto(auto);
+    }
        
 }

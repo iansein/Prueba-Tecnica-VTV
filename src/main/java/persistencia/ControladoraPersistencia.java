@@ -82,5 +82,17 @@ public class ControladoraPersistencia {
         autoJpa.create(auto);
     }
 
+    public List<Auto> traerAutos() {
+        return autoJpa.findAutoEntities();
+    }
+
+    public void modificarAuto(Auto auto) {
+        try {
+            autoJpa.edit(auto);
+        } catch (Exception ex) {
+            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
     
 }

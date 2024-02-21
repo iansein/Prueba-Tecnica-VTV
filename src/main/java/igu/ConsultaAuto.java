@@ -1,23 +1,26 @@
-
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ */
 package igu;
 
 import java.util.List;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import logica.Auto;
 import logica.Controladora;
-import logica.Inspector;
 
 
 /**
  *
  * @author Ian
  */
-public class ConsultaInspector extends javax.swing.JFrame {
-
-    Controladora control = new Controladora();
+public class ConsultaAuto extends javax.swing.JFrame {
     
-    public ConsultaInspector() {
+    Controladora control = new Controladora();
+
+    public ConsultaAuto() {
         initComponents();
     }
 
@@ -29,9 +32,9 @@ public class ConsultaInspector extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tablaInspectores = new javax.swing.JTable();
-        btnEliminarInspector = new javax.swing.JButton();
-        btnModificarInspector = new javax.swing.JButton();
+        tablaAutos = new javax.swing.JTable();
+        btnEliminarAuto = new javax.swing.JButton();
+        btnModificarAuto = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -41,11 +44,11 @@ public class ConsultaInspector extends javax.swing.JFrame {
         });
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
-        jLabel1.setText("BORRAR y MODIFICAR INSPECTOR");
+        jLabel1.setText("BORRAR y MODIFICAR AUTO");
 
         jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        tablaInspectores.setModel(new javax.swing.table.DefaultTableModel(
+        tablaAutos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
                 {},
@@ -56,19 +59,19 @@ public class ConsultaInspector extends javax.swing.JFrame {
 
             }
         ));
-        jScrollPane1.setViewportView(tablaInspectores);
+        jScrollPane1.setViewportView(tablaAutos);
 
-        btnEliminarInspector.setText("ELIMINAR");
-        btnEliminarInspector.addActionListener(new java.awt.event.ActionListener() {
+        btnEliminarAuto.setText("ELIMINAR");
+        btnEliminarAuto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEliminarInspectorActionPerformed(evt);
+                btnEliminarAutoActionPerformed(evt);
             }
         });
 
-        btnModificarInspector.setText("MODIFICAR");
-        btnModificarInspector.addActionListener(new java.awt.event.ActionListener() {
+        btnModificarAuto.setText("MODIFICAR");
+        btnModificarAuto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnModificarInspectorActionPerformed(evt);
+                btnModificarAutoActionPerformed(evt);
             }
         });
 
@@ -81,8 +84,8 @@ public class ConsultaInspector extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 623, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnEliminarInspector, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnModificarInspector, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE))
+                    .addComponent(btnEliminarAuto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnModificarAuto, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE))
                 .addGap(22, 22, 22))
         );
         jPanel2Layout.setVerticalGroup(
@@ -94,9 +97,9 @@ public class ConsultaInspector extends javax.swing.JFrame {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(143, 143, 143)
-                        .addComponent(btnEliminarInspector, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnEliminarAuto, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnModificarInspector, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnModificarAuto, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
@@ -107,19 +110,19 @@ public class ConsultaInspector extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(99, 99, 99)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(44, 44, 44)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(47, Short.MAX_VALUE))
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(151, 151, 151)
+                        .addComponent(jLabel1)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
+                .addContainerGap(16, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(42, 42, 42))
         );
@@ -138,11 +141,11 @@ public class ConsultaInspector extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnEliminarInspectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarInspectorActionPerformed
-        if(tablaInspectores.getRowCount() > 0){
-            if(tablaInspectores.getSelectedRow() != -1){
+    private void btnEliminarAutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarAutoActionPerformed
+        if(tablaAutos.getRowCount() > 0){
+            if(tablaAutos.getSelectedRow() != -1){
 
-                int idInspector = Integer.parseInt(String.valueOf(tablaInspectores.getValueAt(tablaInspectores.getSelectedRow(), 0)));
+                int idInspector = Integer.parseInt(String.valueOf(tablaAutos.getValueAt(tablaAutos.getSelectedRow(), 0)));
                 control.borrarInspector(idInspector);
 
                 mostrarMensaje("Se ha eliminado al inspector exitosamente", "INFO", "Eliminado exitoso");
@@ -157,15 +160,15 @@ public class ConsultaInspector extends javax.swing.JFrame {
         else{
             mostrarMensaje("No se puede eliminar, la tabla esta vacía", "ERROR", "Eliminado fallido");
         }
-    }//GEN-LAST:event_btnEliminarInspectorActionPerformed
+    }//GEN-LAST:event_btnEliminarAutoActionPerformed
 
-    private void btnModificarInspectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarInspectorActionPerformed
+    private void btnModificarAutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarAutoActionPerformed
 
-        if(tablaInspectores.getRowCount() > 0){
-            if(tablaInspectores.getSelectedRow() != -1){
-                int idInspector = Integer.parseInt(String.valueOf(tablaInspectores.getValueAt(tablaInspectores.getSelectedRow(), 0)));
+        if(tablaAutos.getRowCount() > 0){
+            if(tablaAutos.getSelectedRow() != -1){
+                int idInspector = Integer.parseInt(String.valueOf(tablaAutos.getValueAt(tablaAutos.getSelectedRow(), 0)));
 
-                ModificarInspector modificar = new ModificarInspector(idInspector);
+                ModificarAuto modificar = new ModificarAuto(idInspector);
                 modificar.setVisible(true);
                 modificar.setLocationRelativeTo(null);
 
@@ -178,12 +181,12 @@ public class ConsultaInspector extends javax.swing.JFrame {
         else{
             mostrarMensaje("No se puede modificar, la tabla esta vacía", "ERROR", "Modificado fallido");
         }
-
-    }//GEN-LAST:event_btnModificarInspectorActionPerformed
+    }//GEN-LAST:event_btnModificarAutoActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         cargarTabla();
     }//GEN-LAST:event_formWindowOpened
+
     public void mostrarMensaje(String mensaje, String tipo, String titulo){
         JOptionPane optionPane = new JOptionPane(mensaje);
         if(tipo.equals("Info")){
@@ -206,34 +209,30 @@ public class ConsultaInspector extends javax.swing.JFrame {
              }
          }; 
       
-      String titulos[] = {"Id", "Nombre", "Apellido", "DNI", "Nro Inspector", "Telefono"};
+      String titulos[] = {"Id", "Dominio", "Marca", "Modelo", "Nombre Propietario"};
       modeloTabla.setColumnIdentifiers(titulos);
       
-      List<Inspector> listaInspectores = control.traerInspectores();
+      List<Auto> listaAutos = control.traerAutos();
       
-      if(listaInspectores != null){
-          for(Inspector inspector: listaInspectores){
-              Object[] objeto = {inspector.getId(), inspector.getNombre(), inspector.getApellido(), 
-                  inspector.getDni(), inspector.getTelefono(), inspector.getNroInspector()};
-              
+      if(listaAutos != null){
+          for(Auto auto: listaAutos){
+              Object[] objeto = {auto.getId(), auto.getDominio(), auto.getMarca(), auto.getModelo(), auto.getPropietario().getNombre()};
               modeloTabla.addRow(objeto);
           }
       }
       
       
-      tablaInspectores.setModel(modeloTabla);
+      tablaAutos.setModel(modeloTabla);
         
-    }
-
+    }    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnEliminarInspector;
-    private javax.swing.JButton btnModificarInspector;
+    private javax.swing.JButton btnEliminarAuto;
+    private javax.swing.JButton btnModificarAuto;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tablaInspectores;
+    private javax.swing.JTable tablaAutos;
     // End of variables declaration//GEN-END:variables
-    
-
 }

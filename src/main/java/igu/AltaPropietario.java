@@ -1,8 +1,11 @@
 
 package igu;
 
+import javax.swing.JDialog;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import logica.Controladora;
+import logica.Validador;
 
 /**
  *
@@ -155,22 +158,62 @@ public class AltaPropietario extends javax.swing.JFrame {
 
     private void btnAgregarPropietarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarPropietarioActionPerformed
 
-        int dni = Integer.parseInt(txtDniPropietario.getText());
-        int telefono = Integer.parseInt(txtTelefonoPropietario.getText());
-        String nombre = txtNombrePropietario.getText();
-        String apellido = txtApellidoPropietario.getText();
-        
+        String nombre = txtNombrePropietario.getText().trim();
+        String apellido = txtApellidoPropietario.getText().trim();
+        String dniStr = txtDniPropietario.getText().trim();
+        String telefonoStr = txtTelefonoPropietario.getText().trim();
 
-        control.agregarPropietario(nombre, apellido, dni,telefono);
+        if (!Validador.esTextoNoVacio(nombre) || 
+            !Validador.esTextoNoVacio(apellido) || 
+            !Validador.esTextoNoVacio(dniStr) || 
+            !Validador.esTextoNoVacio(telefonoStr)) {
+            mostrarMensaje("Todos los campos son obligatorios.", "Error", "Error de Validación");
+            return;
+        }
+
+        if (!Validador.esNumero(dniStr)) {
+            mostrarMensaje("El DNI debe contener solo números.", "Error", "Error de Validación");
+            return;
+        }
+
+        if (!Validador.esNumero(telefonoStr)) {
+            mostrarMensaje("El teléfono debe contener solo números.", "Error", "Error de Validación");
+            return;
+        }
+
+        try {
+            int dni = Integer.parseInt(dniStr);
+            int telefono = Integer.parseInt(telefonoStr);
+            control.agregarPropietario(nombre, apellido, dni, telefono);
+            mostrarMensaje("Se ha agregado el propietario exitosamente", "Info", "Agregado exitoso");
+            limpiarCampos();
+        } catch (NumberFormatException e) {
+            mostrarMensaje("Hubo un problema al convertir los valores numéricos.", "Error", "Error de Validación");
+        }
     }//GEN-LAST:event_btnAgregarPropietarioActionPerformed
 
     private void btnLimpiarPropietarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarPropietarioActionPerformed
+        limpiarCampos();
+    }//GEN-LAST:event_btnLimpiarPropietarioActionPerformed
+    
+    public void limpiarCampos(){
         txtNombrePropietario.setText("");
         txtApellidoPropietario.setText("");
         txtDniPropietario.setText("");
         txtTelefonoPropietario.setText("");
-    }//GEN-LAST:event_btnLimpiarPropietarioActionPerformed
-
+    }
+    public void mostrarMensaje(String mensaje, String tipo, String titulo){
+        JOptionPane optionPane = new JOptionPane(mensaje);
+        if(tipo.equals("Info")){
+            optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
+        }
+        else if(tipo.equals("Error")){
+                optionPane.setMessageType(JOptionPane.ERROR_MESSAGE);
+        }
+        JDialog dialog = optionPane.createDialog(titulo);
+        dialog.setAlwaysOnTop(true);
+        dialog.setVisible(true);
+    }    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregarPropietario;

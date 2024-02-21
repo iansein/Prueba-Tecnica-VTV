@@ -1,26 +1,32 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ */
 package igu;
 
 import java.util.List;
 import javax.swing.JDialog;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
+import logica.Auto;
 import logica.Controladora;
-import logica.Inspector;
 import logica.Propietario;
+import logica.Validador;
 
 /**
  *
  * @author Ian
  */
-public class AltaAuto extends javax.swing.JFrame {
-    Controladora control = new Controladora();
+public class ModificarAuto extends javax.swing.JFrame {
+
+    Controladora controladora = null;
+    Auto auto = new Auto();
     
-    public AltaAuto() {
+    public ModificarAuto(int idAuto) {
+        controladora = new Controladora();
         initComponents();
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
+
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -32,7 +38,7 @@ public class AltaAuto extends javax.swing.JFrame {
         txtModelo = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        btnAgregarAuto = new javax.swing.JButton();
+        btnModificarAuto = new javax.swing.JButton();
         txtDominio = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         btnLimpiarAuto = new javax.swing.JButton();
@@ -54,10 +60,10 @@ public class AltaAuto extends javax.swing.JFrame {
 
         jLabel5.setText("Marca:");
 
-        btnAgregarAuto.setText("AGREGAR");
-        btnAgregarAuto.addActionListener(new java.awt.event.ActionListener() {
+        btnModificarAuto.setText("AGREGAR");
+        btnModificarAuto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregarAutoActionPerformed(evt);
+                btnModificarAutoActionPerformed(evt);
             }
         });
 
@@ -127,62 +133,61 @@ public class AltaAuto extends javax.swing.JFrame {
                             .addComponent(txtDominio))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnAgregarAuto, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(94, 94, 94)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnModificarAuto, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(40, 40, 40)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(btnLimpiarAuto, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(1242, 1242, 1242))
+                        .addGap(293, 293, 293)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(231, 231, 231)
-                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(231, 231, 231)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(59, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(397, 397, 397)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(196, 196, 196)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(txtDominio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(30, 30, 30)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel6)
+                            .addComponent(txtModelo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(143, 143, 143)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel2)
-                                    .addComponent(txtDominio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(30, 30, 30)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(txtMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel5))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel6)
-                                    .addComponent(txtModelo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(57, 57, 57))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGap(12, 12, 12)
                                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(324, 324, 324)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnLimpiarAuto, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnAgregarAuto, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(14, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(330, 330, 330)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(btnLimpiarAuto, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnModificarAuto, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addContainerGap(8, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1019, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -195,36 +200,58 @@ public class AltaAuto extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnAgregarAutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarAutoActionPerformed
+    private void btnModificarAutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarAutoActionPerformed
 
         String dominio = txtDominio.getText();
         String marca = txtMarca.getText();
         String modelo = txtModelo.getText();
-
-        int filaSeleccionada = tablaPropietarios.getSelectedRow();
-      
-        if (filaSeleccionada == -1) {
         
-        mostrarMensaje("Debes seleccionar un propietario de la tabla.", "Error", "Error");
-        return;
-        }
-
-        if (dominio.isEmpty() || marca.isEmpty() || modelo.isEmpty()) {
-
-            mostrarMensaje("Todos los campos del auto deben estar llenos.", "Error", "Error");
+         if (!Validador.esTextoNoVacio(dominio) || 
+            !Validador.esTextoNoVacio(marca) || 
+            !Validador.esTextoNoVacio(modelo)){
+            mostrarMensaje("Todos los campos son obligatorios.", "Error", "Error de Validación");
             return;
         }
-      
+
+        int filaSeleccionada = tablaPropietarios.getSelectedRow();
+
+        if (filaSeleccionada == -1) {
+
+            mostrarMensaje("Debes seleccionar un propietario de la tabla.", "Error", "Error");
+            return;
+        }
+
         if (filaSeleccionada != -1) {
             int idPropietario = (int) tablaPropietarios.getValueAt(filaSeleccionada, 0);
-            Propietario propietarioSeleccionado = control.traerPropietario(idPropietario);
-            control.agregarAuto(dominio,marca,modelo,propietarioSeleccionado);                     
+            Propietario propietarioSeleccionado = controladora.traerPropietario(idPropietario);
+            controladora.modificarAuto(auto,dominio,marca,modelo,propietarioSeleccionado);
+            
+            mostrarMensaje("Modificacion realizada exitosamente", "INFO", "Modificacion exitosa");
         }
-    }//GEN-LAST:event_btnAgregarAutoActionPerformed
+        
+        ConsultaAuto consulAuto = new ConsultaAuto();
+        consulAuto.setVisible(true);
+        consulAuto.setLocationRelativeTo(null);
+        this.dispose();
+    }//GEN-LAST:event_btnModificarAutoActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         cargarTabla();
     }//GEN-LAST:event_formWindowOpened
+
+    public void mostrarMensaje(String mensaje, String tipo, String titulo){
+        JOptionPane optionPane = new JOptionPane(mensaje);
+        if(tipo.equals("Info")){
+            optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
+        }
+        else if(tipo.equals("Error")){
+            optionPane.setMessageType(JOptionPane.ERROR_MESSAGE);
+        }
+        JDialog dialog = optionPane.createDialog(titulo);
+        dialog.setAlwaysOnTop(true);
+        dialog.setVisible(true);
+    }
+    
     private void cargarTabla() {
         DefaultTableModel modeloTabla = new DefaultTableModel(){
 
@@ -232,13 +259,12 @@ public class AltaAuto extends javax.swing.JFrame {
              public boolean isCellEditable(int row, int column){
                  return false;
              }
-         }; 
+        }; 
 
          String titulos[] = {"Id", "Nombre", "Apellido", "DNI", "Telefono"};
          modeloTabla.setColumnIdentifiers(titulos);
-         tablaPropietarios.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-         
-         List<Propietario> listaPropietarios = control.traerPropietarios();
+
+         List<Propietario> listaPropietarios = controladora.traerPropietarios();
 
          if(listaPropietarios != null){
              for(Propietario propietario: listaPropietarios){
@@ -247,26 +273,14 @@ public class AltaAuto extends javax.swing.JFrame {
                  modeloTabla.addRow(objeto);
              }
          }
-         
-         tablaPropietarios.setModel(modeloTabla);      
-    }  
-    
-    public void mostrarMensaje(String mensaje, String tipo, String titulo){
-        JOptionPane optionPane = new JOptionPane(mensaje);
-        if(tipo.equals("Info")){
-            optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
-        }
-        else if(tipo.equals("Error")){
-                optionPane.setMessageType(JOptionPane.ERROR_MESSAGE);
-        }
-        JDialog dialog = optionPane.createDialog(titulo);
-        dialog.setAlwaysOnTop(true);
-        dialog.setVisible(true);
+
+
+         tablaPropietarios.setModel(modeloTabla);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAgregarAuto;
     private javax.swing.JButton btnLimpiarAuto;
+    private javax.swing.JButton btnModificarAuto;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     public javax.swing.JLabel jLabel4;
