@@ -5,6 +5,8 @@
 package igu;
 
 import java.util.List;
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import logica.Controladora;
 import logica.Propietario;
@@ -34,8 +36,8 @@ public class ConsultaPropietario extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaPropietarios = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnEliminarPropietario = new javax.swing.JButton();
+        btnModificarPropietario = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -62,9 +64,19 @@ public class ConsultaPropietario extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tablaPropietarios);
 
-        jButton1.setText("ELIMINAR");
+        btnEliminarPropietario.setText("ELIMINAR");
+        btnEliminarPropietario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarPropietarioActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("MODIFICAR");
+        btnModificarPropietario.setText("MODIFICAR");
+        btnModificarPropietario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarPropietarioActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -75,8 +87,8 @@ public class ConsultaPropietario extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 623, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE))
+                    .addComponent(btnEliminarPropietario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnModificarPropietario, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE))
                 .addGap(22, 22, 22))
         );
         jPanel2Layout.setVerticalGroup(
@@ -88,9 +100,9 @@ public class ConsultaPropietario extends javax.swing.JFrame {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(143, 143, 143)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnEliminarPropietario, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnModificarPropietario, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
@@ -136,11 +148,65 @@ public class ConsultaPropietario extends javax.swing.JFrame {
         cargarTabla();
     }//GEN-LAST:event_formWindowOpened
 
+    private void btnEliminarPropietarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarPropietarioActionPerformed
+        if(tablaPropietarios.getRowCount() > 0){
+            if(tablaPropietarios.getSelectedRow() != -1){
+                
+                int idPropietario = Integer.parseInt(String.valueOf(tablaPropietarios.getValueAt(tablaPropietarios.getSelectedRow(), 0)));
+                control.borrarPropietario(idPropietario);
+                
+                mostrarMensaje("Se ha eliminado al propietario exitosamente", "INFO", "Eliminado exitoso");
+                
+                cargarTabla();
+                
+            }
+            else{
+                mostrarMensaje("No se ha seleccionado un registro", "ERROR", "Eliminado fallido");
+            }
+        }
+        else{
+            mostrarMensaje("No se puede eliminar, la tabla esta vacía", "ERROR", "Eliminado fallido");
+        }
+    }//GEN-LAST:event_btnEliminarPropietarioActionPerformed
 
-
+    private void btnModificarPropietarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarPropietarioActionPerformed
+        
+           if(tablaPropietarios.getRowCount() > 0){
+            if(tablaPropietarios.getSelectedRow() != -1){
+                int idPropietario = Integer.parseInt(String.valueOf(tablaPropietarios.getValueAt(tablaPropietarios.getSelectedRow(), 0)));
+                
+                ModificarPropietario modificar = new ModificarPropietario(idPropietario);
+                modificar.setVisible(true);
+                modificar.setLocationRelativeTo(null);
+                
+                this.dispose();
+            }
+            else{
+                mostrarMensaje("No se ha seleccionado un registro", "ERROR", "Modificado fallido");
+            }
+        }
+        else{
+            mostrarMensaje("No se puede modificar, la tabla esta vacía", "ERROR", "Modificado fallido");
+        }
+        
+    }//GEN-LAST:event_btnModificarPropietarioActionPerformed
+    
+    public void mostrarMensaje(String mensaje, String tipo, String titulo){
+        JOptionPane optionPane = new JOptionPane(mensaje);
+        if(tipo.equals("Info")){
+            optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
+        }
+        else if(tipo.equals("Error")){
+            optionPane.setMessageType(JOptionPane.ERROR_MESSAGE);
+        }
+        JDialog dialog = optionPane.createDialog(titulo);
+        dialog.setAlwaysOnTop(true);
+        dialog.setVisible(true);
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnEliminarPropietario;
+    private javax.swing.JButton btnModificarPropietario;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

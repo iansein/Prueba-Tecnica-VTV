@@ -5,7 +5,10 @@
 package persistencia;
 
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import logica.Propietario;
+import persistencia.exceptions.NonexistentEntityException;
 
 /**
  *
@@ -20,6 +23,26 @@ public class ControladoraPersistencia {
 
     public List<Propietario> traerAutos() {
         return propietarioJpa.findPropietarioEntities();
+    }
+
+    public void borrarPropietario(int idPropietario) {
+        try {
+            propietarioJpa.destroy(idPropietario);
+        } catch (NonexistentEntityException ex) {
+            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public Propietario traerPropietario(int idPropietario) {
+       return propietarioJpa.findPropietario(idPropietario);
+    }
+
+    public void modificarPropietario(Propietario propietario) {
+        try {
+            propietarioJpa.edit(propietario);
+        } catch (Exception ex) {
+            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
 }
