@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package igu;
 
 import java.util.List;
@@ -18,15 +15,11 @@ import logica.Propietario;
 public class ConsultaPropietario extends javax.swing.JFrame {
     
     Controladora control = new Controladora();
-    /**
-     * Creates new form ConsultasPropietario
-     */
+
     public ConsultaPropietario() {
         initComponents();
     }
     
-       
-
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -223,14 +216,14 @@ public class ConsultaPropietario extends javax.swing.JFrame {
           }
       }; 
       
-      String titulos[] = {"Id", "Nombre", "Apellido", "DNI"};
+      String titulos[] = {"Id", "Nombre", "Apellido", "DNI", "Telefono"};
       modeloTabla.setColumnIdentifiers(titulos);
       
       List<Propietario> listaPropietarios = control.traerPropietarios();
       
       if(listaPropietarios != null){
           for(Propietario propietario: listaPropietarios){
-              Object[] objeto = {propietario.getId(), propietario.getNombre(), propietario.getApellido(), propietario.getDni()};
+              Object[] objeto = {propietario.getId(), propietario.getNombre(), propietario.getApellido(), propietario.getDni(), propietario.getTelefono()};
               
               modeloTabla.addRow(objeto);
           }

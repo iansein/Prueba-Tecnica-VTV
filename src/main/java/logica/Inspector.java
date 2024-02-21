@@ -6,56 +6,32 @@ package logica;
 
 import java.io.Serializable;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-
 
 /**
  *
  * @author Ian
  */
 @Entity
-public class Inspector implements Serializable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
-    private String nombre;
-    private String apellido;
+public class Inspector extends Persona implements Serializable {
+
+    private int nroInspector;
 
     public Inspector() {
     }
 
-    public Inspector(int id, String nombre, String apellido) {
-        this.id = id;
-        this.nombre = nombre;
-        this.apellido = apellido;
+    public Inspector(int id, String nombre, String apellido, int telefono, int dni, int nroInspector) {
+        super(id, nombre, apellido, dni, telefono);
+        this.nroInspector = nroInspector;
     }
 
-    public int getId() {
-        return id;
+    public int getNroInspector() {
+        return nroInspector;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setNroInspector(int nroInspector) {
+        this.nroInspector = nroInspector;
     }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getApellido() {
-        return apellido;
-    }
-
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
-    }
-
+    
     @Override
     public String toString() {
         return "Id: " + getId() + " | "+ "Nombre: " + getNombre() + " | " + "Apellido: " + getApellido();
