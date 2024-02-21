@@ -29,7 +29,8 @@ public class GestionModificadoYBorrado extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        btnModificacionYBorradoPropietario = new javax.swing.JButton();
+        btnModificacionYBorradoInspector = new javax.swing.JButton();
+        btnModificacionYBorradoPropietario1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -41,10 +42,17 @@ public class GestionModificadoYBorrado extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
         jLabel1.setText("GESTION MODIFICACION Y BORRADO");
 
-        btnModificacionYBorradoPropietario.setText("PROPIETARIO");
-        btnModificacionYBorradoPropietario.addActionListener(new java.awt.event.ActionListener() {
+        btnModificacionYBorradoInspector.setText("INSPECTOR");
+        btnModificacionYBorradoInspector.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnModificacionYBorradoPropietarioActionPerformed(evt);
+                btnModificacionYBorradoInspectorActionPerformed(evt);
+            }
+        });
+
+        btnModificacionYBorradoPropietario1.setText("PROPIETARIO");
+        btnModificacionYBorradoPropietario1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificacionYBorradoPropietario1ActionPerformed(evt);
             }
         });
 
@@ -53,41 +61,55 @@ public class GestionModificadoYBorrado extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(190, 190, 190)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(400, 400, 400)
-                        .addComponent(btnModificacionYBorradoPropietario, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(190, 190, 190)
+                .addComponent(jLabel1)
                 .addContainerGap(158, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnModificacionYBorradoInspector, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(403, 403, 403))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addContainerGap(410, Short.MAX_VALUE)
+                    .addComponent(btnModificacionYBorradoPropietario1, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(402, 402, 402)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(17, 17, 17)
                 .addComponent(jLabel1)
-                .addGap(43, 43, 43)
-                .addComponent(btnModificacionYBorradoPropietario, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(318, Short.MAX_VALUE))
+                .addGap(147, 147, 147)
+                .addComponent(btnModificacionYBorradoInspector, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(214, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(117, 117, 117)
+                    .addComponent(btnModificacionYBorradoPropietario1, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(308, Short.MAX_VALUE)))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnModificacionYBorradoPropietarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificacionYBorradoPropietarioActionPerformed
-        ConsultaPropietario consuPropietario = new ConsultaPropietario();
-        consuPropietario.setVisible(true);
-        consuPropietario.setLocationRelativeTo(null);
-    }//GEN-LAST:event_btnModificacionYBorradoPropietarioActionPerformed
+    private void btnModificacionYBorradoInspectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificacionYBorradoInspectorActionPerformed
+        ConsultaInspector consuInspector = new ConsultaInspector();
+        consuInspector.setVisible(true);
+        consuInspector.setLocationRelativeTo(null);
+    }//GEN-LAST:event_btnModificacionYBorradoInspectorActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         cargarTabla();
     }//GEN-LAST:event_formWindowOpened
 
+    private void btnModificacionYBorradoPropietario1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificacionYBorradoPropietario1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnModificacionYBorradoPropietario1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnModificacionYBorradoPropietario;
+    private javax.swing.JButton btnModificacionYBorradoInspector;
+    private javax.swing.JButton btnModificacionYBorradoPropietario1;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 

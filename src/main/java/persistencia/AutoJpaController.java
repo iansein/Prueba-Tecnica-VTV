@@ -49,7 +49,7 @@ public class AutoJpaController implements Serializable {
             }
             em.persist(auto);
             if (propietario != null) {
-                propietario.getCars().add(auto);
+                propietario.getAutos().add(auto);
                 propietario = em.merge(propietario);
             }
             em.getTransaction().commit();
@@ -74,11 +74,11 @@ public class AutoJpaController implements Serializable {
             }
             auto = em.merge(auto);
             if (propietarioOld != null && !propietarioOld.equals(propietarioNew)) {
-                propietarioOld.getCars().remove(auto);
+                propietarioOld.getAutos().remove(auto);
                 propietarioOld = em.merge(propietarioOld);
             }
             if (propietarioNew != null && !propietarioNew.equals(propietarioOld)) {
-                propietarioNew.getCars().add(auto);
+                propietarioNew.getAutos().add(auto);
                 propietarioNew = em.merge(propietarioNew);
             }
             em.getTransaction().commit();
@@ -112,7 +112,7 @@ public class AutoJpaController implements Serializable {
             }
             Propietario propietario = auto.getPropietario();
             if (propietario != null) {
-                propietario.getCars().remove(auto);
+                propietario.getAutos().remove(auto);
                 propietario = em.merge(propietario);
             }
             em.remove(auto);

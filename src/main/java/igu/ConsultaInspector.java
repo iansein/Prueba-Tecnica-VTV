@@ -6,21 +6,20 @@ import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import logica.Controladora;
+import logica.Inspector;
 import logica.Propietario;
 
 /**
  *
  * @author Ian
  */
-public class ConsultaPropietario extends javax.swing.JFrame {
-    
-    Controladora control = new Controladora();
+public class ConsultaInspector extends javax.swing.JFrame {
 
-    public ConsultaPropietario() {
+    Controladora control = new Controladora();
+    
+    public ConsultaInspector() {
         initComponents();
     }
-    
-       
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -30,9 +29,9 @@ public class ConsultaPropietario extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tablaPropietarios = new javax.swing.JTable();
-        btnEliminarPropietario = new javax.swing.JButton();
-        btnModificarPropietario = new javax.swing.JButton();
+        tablaInspectores = new javax.swing.JTable();
+        btnEliminarInspector = new javax.swing.JButton();
+        btnModificarInspector = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -42,11 +41,11 @@ public class ConsultaPropietario extends javax.swing.JFrame {
         });
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
-        jLabel1.setText("BORRAR y MODIFICAR PROPIETARIO");
+        jLabel1.setText("BORRAR y MODIFICAR INSPECTOR");
 
         jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        tablaPropietarios.setModel(new javax.swing.table.DefaultTableModel(
+        tablaInspectores.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
                 {},
@@ -57,19 +56,19 @@ public class ConsultaPropietario extends javax.swing.JFrame {
 
             }
         ));
-        jScrollPane1.setViewportView(tablaPropietarios);
+        jScrollPane1.setViewportView(tablaInspectores);
 
-        btnEliminarPropietario.setText("ELIMINAR");
-        btnEliminarPropietario.addActionListener(new java.awt.event.ActionListener() {
+        btnEliminarInspector.setText("ELIMINAR");
+        btnEliminarInspector.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEliminarPropietarioActionPerformed(evt);
+                btnEliminarInspectorActionPerformed(evt);
             }
         });
 
-        btnModificarPropietario.setText("MODIFICAR");
-        btnModificarPropietario.addActionListener(new java.awt.event.ActionListener() {
+        btnModificarInspector.setText("MODIFICAR");
+        btnModificarInspector.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnModificarPropietarioActionPerformed(evt);
+                btnModificarInspectorActionPerformed(evt);
             }
         });
 
@@ -82,8 +81,8 @@ public class ConsultaPropietario extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 623, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnEliminarPropietario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnModificarPropietario, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE))
+                    .addComponent(btnEliminarInspector, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnModificarInspector, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE))
                 .addGap(22, 22, 22))
         );
         jPanel2Layout.setVerticalGroup(
@@ -95,9 +94,9 @@ public class ConsultaPropietario extends javax.swing.JFrame {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(143, 143, 143)
-                        .addComponent(btnEliminarPropietario, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnEliminarInspector, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnModificarPropietario, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnModificarInspector, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
@@ -113,14 +112,14 @@ public class ConsultaPropietario extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(44, 44, 44)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(42, 42, 42))
         );
@@ -139,21 +138,17 @@ public class ConsultaPropietario extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        cargarTabla();
-    }//GEN-LAST:event_formWindowOpened
+    private void btnEliminarInspectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarInspectorActionPerformed
+        if(tablaInspectores.getRowCount() > 0){
+            if(tablaInspectores.getSelectedRow() != -1){
 
-    private void btnEliminarPropietarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarPropietarioActionPerformed
-        if(tablaPropietarios.getRowCount() > 0){
-            if(tablaPropietarios.getSelectedRow() != -1){
-                
-                int idPropietario = Integer.parseInt(String.valueOf(tablaPropietarios.getValueAt(tablaPropietarios.getSelectedRow(), 0)));
-                control.borrarPropietario(idPropietario);
-                
-                mostrarMensaje("Se ha eliminado al propietario exitosamente", "INFO", "Eliminado exitoso");
-                
+                int idInspector = Integer.parseInt(String.valueOf(tablaInspectores.getValueAt(tablaInspectores.getSelectedRow(), 0)));
+                control.borrarInspector(idInspector);
+
+                mostrarMensaje("Se ha eliminado al inspector exitosamente", "INFO", "Eliminado exitoso");
+
                 cargarTabla();
-                
+
             }
             else{
                 mostrarMensaje("No se ha seleccionado un registro", "ERROR", "Eliminado fallido");
@@ -162,18 +157,18 @@ public class ConsultaPropietario extends javax.swing.JFrame {
         else{
             mostrarMensaje("No se puede eliminar, la tabla esta vacía", "ERROR", "Eliminado fallido");
         }
-    }//GEN-LAST:event_btnEliminarPropietarioActionPerformed
+    }//GEN-LAST:event_btnEliminarInspectorActionPerformed
 
-    private void btnModificarPropietarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarPropietarioActionPerformed
-        
-           if(tablaPropietarios.getRowCount() > 0){
-            if(tablaPropietarios.getSelectedRow() != -1){
-                int idPropietario = Integer.parseInt(String.valueOf(tablaPropietarios.getValueAt(tablaPropietarios.getSelectedRow(), 0)));
-                
-                ModificarPropietario modificar = new ModificarPropietario(idPropietario);
+    private void btnModificarInspectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarInspectorActionPerformed
+
+        if(tablaInspectores.getRowCount() > 0){
+            if(tablaInspectores.getSelectedRow() != -1){
+                int idInspector = Integer.parseInt(String.valueOf(tablaInspectores.getValueAt(tablaInspectores.getSelectedRow(), 0)));
+
+                ModificarInspector modificar = new ModificarInspector(idInspector);
                 modificar.setVisible(true);
                 modificar.setLocationRelativeTo(null);
-                
+
                 this.dispose();
             }
             else{
@@ -183,9 +178,12 @@ public class ConsultaPropietario extends javax.swing.JFrame {
         else{
             mostrarMensaje("No se puede modificar, la tabla esta vacía", "ERROR", "Modificado fallido");
         }
-        
-    }//GEN-LAST:event_btnModificarPropietarioActionPerformed
-    
+
+    }//GEN-LAST:event_btnModificarInspectorActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        cargarTabla();
+    }//GEN-LAST:event_formWindowOpened
     public void mostrarMensaje(String mensaje, String tipo, String titulo){
         JOptionPane optionPane = new JOptionPane(mensaje);
         if(tipo.equals("Info")){
@@ -199,41 +197,43 @@ public class ConsultaPropietario extends javax.swing.JFrame {
         dialog.setVisible(true);
     }
     
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnEliminarPropietario;
-    private javax.swing.JButton btnModificarPropietario;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tablaPropietarios;
-    // End of variables declaration//GEN-END:variables
-
     private void cargarTabla() {
-     DefaultTableModel modeloTabla = new DefaultTableModel(){
-          
-          @Override
-          public boolean isCellEditable(int row, int column){
-              return false;
-          }
-      }; 
+        DefaultTableModel modeloTabla = new DefaultTableModel(){
+
+             @Override
+             public boolean isCellEditable(int row, int column){
+                 return false;
+             }
+         }; 
       
-      String titulos[] = {"Id", "Nombre", "Apellido", "DNI", "Telefono"};
+      String titulos[] = {"Id", "Nombre", "Apellido", "DNI", "Nro Inspector", "Telefono"};
       modeloTabla.setColumnIdentifiers(titulos);
       
-      List<Propietario> listaPropietarios = control.traerPropietarios();
+      List<Inspector> listaInspectores = control.traerInspectores();
       
-      if(listaPropietarios != null){
-          for(Propietario propietario: listaPropietarios){
-              Object[] objeto = {propietario.getId(), propietario.getNombre(), propietario.getApellido(), propietario.getDni(), propietario.getTelefono()};
+      if(listaInspectores != null){
+          for(Inspector inspector: listaInspectores){
+              Object[] objeto = {inspector.getId(), inspector.getNombre(), inspector.getApellido(), 
+                  inspector.getDni(), inspector.getTelefono(), inspector.getNroInspector()};
               
               modeloTabla.addRow(objeto);
           }
       }
       
       
-      tablaPropietarios.setModel(modeloTabla);
-      
-      
+      tablaInspectores.setModel(modeloTabla);
+        
     }
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnEliminarInspector;
+    private javax.swing.JButton btnModificarInspector;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tablaInspectores;
+    // End of variables declaration//GEN-END:variables
+    
+
 }
