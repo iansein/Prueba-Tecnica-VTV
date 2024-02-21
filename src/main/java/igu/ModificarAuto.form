@@ -82,7 +82,7 @@
                   <EmptySpace pref="59" max="32767" attributes="0"/>
               </Group>
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="397" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="346" max="-2" attributes="0"/>
                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -175,7 +175,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="ALTA Auto"/>
+            <Property name="text" type="java.lang.String" value="MODIFICAR AUTO"/>
             <Property name="alignmentY" type="float" value="0.0"/>
           </Properties>
         </Component>

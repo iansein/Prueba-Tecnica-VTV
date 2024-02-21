@@ -96,5 +96,9 @@ public class Controladora {
         auto.setPropietario(propietarioSeleccionado);
         controlPersis.modificarAuto(auto);
     }
+
+    public void borrarAuto(int idAuto) {
+        controlPersis.borrarAuto(idAuto);
+    }
        
 }

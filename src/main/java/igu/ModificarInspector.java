@@ -69,7 +69,7 @@ public class ModificarInspector extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("ALTA INSPECTOR");
+        jLabel1.setText("MODIFICAR INSPECTOR");
         jLabel1.setAlignmentY(0.0F);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/certant-logo.png"))); // NOI18N
