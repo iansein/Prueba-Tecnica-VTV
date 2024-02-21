@@ -34,11 +34,11 @@ public class Controladora {
         return controlPersis.traerPropietario(idPropietario);
     }
 
-    public void modificarPropietario(Propietario propietario, String nombre, String apellido, int dni) {
+    public void modificarPropietario(Propietario propietario, String nombre, String apellido, int dni, int telefono) {
         propietario.setNombre(nombre);
         propietario.setApellido(apellido);
         propietario.setDni(dni);
-        
+        propietario.setTelefono(telefono);
         controlPersis.modificarPropietario(propietario);
     }
 
@@ -73,6 +73,16 @@ public class Controladora {
 
     public void borrarInspector(int idInspector) {
        controlPersis.borrarInspector(idInspector);
+    }
+
+    public void agregarAuto(String dominio, String marca, String modelo, Propietario propietarioSeleccionado) {
+        Auto auto = new Auto();
+        auto.setDominio(dominio);
+        auto.setMarca(marca);
+        auto.setModelo(modelo);
+        auto.setPropietario(propietarioSeleccionado);
+ 
+        controlPersis.agregarAuto(auto);
     }
    
        

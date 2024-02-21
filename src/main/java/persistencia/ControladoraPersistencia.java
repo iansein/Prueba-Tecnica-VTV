@@ -7,6 +7,7 @@ package persistencia;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import logica.Auto;
 import logica.Inspector;
 import logica.Propietario;
 import persistencia.exceptions.NonexistentEntityException;
@@ -19,6 +20,7 @@ public class ControladoraPersistencia {
     
     PropietarioJpaController propietarioJpa = new PropietarioJpaController();
     InspectorJpaController inspectorJpa = new InspectorJpaController();
+    AutoJpaController autoJpa = new AutoJpaController();
 
     public void agregarPropietario(Propietario propietario) {
         propietarioJpa.create(propietario);
@@ -74,6 +76,10 @@ public class ControladoraPersistencia {
         } catch (NonexistentEntityException ex) {
             Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    public void agregarAuto(Auto auto) {
+        autoJpa.create(auto);
     }
 
     

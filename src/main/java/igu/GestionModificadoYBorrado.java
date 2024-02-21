@@ -103,7 +103,9 @@ public class GestionModificadoYBorrado extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void btnModificacionYBorradoPropietario1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificacionYBorradoPropietario1ActionPerformed
-        // TODO add your handling code here:
+        ConsultaPropietario consuPropietario = new ConsultaPropietario();
+        consuPropietario.setVisible(true);
+        consuPropietario.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnModificacionYBorradoPropietario1ActionPerformed
 
 

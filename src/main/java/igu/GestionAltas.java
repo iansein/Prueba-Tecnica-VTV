@@ -142,8 +142,6 @@ public class GestionAltas extends javax.swing.JFrame {
         altaI.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnGestionAltaInspectorActionPerformed
 
-
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGestionAltaAuto;
     private javax.swing.JButton btnGestionAltaInspector;
