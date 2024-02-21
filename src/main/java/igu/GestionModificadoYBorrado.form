@@ -33,15 +33,12 @@
           </Group>
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="32767" attributes="0"/>
-              <Component id="btnModificacionYBorradoInspector" min="-2" pref="199" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="403" max="-2" attributes="0"/>
-          </Group>
-          <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace pref="410" max="32767" attributes="0"/>
-                  <Component id="btnModificacionYBorradoPropietario1" min="-2" pref="199" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="402" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Component id="btnModificacionYBorradoPropietario" min="-2" pref="191" max="-2" attributes="0"/>
+                  <Component id="btnModificacionYBorradoInspector" alignment="1" min="-2" pref="191" max="-2" attributes="0"/>
+                  <Component id="btnModificacionYBorradoAuto" alignment="1" min="-2" pref="191" max="-2" attributes="0"/>
               </Group>
+              <EmptySpace min="-2" pref="405" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -50,16 +47,13 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="147" max="-2" attributes="0"/>
+              <EmptySpace pref="60" max="32767" attributes="0"/>
+              <Component id="btnModificacionYBorradoPropietario" min="-2" pref="72" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="btnModificacionYBorradoInspector" min="-2" pref="72" max="-2" attributes="0"/>
-              <EmptySpace pref="214" max="32767" attributes="0"/>
-          </Group>
-          <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="117" max="-2" attributes="0"/>
-                  <Component id="btnModificacionYBorradoPropietario1" min="-2" pref="72" max="-2" attributes="0"/>
-                  <EmptySpace pref="308" max="32767" attributes="0"/>
-              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="btnModificacionYBorradoAuto" min="-2" pref="72" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="121" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -73,20 +67,28 @@
         <Property name="text" type="java.lang.String" value="GESTION MODIFICACION Y BORRADO"/>
       </Properties>
     </Component>
+    <Component class="javax.swing.JButton" name="btnModificacionYBorradoAuto">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="AUTO"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnModificacionYBorradoAutoActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnModificacionYBorradoPropietario">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="PROPIETARIO"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnModificacionYBorradoPropietarioActionPerformed"/>
+      </Events>
+    </Component>
     <Component class="javax.swing.JButton" name="btnModificacionYBorradoInspector">
       <Properties>
         <Property name="text" type="java.lang.String" value="INSPECTOR"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnModificacionYBorradoInspectorActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnModificacionYBorradoPropietario1">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="PROPIETARIO"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnModificacionYBorradoPropietario1ActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

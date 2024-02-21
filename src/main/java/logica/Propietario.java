@@ -1,5 +1,6 @@
 package logica;
 
+import jakarta.persistence.CascadeType;
 import java.io.Serializable;
 import java.util.ArrayList;
 import jakarta.persistence.Entity;
@@ -12,7 +13,7 @@ import jakarta.persistence.OneToMany;
 @Entity
 public class Propietario extends Persona implements Serializable {
      
-    @OneToMany(mappedBy="propietario")
+    @OneToMany(mappedBy="propietario", cascade = CascadeType.REMOVE)
     private ArrayList<Auto> autos = new ArrayList<>();
     
     
