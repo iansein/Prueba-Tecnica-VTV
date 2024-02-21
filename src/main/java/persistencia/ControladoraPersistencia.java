@@ -4,6 +4,7 @@
  */
 package persistencia;
 
+import java.util.List;
 import logica.Propietario;
 
 /**
@@ -15,6 +16,10 @@ public class ControladoraPersistencia {
     PropietarioJpaController propietarioJpa = new PropietarioJpaController();
     public void agregarPropietario(Propietario propietario) {
         propietarioJpa.create(propietario);
+    }
+
+    public List<Propietario> traerAutos() {
+        return propietarioJpa.findPropietarioEntities();
     }
     
 }
