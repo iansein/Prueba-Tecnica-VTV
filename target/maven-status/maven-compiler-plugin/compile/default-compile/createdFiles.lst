@@ -32,5 +32,6 @@ igu\Principal.class
 persistencia\PropietarioJpaController.class
 igu\AltaPropietario$1.class
 igu\GestionAltas$3.class
+igu\ConsultaPropietario$3.class
 igu\ConsultaPropietario$1.class
 persistencia\exceptions\NonexistentEntityException.class

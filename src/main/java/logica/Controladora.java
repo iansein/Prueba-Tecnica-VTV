@@ -25,5 +25,9 @@ public class Controladora {
         return controlPersis.traerAutos();
     }
 
+    public void borrarPropietario(int idPropietario) {
+       controlPersis.borrarPropietario(idPropietario);
+    }
+
        
 }

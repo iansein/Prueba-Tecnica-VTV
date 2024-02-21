@@ -1,6 +1,7 @@
 
 package igu;
 
+import javax.swing.JFrame;
 import logica.Controladora;
 
 /**
@@ -13,6 +14,7 @@ public class AltaPropietario extends javax.swing.JFrame {
     
     public AltaPropietario() {
         initComponents();
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
     @SuppressWarnings("unchecked")
