@@ -1,6 +1,8 @@
 com\mycompany\prueba\tecnica\vtv\PruebaTecnicaVTV.class
 igu\ConsultaAuto$2.class
 igu\ModificarAuto$1.class
+logica\Observacion.class
+igu\AltaInspeccion.class
 igu\GestionModificadoYBorrado.class
 logica\Oblea.class
 persistencia\ObleaJpaController.class
@@ -13,6 +15,7 @@ igu\AltaInspector$4.class
 igu\GestionAltas$1.class
 logica\Validador.class
 igu\AltaAuto$1.class
+igu\AltaInspeccion$1.class
 igu\GestionAltas$4.class
 logica\Inspeccion.class
 persistencia\exceptions\PreexistingEntityException.class
@@ -41,6 +44,7 @@ igu\AltaInspector.class
 igu\ConsultaInspector$2.class
 igu\ModificarInspector.class
 igu\Principal$1.class
+igu\AltaInspeccion$3.class
 igu\ConsultaAuto$4.class
 logica\Persona.class
 igu\AltaInspector$3.class
@@ -58,7 +62,9 @@ igu\ConsultaInspector.class
 igu\AltaInspector$2.class
 igu\GestionModificadoYBorrado$3.class
 igu\ConsultaPropietario$4.class
+logica\Medicion.class
 igu\ConsultaAuto$3.class
+igu\AltaInspeccion$2.class
 igu\Principal.class
 persistencia\PropietarioJpaController.class
 igu\AltaPropietario$1.class

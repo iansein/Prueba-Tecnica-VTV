@@ -1,6 +1,7 @@
 C:\Users\Ian\Desktop\VTV\Prueba-Tecnica-VTV\src\main\java\igu\AltaPropietario.java
 C:\Users\Ian\Desktop\VTV\Prueba-Tecnica-VTV\src\main\java\persistencia\ObleaJpaController.java
 C:\Users\Ian\Desktop\VTV\Prueba-Tecnica-VTV\src\main\java\igu\GestionAltas.java
+C:\Users\Ian\Desktop\VTV\Prueba-Tecnica-VTV\src\main\java\logica\Observacion.java
 C:\Users\Ian\Desktop\VTV\Prueba-Tecnica-VTV\src\main\java\logica\Auto.java
 C:\Users\Ian\Desktop\VTV\Prueba-Tecnica-VTV\src\main\java\logica\Inspeccion.java
 C:\Users\Ian\Desktop\VTV\Prueba-Tecnica-VTV\src\main\java\logica\Oblea.java
@@ -25,6 +26,8 @@ C:\Users\Ian\Desktop\VTV\Prueba-Tecnica-VTV\src\main\java\igu\AltaInspector.java
 C:\Users\Ian\Desktop\VTV\Prueba-Tecnica-VTV\src\main\java\igu\ConsultaInspector.java
 C:\Users\Ian\Desktop\VTV\Prueba-Tecnica-VTV\src\main\java\logica\Validador.java
 C:\Users\Ian\Desktop\VTV\Prueba-Tecnica-VTV\src\main\java\persistencia\exceptions\PreexistingEntityException.java
+C:\Users\Ian\Desktop\VTV\Prueba-Tecnica-VTV\src\main\java\logica\Medicion.java
+C:\Users\Ian\Desktop\VTV\Prueba-Tecnica-VTV\src\main\java\igu\AltaInspeccion.java
 C:\Users\Ian\Desktop\VTV\Prueba-Tecnica-VTV\src\main\java\persistencia\ControladoraPersistencia.java
 C:\Users\Ian\Desktop\VTV\Prueba-Tecnica-VTV\src\main\java\persistencia\InspectorJpaController.java
 C:\Users\Ian\Desktop\VTV\Prueba-Tecnica-VTV\src\main\java\persistencia\exceptions\IllegalOrphanException.java
