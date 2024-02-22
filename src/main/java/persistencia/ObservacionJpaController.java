@@ -6,6 +6,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Query;
 import jakarta.persistence.EntityNotFoundException;
+import jakarta.persistence.Persistence;
 import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Root;
 import logica.Observacion;
@@ -20,6 +21,11 @@ public class ObservacionJpaController implements Serializable {
     public ObservacionJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
+    
+    public ObservacionJpaController(){
+        emf = Persistence.createEntityManagerFactory("vtvPU");
+    }
+    
     private EntityManagerFactory emf = null;
 
     public EntityManager getEntityManager() {

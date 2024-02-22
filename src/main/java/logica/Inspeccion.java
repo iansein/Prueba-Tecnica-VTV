@@ -11,11 +11,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
-import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -25,10 +23,10 @@ import java.util.Date;
 @Entity
 public class Inspeccion implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private int numeroInspeccion;
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.DATE)    
     private Date fechaInspeccion;
     private String estadoInspeccion;
     private boolean exento;
@@ -37,18 +35,17 @@ public class Inspeccion implements Serializable {
     @OneToOne
     private Auto autoInspeccionado;
     
-    @OneToMany(mappedBy="inspeccion", cascade = CascadeType.REMOVE)
-    private ArrayList<Observacion> observaciones;
-    
-    @OneToMany(mappedBy="inspeccion", cascade = CascadeType.REMOVE)
-    private ArrayList<Medicion> mediciones;
+    @OneToOne(cascade = {CascadeType.REMOVE}, mappedBy="inspeccion")
+    private Observacion observacion;
+    @OneToOne(cascade = {CascadeType.REMOVE}, mappedBy="inspeccion")
+    private Medicion medicion;
 
     public Inspeccion() {
     }
 
     public Inspeccion(int id, int numeroInspeccion, Date fechaInspeccion, 
             String estadoInspeccion, boolean exento, Inspector inspector, 
-            Auto autoInspeccionado, ArrayList<Observacion> observaciones, ArrayList<Medicion> mediciones) {
+            Auto autoInspeccionado, Observacion observacion, Medicion medicion) {
         this.id = id;
         this.numeroInspeccion = numeroInspeccion;
         this.fechaInspeccion = fechaInspeccion;
@@ -56,7 +53,27 @@ public class Inspeccion implements Serializable {
         this.exento = exento;
         this.inspector = inspector;
         this.autoInspeccionado = autoInspeccionado;
+        this.observacion = observacion;
+        this.medicion = medicion;
     }
+
+    public Observacion getObservacion() {
+        return observacion;
+    }
+
+    public void setObservacion(Observacion observacion) {
+        this.observacion = observacion;
+    }
+
+    public Medicion getMedicion() {
+        return medicion;
+    }
+
+    public void setMedicion(Medicion medicion) {
+        this.medicion = medicion;
+    }
+    
+    
 
     public int getId() {
         return id;

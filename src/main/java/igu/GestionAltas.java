@@ -4,6 +4,10 @@
  */
 package igu;
 
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import javax.swing.JFrame;
+
 /**
  *
  * @author Ian
@@ -13,6 +17,7 @@ public class GestionAltas extends javax.swing.JFrame {
 
     public GestionAltas() {
         initComponents();
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
     @SuppressWarnings("unchecked")
@@ -29,6 +34,8 @@ public class GestionAltas extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(3, 88, 140));
+
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -38,28 +45,44 @@ public class GestionAltas extends javax.swing.JFrame {
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/certant-logo.png"))); // NOI18N
 
-        btnGestionAltaAuto.setText("ALTA AUTO");
+        btnGestionAltaAuto.setBackground(new java.awt.Color(0, 51, 153));
+        btnGestionAltaAuto.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        btnGestionAltaAuto.setForeground(new java.awt.Color(255, 255, 255));
+        btnGestionAltaAuto.setText("AUTO");
+        btnGestionAltaAuto.setFocusPainted(false);
         btnGestionAltaAuto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGestionAltaAutoActionPerformed(evt);
             }
         });
 
-        btnGestionAltasPropietario.setText("ALTA PROPIETARIO");
+        btnGestionAltasPropietario.setBackground(new java.awt.Color(0, 51, 153));
+        btnGestionAltasPropietario.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        btnGestionAltasPropietario.setForeground(new java.awt.Color(255, 255, 255));
+        btnGestionAltasPropietario.setText("PROPIETARIO");
+        btnGestionAltasPropietario.setFocusPainted(false);
         btnGestionAltasPropietario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGestionAltasPropietarioActionPerformed(evt);
             }
         });
 
-        btnGestionAltaInspeccion.setText("ALTA INSPECCION");
+        btnGestionAltaInspeccion.setBackground(new java.awt.Color(0, 51, 153));
+        btnGestionAltaInspeccion.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        btnGestionAltaInspeccion.setForeground(new java.awt.Color(255, 255, 255));
+        btnGestionAltaInspeccion.setText("INSPECCIÓN");
+        btnGestionAltaInspeccion.setFocusPainted(false);
         btnGestionAltaInspeccion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGestionAltaInspeccionActionPerformed(evt);
             }
         });
 
-        btnGestionAltaInspector.setText("ALTA INSPECTOR");
+        btnGestionAltaInspector.setBackground(new java.awt.Color(0, 51, 153));
+        btnGestionAltaInspector.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        btnGestionAltaInspector.setForeground(new java.awt.Color(255, 255, 255));
+        btnGestionAltaInspector.setText("INSPECTOR");
+        btnGestionAltaInspector.setFocusPainted(false);
         btnGestionAltaInspector.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGestionAltaInspectorActionPerformed(evt);
@@ -70,19 +93,20 @@ public class GestionAltas extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(254, 254, 254)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(btnGestionAltaInspeccion, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnGestionAltasPropietario, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 286, Short.MAX_VALUE)
-                        .addComponent(btnGestionAltaInspector, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnGestionAltaAuto, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(258, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addContainerGap(258, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(btnGestionAltaInspeccion, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnGestionAltasPropietario, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 286, Short.MAX_VALUE)
+                            .addComponent(btnGestionAltaInspector, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnGestionAltaAuto, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -97,8 +121,10 @@ public class GestionAltas extends javax.swing.JFrame {
                 .addComponent(btnGestionAltasPropietario, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnGestionAltaInspeccion, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(51, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -123,24 +149,60 @@ public class GestionAltas extends javax.swing.JFrame {
         AltaAuto alta = new AltaAuto();
         alta.setVisible(true);
         alta.setLocationRelativeTo(null);
+        alta.setLocationRelativeTo(null);
+          setEnabled(false); 
+            alta.addWindowListener(new WindowAdapter() {
+                @Override
+                public void windowClosed(WindowEvent e) {
+                    setEnabled(true);
+                    toFront();
+                }
+         });
     }//GEN-LAST:event_btnGestionAltaAutoActionPerformed
 
     private void btnGestionAltasPropietarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionAltasPropietarioActionPerformed
         AltaPropietario altaP = new AltaPropietario();
         altaP.setVisible(true);
         altaP.setLocationRelativeTo(null);
+         altaP.setLocationRelativeTo(null);
+          setEnabled(false); 
+            altaP.addWindowListener(new WindowAdapter() {
+                @Override
+                public void windowClosed(WindowEvent e) {
+                    setEnabled(true);
+                    toFront();
+                }
+         });
     }//GEN-LAST:event_btnGestionAltasPropietarioActionPerformed
 
     private void btnGestionAltaInspeccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionAltaInspeccionActionPerformed
         AltaInspeccion altaInspeccion = new AltaInspeccion();
         altaInspeccion.setVisible(true);
         altaInspeccion.setLocationRelativeTo(null);
+        altaInspeccion.setLocationRelativeTo(null);
+          setEnabled(false); 
+            altaInspeccion.addWindowListener(new WindowAdapter() {
+                @Override
+                public void windowClosed(WindowEvent e) {
+                    setEnabled(true);
+                    toFront();
+                }
+         });
     }//GEN-LAST:event_btnGestionAltaInspeccionActionPerformed
 
     private void btnGestionAltaInspectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionAltaInspectorActionPerformed
         AltaInspector altaI = new AltaInspector();
         altaI.setVisible(true);
         altaI.setLocationRelativeTo(null);
+         altaI.setLocationRelativeTo(null);
+          setEnabled(false); 
+            altaI.addWindowListener(new WindowAdapter() {
+                @Override
+                public void windowClosed(WindowEvent e) {
+                    setEnabled(true);
+                    toFront();
+                }
+         });
     }//GEN-LAST:event_btnGestionAltaInspectorActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

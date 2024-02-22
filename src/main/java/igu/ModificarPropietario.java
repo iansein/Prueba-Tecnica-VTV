@@ -1,6 +1,7 @@
 package igu;
 
 import javax.swing.JDialog;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import logica.Controladora;
 import logica.Propietario;
@@ -19,6 +20,7 @@ public class ModificarPropietario extends javax.swing.JFrame {
         initComponents();
         
         cargarDatos(idPropietario);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
     @SuppressWarnings("unchecked")

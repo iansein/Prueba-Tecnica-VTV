@@ -6,6 +6,7 @@ package igu;
 
 import java.util.List;
 import javax.swing.JDialog;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import logica.Auto;
@@ -25,6 +26,7 @@ public class ModificarAuto extends javax.swing.JFrame {
     public ModificarAuto(int idAuto) {
         controladora = new Controladora();
         initComponents();
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
 
