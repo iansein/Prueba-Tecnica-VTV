@@ -1,21 +1,34 @@
 package igu;
 
+import java.text.ParseException;
+import java.util.Date;
 import java.util.List;
+import java.util.stream.Stream;
 import javax.swing.JDialog;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
-import logica.Propietario;
+import logica.Auto;
+import logica.Controladora;
+import logica.Inspeccion;
+import logica.Inspector;
+import logica.Medicion;
+import logica.Oblea;
+import logica.Observacion;
+import logica.Validador;
 
 /**
  *
  * @author Ian
  */
 public class AltaInspeccion extends javax.swing.JFrame {
-
-
+    Controladora control = new Controladora();
+    Auto autoSeleccionado;
+    Inspector inspectorSeleccionado;
+    Inspeccion inspeccion = new Inspeccion();
     public AltaInspeccion() {
         initComponents();
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
     @SuppressWarnings("unchecked")
@@ -23,7 +36,7 @@ public class AltaInspeccion extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        txtNombreInspector = new javax.swing.JTextField();
+        txtNroInspeccion = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         btnAgregarInspeccion = new javax.swing.JButton();
@@ -31,7 +44,7 @@ public class AltaInspeccion extends javax.swing.JFrame {
         btnLimpiarInspeccion = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        tablaPropietarios1 = new javax.swing.JTable();
+        tablaInspectores = new javax.swing.JTable();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         cbPatente = new javax.swing.JComboBox<>();
@@ -60,10 +73,21 @@ public class AltaInspeccion extends javax.swing.JFrame {
         cbContaminacionAmbiental = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tablaPropietarios = new javax.swing.JTable();
+        tablaAutos = new javax.swing.JTable();
+        jLabel3 = new javax.swing.JLabel();
+        txtFecha = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        cbExento = new javax.swing.JComboBox<>();
+        jLabel21 = new javax.swing.JLabel();
+        cbChasis = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(3, 88, 140));
 
@@ -103,7 +127,7 @@ public class AltaInspeccion extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(102, 102, 102));
         jPanel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        tablaPropietarios1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaInspectores.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
                 {},
@@ -114,7 +138,7 @@ public class AltaInspeccion extends javax.swing.JFrame {
 
             }
         ));
-        jScrollPane2.setViewportView(tablaPropietarios1);
+        jScrollPane2.setViewportView(tablaInspectores);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -229,7 +253,7 @@ public class AltaInspeccion extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(102, 102, 102));
         jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        tablaPropietarios.setModel(new javax.swing.table.DefaultTableModel(
+        tablaAutos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
                 {},
@@ -240,7 +264,7 @@ public class AltaInspeccion extends javax.swing.JFrame {
 
             }
         ));
-        jScrollPane1.setViewportView(tablaPropietarios);
+        jScrollPane1.setViewportView(tablaAutos);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -259,6 +283,29 @@ public class AltaInspeccion extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setText("Fecha");
+
+        txtFecha.setText("dd/mm/yyyy");
+        txtFecha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtFechaActionPerformed(evt);
+            }
+        });
+
+        jLabel11.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel11.setText("Exento de pago");
+
+        cbExento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Si", "No" }));
+
+        jLabel21.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel21.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel21.setText("Chasis");
+
+        cbChasis.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Apta", "Condicional", "Rechazada", " " }));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -274,14 +321,10 @@ public class AltaInspeccion extends javax.swing.JFrame {
                             .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel7)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel15)
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addComponent(jLabel2)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(txtNombreInspector, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addGroup(jPanel1Layout.createSequentialGroup()
                                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                     .addComponent(jLabel9)
@@ -295,19 +338,37 @@ public class AltaInspeccion extends javax.swing.JFrame {
                                                 .addGap(29, 29, 29)
                                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                     .addGroup(jPanel1Layout.createSequentialGroup()
+                                                        .addComponent(jLabel14)
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                        .addComponent(cbEmergencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                    .addGroup(jPanel1Layout.createSequentialGroup()
                                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                             .addComponent(jLabel13)
                                                             .addComponent(jLabel12))
                                                         .addGap(30, 30, 30)
                                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                                             .addComponent(cbSeguridad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                            .addComponent(cbVidrios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                                        .addComponent(jLabel14)
+                                                            .addComponent(cbVidrios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                        .addComponent(cbEmergencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                                        .addGap(204, 204, 204))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                                        .addComponent(jLabel21)
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                        .addComponent(cbChasis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                        .addGap(36, 36, 36))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(jLabel2)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(txtNroInspeccion, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(jLabel3)
+                                                    .addComponent(jLabel11))
+                                                .addGap(2, 6, Short.MAX_VALUE)
+                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(cbExento, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                    .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(btnAgregarInspeccion, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(52, 52, 52)))
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -363,9 +424,9 @@ public class AltaInspeccion extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(18, 24, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel15)
-                            .addComponent(jLabel6))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel15))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -389,7 +450,9 @@ public class AltaInspeccion extends javax.swing.JFrame {
                                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(cbPatente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel12)
-                                    .addComponent(cbVidrios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(cbVidrios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cbChasis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel5)
@@ -404,10 +467,18 @@ public class AltaInspeccion extends javax.swing.JFrame {
                                     .addComponent(cbEmergencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(44, 44, 44)
+                                .addGap(33, 33, 33)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel2)
-                                    .addComponent(txtNombreInspector, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(txtNroInspeccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel3))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel11)
+                                    .addComponent(cbExento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
@@ -448,34 +519,196 @@ public class AltaInspeccion extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLimpiarInspeccionActionPerformed
 
     private void btnAgregarInspeccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarInspeccionActionPerformed
+        String fecha = txtFecha.getText();
+        String nroInspeccionTxt = txtNroInspeccion.getText();
 
+        if (!validarCampos(fecha, nroInspeccionTxt)) {
+            return;
+        }
+        
+        if(tablaInspectores.getRowCount() > 0){
+            if(tablaInspectores.getSelectedRow() != -1){
+
+                int idInspector = Integer.parseInt(String.valueOf(tablaInspectores.getValueAt(tablaInspectores.getSelectedRow(), 0)));
+                inspectorSeleccionado = control.traerInspector(idInspector);
+            }
+            else{
+                mostrarMensaje("No se ha seleccionado al inspector a cargo", "ERROR", "Agregado fallido");
+                return;
+            }
+        }
+        else{
+            mostrarMensaje("No se puede agregar, la tabla esta de Inspectores esta vacía", "ERROR", "Agregado fallido");
+            return;
+        }
+        
+        if(tablaAutos.getRowCount() > 0){
+            if(tablaAutos.getSelectedRow() != -1){
+
+                int idAuto = Integer.parseInt(String.valueOf(tablaAutos.getValueAt(tablaAutos.getSelectedRow(), 0)));
+                autoSeleccionado = control.traerAuto(idAuto);
+            }
+            else{
+                mostrarMensaje("No se ha seleccionado al auto inspeccionado", "ERROR", "Agregado fallido");
+                return;
+            }
+        }
+        else{
+            mostrarMensaje("No se puede agregar, la tabla esta de Autos esta vacía", "ERROR", "Agregado fallido");
+            return;
+        }        
+
+        try {
+            Date fechaParseada;
+            try{
+               fechaParseada = Validador.formatearFecha(fecha);
+               System.out.println("Fecha obtenida: " + fecha);
+            }
+            catch(ParseException ex){
+                mostrarMensaje("Fecha inválida", "Error", "Error al agregar");
+                return;
+            }
+            
+            Observacion observacion = crearObservacion();
+            Medicion medicion = crearMedicion();
+            boolean exentoBool = obtenerExento();
+            int nroInspeccion = Integer.parseInt(nroInspeccionTxt);
+            String estado = determinarEstadoVehiculo();
+            
+            inspeccion.setFechaInspeccion(fechaParseada);
+            inspeccion.setExento(exentoBool);
+            inspeccion.setNumeroInspeccion(nroInspeccion);
+            inspeccion.setEstadoInspeccion(estado);
+            inspeccion.setAutoInspeccionado(autoSeleccionado);
+            inspeccion.setInspector(inspectorSeleccionado);
+            
+            if(estado == "Apto"){
+                Date fechaVencimiento = Validador.formatearFechaVencimiento(fechaParseada);
+                autoSeleccionado.setOblea(new Oblea(fechaParseada,fechaVencimiento));
+                control.modificarAuto(autoSeleccionado);
+            }
+            
+            medicion.setInspeccion(inspeccion);
+            observacion.setInspeccion(inspeccion);
+            
+            control.agregarInspeccion(inspeccion);
+            control.agregarMedicion(medicion);
+            control.agregarObservacion(observacion);
+              
+            mostrarMensaje("Se agrego una inspección exitosamente", "Info", "Exito al agregar");
+        } catch (Exception ex) {
+            mostrarMensaje("Hubo un error al agregar", "Error", "Error al agregar");
+        }
     }//GEN-LAST:event_btnAgregarInspeccionActionPerformed
+    
+    private boolean validarCampos(String fecha, String nroInspeccionTxt) {
+        if (!Validador.esTextoNoVacio(fecha) || !Validador.esTextoNoVacio(nroInspeccionTxt)) {
+            mostrarMensaje("Complete todos los campos.", "Error", "Error al agregar");
+            return false;
+        }
 
-    private void cargarTablaPropietarios() {
-        DefaultTableModel modeloTabla = new DefaultTableModel(){
+        if (!Validador.esNumero(nroInspeccionTxt)) {
+            mostrarMensaje("Número de inspección no válido.", "Error", "Error al agregar");
+            return false;
+        }
 
-             @Override
-             public boolean isCellEditable(int row, int column){
-                 return false;
-             }
-         }; 
+        return true;
+    }
+    
+    private Observacion crearObservacion() {
+        String observacionEstadoChasis = (String) cbChasis.getSelectedItem();
+        String observacionEstadoPatente = (String) cbPatente.getSelectedItem();
+        String observacionEstadoLuces = (String) cbLuces.getSelectedItem();
+        String observacionEstadoEspejos = (String) cbEspejos.getSelectedItem();
+        String observacionEstadoVidrios = (String) cbVidrios.getSelectedItem();
+        String observacionEstadoSeguridad = (String) cbSeguridad.getSelectedItem();
+        String observacionEstadoEmergencia = (String) cbEmergencia.getSelectedItem();
 
-         String titulos[] = {"Id", "Nombre", "Apellido", "DNI", "Telefono"};
-         modeloTabla.setColumnIdentifiers(titulos);
-         tablaPropietarios.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-         
-         List<Propietario> listaPropietarios = control.traerPropietarios();
+        Observacion observacion = new Observacion();
+        observacion.setPatente(observacionEstadoPatente);
+        observacion.setEspejos(observacionEstadoEspejos);
+        observacion.setLuces(observacionEstadoLuces);
+        observacion.setVidrios(observacionEstadoVidrios);
+        observacion.setSeguridad(observacionEstadoSeguridad);
+        observacion.setEmergencia(observacionEstadoEmergencia);
+        observacion.setChasis(observacionEstadoChasis);
+        observacion.setInspeccion(inspeccion);
 
-         if(listaPropietarios != null){
-             for(Propietario propietario: listaPropietarios){
-                 Object[] objeto = {propietario.getId(), propietario.getNombre(), propietario.getApellido(), propietario.getDni(), propietario.getTelefono()};
+        return observacion;
+    }
 
-                 modeloTabla.addRow(objeto);
-             }
-         }
-         
-         tablaPropietarios.setModel(modeloTabla);      
-    }  
+    private Medicion crearMedicion() {
+        String medicionEstadoTrenDelantero = (String) cbTrenDelantero.getSelectedItem();
+        String medicionEstadoSuspension = (String) cbSuspension.getSelectedItem();
+        String medicionEstadoDireccion = (String) cbDireccion.getSelectedItem();
+        String medicionEstadoSistemaDeFrenos = (String) cbSistemaDeFrenos.getSelectedItem();
+        String medicionEstadoContaminacion = (String) cbContaminacionAmbiental.getSelectedItem();
+
+        Medicion medicion = new Medicion();
+        medicion.setTrenDelantero(medicionEstadoTrenDelantero);
+        medicion.setSuspension(medicionEstadoSuspension);
+        medicion.setDireccion(medicionEstadoDireccion);
+        medicion.setSistemaDeFrenos(medicionEstadoSistemaDeFrenos);
+        medicion.setContaminacionAmbiental(medicionEstadoContaminacion);
+        
+        medicion.setInspeccion(inspeccion);
+
+        return medicion;
+    }
+
+    private boolean obtenerExento() {
+        String exento = (String) cbExento.getSelectedItem();
+        return exento.equals("Si");
+    }
+    
+    public String determinarEstadoVehiculo() {
+        String medicionEstadoTrenDelantero = (String) cbTrenDelantero.getSelectedItem();
+        String medicionEstadoSuspension = (String) cbSuspension.getSelectedItem();
+        String medicionEstadoDireccion = (String) cbDireccion.getSelectedItem();
+        String medicionEstadoSistemaDeFrenos = (String) cbSistemaDeFrenos.getSelectedItem();
+        String medicionEstadoContaminacion = (String) cbContaminacionAmbiental.getSelectedItem();
+        String observacionEstadoPatente = (String) cbPatente.getSelectedItem();
+        String observacionEstadoLuces = (String) cbLuces.getSelectedItem();
+        String observacionEstadoEspejos = (String) cbEspejos.getSelectedItem();
+        String observacionEstadoVidrios = (String) cbVidrios.getSelectedItem();
+        String observacionEstadoSeguridad = (String) cbSeguridad.getSelectedItem();
+        String observacionEstadoEmergencia = (String) cbEmergencia.getSelectedItem();
+    
+
+        boolean hayObservacionRechazada = Stream.of(observacionEstadoPatente, observacionEstadoLuces, observacionEstadoEspejos,
+                observacionEstadoVidrios, observacionEstadoSeguridad, observacionEstadoEmergencia)
+                .anyMatch(obs -> obs.equals("Rechazada"));
+
+        boolean hayMedicionRechazada = Stream.of(medicionEstadoTrenDelantero, medicionEstadoSuspension,
+                medicionEstadoDireccion, medicionEstadoSistemaDeFrenos, medicionEstadoContaminacion)
+                .anyMatch(med -> med.equals("Rechazada"));
+
+        if (hayObservacionRechazada || hayMedicionRechazada) {
+            return "Rechazado";
+        }
+
+        boolean hayObservacionCondicional = Stream.of(observacionEstadoPatente, observacionEstadoLuces, observacionEstadoEspejos,
+                observacionEstadoVidrios, observacionEstadoSeguridad, observacionEstadoEmergencia)
+                .anyMatch(obs -> obs.equals("Condicional"));
+
+        boolean hayMedicionCondicional = Stream.of(medicionEstadoTrenDelantero, medicionEstadoSuspension,
+                medicionEstadoDireccion, medicionEstadoSistemaDeFrenos, medicionEstadoContaminacion)
+                .anyMatch(med -> med.equals("Condicional"));
+
+        if (hayObservacionCondicional || hayMedicionCondicional) {
+            return "Condicional";
+        }
+
+        return "Apto";
+   }
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        cargarTablaInspectores();
+        cargarTablaAutos();
+    }//GEN-LAST:event_formWindowOpened
+
+    private void txtFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFechaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFechaActionPerformed
     
     public void mostrarMensaje(String mensaje, String tipo, String titulo){
         JOptionPane optionPane = new JOptionPane(mensaje);
@@ -483,20 +716,75 @@ public class AltaInspeccion extends javax.swing.JFrame {
             optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
         }
         else if(tipo.equals("Error")){
-                optionPane.setMessageType(JOptionPane.ERROR_MESSAGE);
+            optionPane.setMessageType(JOptionPane.ERROR_MESSAGE);
         }
         JDialog dialog = optionPane.createDialog(titulo);
         dialog.setAlwaysOnTop(true);
         dialog.setVisible(true);
     }    
+    private void cargarTablaInspectores() {
+        DefaultTableModel modeloTabla = new DefaultTableModel(){
+
+             @Override
+             public boolean isCellEditable(int row, int column){
+                 return false;
+             }
+         }; 
+      
+      String titulos[] = {"Id", "Nombre", "Apellido", "DNI", "Nro Inspector", "Telefono"};
+      modeloTabla.setColumnIdentifiers(titulos);
+      
+      List<Inspector> listaInspectores = control.traerInspectores();
+      
+      if(listaInspectores != null){
+          for(Inspector inspector: listaInspectores){
+              Object[] objeto = {inspector.getId(), inspector.getNombre(), inspector.getApellido(), 
+                  inspector.getDni(), inspector.getTelefono(), inspector.getNroInspector()};
+              
+              modeloTabla.addRow(objeto);
+          }
+      }
+      
+      
+      tablaInspectores.setModel(modeloTabla);
+        
+    }
+    private void cargarTablaAutos() {
+        DefaultTableModel modeloTabla = new DefaultTableModel(){
+
+             @Override
+             public boolean isCellEditable(int row, int column){
+                 return false;
+             }
+         }; 
+      
+      String titulos[] = {"Id", "Dominio", "Marca", "Modelo", "Nombre Propietario"};
+      modeloTabla.setColumnIdentifiers(titulos);
+      
+      List<Auto> listaAutos = control.traerAutos();
+      
+      if(listaAutos != null){
+          for(Auto auto: listaAutos){
+              Object[] objeto = {auto.getId(), auto.getDominio(), auto.getMarca(), auto.getModelo(), auto.getPropietario().getNombre()};
+              modeloTabla.addRow(objeto);
+          }
+      }
+      
+      
+      tablaAutos.setModel(modeloTabla);
+        
+    }    
+  
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregarInspeccion;
     private javax.swing.JButton btnLimpiarInspeccion;
+    private javax.swing.JComboBox<String> cbChasis;
     private javax.swing.JComboBox<String> cbContaminacionAmbiental;
     private javax.swing.JComboBox<String> cbDireccion;
     private javax.swing.JComboBox<String> cbEmergencia;
     private javax.swing.JComboBox<String> cbEspejos;
+    private javax.swing.JComboBox<String> cbExento;
     private javax.swing.JComboBox<String> cbLuces;
     private javax.swing.JComboBox<String> cbPatente;
     private javax.swing.JComboBox<String> cbSeguridad;
@@ -506,6 +794,7 @@ public class AltaInspeccion extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbVidrios;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
@@ -516,7 +805,9 @@ public class AltaInspeccion extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel3;
+    public javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -527,8 +818,9 @@ public class AltaInspeccion extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable tablaPropietarios;
-    private javax.swing.JTable tablaPropietarios1;
-    private javax.swing.JTextField txtNombreInspector;
+    private javax.swing.JTable tablaAutos;
+    private javax.swing.JTable tablaInspectores;
+    private javax.swing.JTextField txtFecha;
+    private javax.swing.JTextField txtNroInspeccion;
     // End of variables declaration//GEN-END:variables
 }

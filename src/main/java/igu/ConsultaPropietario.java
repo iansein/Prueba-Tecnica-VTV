@@ -3,6 +3,7 @@ package igu;
 
 import java.util.List;
 import javax.swing.JDialog;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import logica.Controladora;
@@ -18,6 +19,7 @@ public class ConsultaPropietario extends javax.swing.JFrame {
 
     public ConsultaPropietario() {
         initComponents();
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
     
     @SuppressWarnings("unchecked")

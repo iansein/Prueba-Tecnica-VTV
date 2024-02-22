@@ -1,36 +1,48 @@
 package logica;
 
-import java.io.Serializable;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 
 /**
  *
  * @author Ian
  */
 @Entity
-public class Observacion implements Serializable {
-    
+public class Observacion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @ManyToOne @JoinColumn(name = "inspeccion_id")
+
+    @OneToOne
+    @JoinColumn(name = "inspeccion_id")
     private Inspeccion inspeccion;
-    private String parteDelVehiculo;
-    private String estado;
-    
+
+    private String luces;
+    private String patente;
+    private String espejos;
+    private String chasis;
+    private String vidrios;
+    private String seguridad;
+    private String emergencia;
+
     public Observacion() {
     }
-
-    public Observacion(int id, Inspeccion inspeccion, String parteDelVehiculo,String estado) {
+    
+    public Observacion(int id, Inspeccion inspeccion, String luces, String patente, String espejos, String chasis, String vidrios, String seguridad, String emergencia) {
         this.id = id;
         this.inspeccion = inspeccion;
-        this.parteDelVehiculo = parteDelVehiculo;
-        this.estado = estado;
+        this.luces = luces;
+        this.patente = patente;
+        this.espejos = espejos;
+        this.chasis = chasis;
+        this.vidrios = vidrios;
+        this.seguridad = seguridad;
+        this.emergencia = emergencia;
     }
 
     public int getId() {
@@ -49,22 +61,63 @@ public class Observacion implements Serializable {
         this.inspeccion = inspeccion;
     }
 
-    public String getParteDelVehiculo() {
-        return parteDelVehiculo;
+    public String getLuces() {
+        return luces;
     }
 
-    public void setParteDelVehiculo(String parteDelVehiculo) {
-        this.parteDelVehiculo = parteDelVehiculo;
+    public void setLuces(String luces) {
+        this.luces = luces;
     }
 
-    public String getEstado() {
-        return estado;
+    public String getPatente() {
+        return patente;
     }
 
-    public void setEstado(String estado) {
-        this.estado = estado;
+    public void setPatente(String patente) {
+        this.patente = patente;
+    }
+
+    public String getEspejos() {
+        return espejos;
+    }
+
+    public void setEspejos(String espejos) {
+        this.espejos = espejos;
+    }
+
+    public String getChasis() {
+        return chasis;
+    }
+
+    public void setChasis(String chasis) {
+        this.chasis = chasis;
+    }
+
+    public String getVidrios() {
+        return vidrios;
+    }
+
+    public void setVidrios(String vidrios) {
+        this.vidrios = vidrios;
+    }
+
+    public String getSeguridad() {
+        return seguridad;
+    }
+
+    public void setSeguridad(String seguridad) {
+        this.seguridad = seguridad;
+    }
+
+    public String getEmergencia() {
+        return emergencia;
+    }
+
+    public void setEmergencia(String emergencia) {
+        this.emergencia = emergencia;
     }
     
     
     
+
 }

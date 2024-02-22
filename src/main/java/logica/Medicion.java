@@ -1,39 +1,45 @@
+
 package logica;
 
-import java.io.Serializable;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 
 /**
  *
  * @author Ian
  */
-
 @Entity
-public class Medicion implements Serializable {
-    
+public class Medicion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    
-    @ManyToOne @JoinColumn(name = "inspeccion_id")
+
+    @OneToOne
+    @JoinColumn(name = "inspeccion_id")
     private Inspeccion inspeccion;
-
-    private String parteDelVehiculo;
-    private String estado;
-
-    public Medicion(int id, Inspeccion inspeccion, String parteDelVehiculo, String estado) {
-        this.id = id;
-        this.inspeccion = inspeccion;
-        this.parteDelVehiculo = parteDelVehiculo;
-        this.estado = estado;
-    }
+    
+    private String suspension;
+    private String direccion;
+    private String trenDelantero;
+    private String sistemaDeFrenos;
+    private String contaminacionAmbiental;
 
     public Medicion() {
+    }
+    
+    public Medicion(int id, Inspeccion inspeccion, String suspension, String direccion, String trenDelantero, String sistemaDeFrenos, String contaminacionAmbiental) {
+        this.id = id;
+        this.inspeccion = inspeccion;
+        this.suspension = suspension;
+        this.direccion = direccion;
+        this.trenDelantero = trenDelantero;
+        this.sistemaDeFrenos = sistemaDeFrenos;
+        this.contaminacionAmbiental = contaminacionAmbiental;
     }
 
     public int getId() {
@@ -52,22 +58,43 @@ public class Medicion implements Serializable {
         this.inspeccion = inspeccion;
     }
 
-    public String getParteDelVehiculo() {
-        return parteDelVehiculo;
+    public String getSuspension() {
+        return suspension;
     }
 
-    public void setParteDelVehiculo(String parteDelVehiculo) {
-        this.parteDelVehiculo = parteDelVehiculo;
+    public void setSuspension(String suspension) {
+        this.suspension = suspension;
     }
 
-    public String getEstado() {
-        return estado;
+    public String getDireccion() {
+        return direccion;
     }
 
-    public void setEstado(String estado) {
-        this.estado = estado;
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
-    
-    
-    
+
+    public String getTrenDelantero() {
+        return trenDelantero;
+    }
+
+    public void setTrenDelantero(String trenDelantero) {
+        this.trenDelantero = trenDelantero;
+    }
+
+    public String getSistemaDeFrenos() {
+        return sistemaDeFrenos;
+    }
+
+    public void setSistemaDeFrenos(String sistemaDeFrenos) {
+        this.sistemaDeFrenos = sistemaDeFrenos;
+    }
+
+    public String getContaminacionAmbiental() {
+        return contaminacionAmbiental;
+    }
+
+    public void setContaminacionAmbiental(String contaminacionAmbiental) {
+        this.contaminacionAmbiental = contaminacionAmbiental;
+    }
 }

@@ -6,6 +6,7 @@ package igu;
 
 import java.util.List;
 import javax.swing.JDialog;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import logica.Auto;
@@ -22,6 +23,7 @@ public class ConsultaAuto extends javax.swing.JFrame {
 
     public ConsultaAuto() {
         initComponents();
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
     @SuppressWarnings("unchecked")

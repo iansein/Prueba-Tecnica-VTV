@@ -6,7 +6,6 @@ package logica;
 
 
 import java.io.Serializable;
-import java.time.LocalDate;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -22,7 +21,7 @@ import java.util.Date;
 public class Oblea implements Serializable {
     
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id;
     private Date fechaEmision;
     private Date fechaVencimiento;

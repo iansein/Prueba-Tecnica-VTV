@@ -1,5 +1,6 @@
 package logica;
 
+import java.util.Date;
 import java.util.List;
 import persistencia.ControladoraPersistencia;
 
@@ -100,5 +101,26 @@ public class Controladora {
     public void borrarAuto(int idAuto) {
         controlPersis.borrarAuto    (idAuto);
     }
-       
+
+    public void agregarObservacion(Observacion observacion) {
+        controlPersis.agregarObservacion(observacion);
+    }
+
+    public void agregarMedicion(Medicion medicion) {
+        controlPersis.agregarMedicion(medicion);
+    }
+
+    public Auto traerAuto(int idAuto) {
+        return controlPersis.traerAuto(idAuto);
+    }
+
+    public void agregarInspeccion(Inspeccion inspeccion) {
+
+       controlPersis.agregarInspeccion(inspeccion);
+    }
+
+    public void modificarAuto(Auto autoSeleccionado) {
+       controlPersis.modificarAuto(autoSeleccionado);
+    }
+    
 }
