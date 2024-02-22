@@ -2,6 +2,7 @@ package igu;
 
 import java.util.List;
 import javax.swing.JDialog;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import logica.Auto;
@@ -17,6 +18,7 @@ public class ConsultaInspeccion extends javax.swing.JFrame {
     
     public ConsultaInspeccion() {
         initComponents();
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
     @SuppressWarnings("unchecked")
@@ -160,13 +162,11 @@ public class ConsultaInspeccion extends javax.swing.JFrame {
 
         if(tablaInspecciones.getRowCount() > 0){
             if(tablaInspecciones.getSelectedRow() != -1){
-                int idInspector = Integer.parseInt(String.valueOf(tablaInspecciones.getValueAt(tablaInspecciones.getSelectedRow(), 0)));
+                int idInspeccion = Integer.parseInt(String.valueOf(tablaInspecciones.getValueAt(tablaInspecciones.getSelectedRow(), 0)));
 
-                ModificarAuto modificar = new ModificarAuto(idInspector);
+                ModificarInspeccion modificar = new ModificarInspeccion(idInspeccion);
                 modificar.setVisible(true);
                 modificar.setLocationRelativeTo(null);
-
-                this.dispose();
             }
             else{
                 mostrarMensaje("No se ha seleccionado un registro", "ERROR", "Modificado fallido");

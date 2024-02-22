@@ -174,7 +174,6 @@ public class ConsultaAuto extends javax.swing.JFrame {
                 modificar.setVisible(true);
                 modificar.setLocationRelativeTo(null);
 
-                this.dispose();
             }
             else{
                 mostrarMensaje("No se ha seleccionado un registro", "ERROR", "Modificado fallido");
