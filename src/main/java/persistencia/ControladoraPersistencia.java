@@ -135,4 +135,32 @@ public class ControladoraPersistencia {
             Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
+    public Inspeccion traerInspeccion(int idInspeccion) {
+       return inspeccionJpa.findInspeccion(idInspeccion);
+    }
+
+    public void modificarInspeccion(Inspeccion inspeccion) {
+        try {
+            inspeccionJpa.edit(inspeccion);
+        } catch (Exception ex) {
+            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void modificarMedicion(Medicion medicion) {
+        try {
+            medicionJpa.edit(medicion);
+        } catch (Exception ex) {
+            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void modificarObservacion(Observacion observacion) {
+        try {
+            observacionJpa.edit(observacion);
+        } catch (Exception ex) {
+            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

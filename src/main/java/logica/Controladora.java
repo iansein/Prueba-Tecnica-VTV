@@ -134,5 +134,22 @@ public class Controladora {
     public void borrarInspeccion(int idInspeccion) {
        controlPersis.borrarInspeccion(idInspeccion);
     }
+
+    public Inspeccion traerInspeccion(int idInspeccion) {
+        return controlPersis.traerInspeccion(idInspeccion);
+    }
+
+    public void modificarInspeccion(Inspeccion inspeccion) {
+        controlPersis.modificarInspeccion(inspeccion);
+    }
+
+    public void modificarMedicion(Medicion medicion) {
+        controlPersis.modificarMedicion(medicion);
+    }
+
+    public void modificarObservacion(Observacion observacion) {
+        controlPersis.modificarObservacion(observacion);
+    }
+
     
 }

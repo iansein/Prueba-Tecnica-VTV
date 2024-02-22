@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package igu;
 
 import java.util.List;
@@ -27,6 +23,7 @@ public class ModificarAuto extends javax.swing.JFrame {
         controladora = new Controladora();
         initComponents();
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        cargarDatos(idAuto);
     }
 
 
@@ -278,6 +275,13 @@ public class ModificarAuto extends javax.swing.JFrame {
 
 
          tablaPropietarios.setModel(modeloTabla);
+    }
+    
+    private void cargarDatos(int idAuto) {
+        auto = controladora.traerAuto(idAuto);
+        txtDominio.setText(auto.getDominio());
+        txtMarca.setText(auto.getMarca());
+        txtModelo.setText(auto.getModelo());
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
