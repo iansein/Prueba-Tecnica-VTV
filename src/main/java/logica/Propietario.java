@@ -5,6 +5,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
+import java.util.List;
 
 /**
  *
@@ -14,23 +15,23 @@ import jakarta.persistence.OneToMany;
 public class Propietario extends Persona implements Serializable {
      
     @OneToMany(mappedBy="propietario", cascade = CascadeType.REMOVE)
-    private ArrayList<Auto> autos = new ArrayList<>();
+    private List<Auto> autos = new ArrayList<>();
     
     
     public Propietario() {
     }
 
-    public Propietario(int id, String nombre, String apellido, ArrayList<Auto> autos, int dni, int telefono) {
+    public Propietario(int id, String nombre, String apellido, List<Auto> autos, int dni, int telefono) {
         super(id,nombre,apellido,dni, telefono);
         this.autos = autos;
     }
 
 
-    public ArrayList<Auto> getAutos() {
+    public List<Auto> getAutos() {
         return autos;
     }
 
-    public void setAutos(ArrayList<Auto> autos) {
+    public void setAutos(List<Auto> autos) {
         this.autos = autos;
     }  
 }

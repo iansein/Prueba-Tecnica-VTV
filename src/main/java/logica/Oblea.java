@@ -10,6 +10,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import java.util.Date;
 
 /**
@@ -25,13 +27,27 @@ public class Oblea implements Serializable {
     private int id;
     private Date fechaEmision;
     private Date fechaVencimiento;
+    
+    @OneToOne
+    @JoinColumn(name = "auto_id")
+    private Auto auto;
 
     public Oblea() {
     }
 
-    public Oblea(Date fechaEmision, Date fechaVencimiento) {
+    public Oblea(int id, Date fechaEmision, Date fechaVencimiento, Auto auto) {
+        this.id = id;
         this.fechaEmision = fechaEmision;
         this.fechaVencimiento = fechaVencimiento;
+        this.auto = auto;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public Date getFechaEmision() {
@@ -50,13 +66,15 @@ public class Oblea implements Serializable {
         this.fechaVencimiento = fechaVencimiento;
     }
 
-    public int getId() {
-        return id;
+    public Auto getAuto() {
+        return auto;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setAuto(Auto auto) {
+        this.auto = auto;
     }
+
+    
     
     
 }

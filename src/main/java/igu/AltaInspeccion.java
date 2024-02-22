@@ -584,7 +584,11 @@ public class AltaInspeccion extends javax.swing.JFrame {
             
             if(estado == "Apto"){
                 Date fechaVencimiento = Validador.formatearFechaVencimiento(fechaParseada);
-                autoSeleccionado.setOblea(new Oblea(fechaParseada,fechaVencimiento));
+                Oblea oblea = new Oblea();
+                oblea.setFechaEmision(fechaParseada);
+                oblea.setFechaVencimiento(fechaVencimiento);
+                oblea.setAuto(autoSeleccionado);
+                autoSeleccionado.setOblea(oblea);
                 control.modificarAuto(autoSeleccionado);
             }
             
@@ -596,6 +600,7 @@ public class AltaInspeccion extends javax.swing.JFrame {
             control.agregarObservacion(observacion);
               
             mostrarMensaje("Se agrego una inspección exitosamente", "Info", "Exito al agregar");
+            cargarTablaAutos();
         } catch (Exception ex) {
             mostrarMensaje("Hubo un error al agregar", "Error", "Error al agregar");
         }
@@ -761,7 +766,7 @@ public class AltaInspeccion extends javax.swing.JFrame {
       String titulos[] = {"Id", "Dominio", "Marca", "Modelo", "Nombre Propietario"};
       modeloTabla.setColumnIdentifiers(titulos);
       
-      List<Auto> listaAutos = control.traerAutos();
+      List<Auto> listaAutos = control.traerAutosSinObleas();
       
       if(listaAutos != null){
           for(Auto auto: listaAutos){

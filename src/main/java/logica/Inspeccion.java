@@ -73,8 +73,7 @@ public class Inspeccion implements Serializable {
         this.medicion = medicion;
     }
     
-    
-
+   
     public int getId() {
         return id;
     }
@@ -107,8 +106,11 @@ public class Inspeccion implements Serializable {
         this.estadoInspeccion = estadoInspeccion;
     }
 
-    public boolean isExento() {
-        return exento;
+    public String isExento() {
+        if(this.exento){
+            return "Si";
+        }
+        return "No";
     }
 
     public void setExento(boolean exento) {
@@ -129,5 +131,9 @@ public class Inspeccion implements Serializable {
 
     public void setAutoInspeccionado(Auto autoInspeccionado) {
         this.autoInspeccionado = autoInspeccionado;
+    }
+    
+    public String getFechaInspeccionFormateada() {
+     return Validador.formatearFecha(this.fechaInspeccion);
     }
 }

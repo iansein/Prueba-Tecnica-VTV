@@ -122,5 +122,17 @@ public class Controladora {
     public void modificarAuto(Auto autoSeleccionado) {
        controlPersis.modificarAuto(autoSeleccionado);
     }
+
+    public List<Auto> traerAutosSinObleas() {
+      return controlPersis.traerAutosSinObleas();
+    }
+
+    public List<Inspeccion> traerInspecciones() {
+       return controlPersis.traerInspecciones();
+    }
+
+    public void borrarInspeccion(int idInspeccion) {
+       controlPersis.borrarInspeccion(idInspeccion);
+    }
     
 }
