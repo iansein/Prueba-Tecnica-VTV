@@ -17,7 +17,7 @@ import jakarta.persistence.ManyToOne;
 @Entity
 public class Auto implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String dominio;
     private String marca;

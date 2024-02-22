@@ -5,14 +5,17 @@
 package logica;
 
 
+import jakarta.persistence.CascadeType;
 import java.io.Serializable;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -33,11 +36,19 @@ public class Inspeccion implements Serializable {
     private Inspector inspector;
     @OneToOne
     private Auto autoInspeccionado;
+    
+    @OneToMany(mappedBy="inspeccion", cascade = CascadeType.REMOVE)
+    private ArrayList<Observacion> observaciones;
+    
+    @OneToMany(mappedBy="inspeccion", cascade = CascadeType.REMOVE)
+    private ArrayList<Medicion> mediciones;
 
     public Inspeccion() {
     }
 
-    public Inspeccion(int id, int numeroInspeccion, Date fechaInspeccion, String estadoInspeccion, boolean exento, Inspector inspector, Auto autoInspeccionado) {
+    public Inspeccion(int id, int numeroInspeccion, Date fechaInspeccion, 
+            String estadoInspeccion, boolean exento, Inspector inspector, 
+            Auto autoInspeccionado, ArrayList<Observacion> observaciones, ArrayList<Medicion> mediciones) {
         this.id = id;
         this.numeroInspeccion = numeroInspeccion;
         this.fechaInspeccion = fechaInspeccion;
