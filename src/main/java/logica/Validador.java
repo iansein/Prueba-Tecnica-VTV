@@ -23,6 +23,12 @@ public class Validador {
         sdf.setLenient(false);
         return sdf.parse(fechaTexto);
     }
+    
+    public static String formatearFecha(Date fecha) {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        return sdf.format(fecha);
+    }
+    
 
     private static Date sumarUnAnio(Date fecha) {
         Calendar calendar = Calendar.getInstance();

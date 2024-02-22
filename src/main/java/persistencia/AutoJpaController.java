@@ -9,6 +9,8 @@ import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.persistence.Persistence;
 import jakarta.persistence.Query;
+import jakarta.persistence.TypedQuery;
+import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Root;
 import java.io.Serializable;
@@ -148,6 +150,18 @@ public class AutoJpaController implements Serializable {
         }
     }
 
+    public List<Auto> findAutosSinOblea() {
+        EntityManager em = getEntityManager();
+        try {
+            TypedQuery<Auto> query = em.createQuery(
+                "SELECT a FROM Auto a WHERE a.id NOT IN (SELECT o.auto.id FROM Oblea o)", Auto.class
+            );
+            return query.getResultList();
+        } finally {
+            em.close();
+        }
+    }
+
     public Auto findAuto(int id) {
         EntityManager em = getEntityManager();
         try {
@@ -169,5 +183,6 @@ public class AutoJpaController implements Serializable {
             em.close();
         }
     }
+
     
 }

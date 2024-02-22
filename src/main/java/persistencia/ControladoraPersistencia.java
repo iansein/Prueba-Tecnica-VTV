@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package persistencia;
 
 import java.util.List;
@@ -123,5 +119,20 @@ public class ControladoraPersistencia {
     public void agregarInspeccion(Inspeccion inspeccion) {
         inspeccionJpa.create(inspeccion);
     }
-    
+
+    public List<Auto> traerAutosSinObleas() {
+       return autoJpa.findAutosSinOblea();
+    }
+
+    public List<Inspeccion> traerInspecciones() {
+       return inspeccionJpa.findInspeccionEntities();
+    }
+
+    public void borrarInspeccion(int idInspeccion) {
+        try {
+            inspeccionJpa.destroy(idInspeccion);
+        } catch (NonexistentEntityException ex) {
+            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

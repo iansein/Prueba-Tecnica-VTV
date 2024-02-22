@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package persistencia;
 
 import java.io.Serializable;
@@ -46,7 +42,7 @@ public class PropietarioJpaController implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            ArrayList<Auto> attachedAutos = new ArrayList<Auto>();
+            List<Auto> attachedAutos = new ArrayList<Auto>();
             for (Auto autosAutoToAttach : propietario.getAutos()) {
                 autosAutoToAttach = em.getReference(autosAutoToAttach.getClass(), autosAutoToAttach.getId());
                 attachedAutos.add(autosAutoToAttach);
@@ -76,9 +72,9 @@ public class PropietarioJpaController implements Serializable {
             em = getEntityManager();
             em.getTransaction().begin();
             Propietario persistentPropietario = em.find(Propietario.class, propietario.getId());
-            ArrayList<Auto> autosOld = persistentPropietario.getAutos();
-            ArrayList<Auto> autosNew = propietario.getAutos();
-            ArrayList<Auto> attachedAutosNew = new ArrayList<Auto>();
+            List<Auto> autosOld = persistentPropietario.getAutos();
+            List<Auto> autosNew = propietario.getAutos();
+            List<Auto> attachedAutosNew = new ArrayList<Auto>();
             for (Auto autosNewAutoToAttach : autosNew) {
                 autosNewAutoToAttach = em.getReference(autosNewAutoToAttach.getClass(), autosNewAutoToAttach.getId());
                 attachedAutosNew.add(autosNewAutoToAttach);
@@ -132,7 +128,7 @@ public class PropietarioJpaController implements Serializable {
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The propietario with id " + id + " no longer exists.", enfe);
             }
-            ArrayList<Auto> autos = propietario.getAutos();
+            List<Auto> autos = propietario.getAutos();
             for (Auto autosAuto : autos) {
                 autosAuto.setPropietario(null);
                 autosAuto = em.merge(autosAuto);
