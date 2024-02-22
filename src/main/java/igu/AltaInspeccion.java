@@ -29,6 +29,7 @@ public class AltaInspeccion extends javax.swing.JFrame {
     public AltaInspeccion() {
         initComponents();
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setResizable(false);
     }
 
     @SuppressWarnings("unchecked")
@@ -114,7 +115,7 @@ public class AltaInspeccion extends javax.swing.JFrame {
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/certant-logo.png"))); // NOI18N
 
-        btnLimpiarInspeccion.setBackground(new java.awt.Color(0, 102, 102));
+        btnLimpiarInspeccion.setBackground(new java.awt.Color(153, 102, 0));
         btnLimpiarInspeccion.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btnLimpiarInspeccion.setForeground(new java.awt.Color(255, 255, 255));
         btnLimpiarInspeccion.setText("LIMPIAR");
@@ -321,9 +322,20 @@ public class AltaInspeccion extends javax.swing.JFrame {
                             .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel7)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel3)
+                                            .addComponent(jLabel11))
+                                        .addGap(6, 6, 6)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(cbExento, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(btnAgregarInspeccion, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(52, 52, 52))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(jLabel15)
                                             .addGroup(jPanel1Layout.createSequentialGroup()
                                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -352,25 +364,13 @@ public class AltaInspeccion extends javax.swing.JFrame {
                                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                                         .addComponent(jLabel21)
                                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                        .addComponent(cbChasis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                                        .addGap(36, 36, 36))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                        .addComponent(cbChasis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                             .addGroup(jPanel1Layout.createSequentialGroup()
                                                 .addComponent(jLabel2)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(txtNroInspeccion, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(jLabel3)
-                                                    .addComponent(jLabel11))
-                                                .addGap(2, 6, Short.MAX_VALUE)
-                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(cbExento, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                    .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(btnAgregarInspeccion, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(52, 52, 52)))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(txtNroInspeccion)
+                                                .addGap(343, 343, 343)))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -401,12 +401,12 @@ public class AltaInspeccion extends javax.swing.JFrame {
                                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGap(55, 55, 55)))
-                                        .addGap(0, 0, Short.MAX_VALUE))
+                                        .addGap(0, 10, Short.MAX_VALUE))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(btnLimpiarInspeccion, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(jLabel4)))))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -533,12 +533,12 @@ public class AltaInspeccion extends javax.swing.JFrame {
                 inspectorSeleccionado = control.traerInspector(idInspector);
             }
             else{
-                mostrarMensaje("No se ha seleccionado al inspector a cargo", "ERROR", "Agregado fallido");
+                mostrarMensaje("No se ha seleccionado al inspector a cargo", "Error", "Error al agregar");
                 return;
             }
         }
         else{
-            mostrarMensaje("No se puede agregar, la tabla esta de Inspectores esta vacía", "ERROR", "Agregado fallido");
+            mostrarMensaje("No se puede agregar, la tabla esta de Inspectores esta vacía", "Error", "Error al agregar");
             return;
         }
         
@@ -549,12 +549,12 @@ public class AltaInspeccion extends javax.swing.JFrame {
                 autoSeleccionado = control.traerAuto(idAuto);
             }
             else{
-                mostrarMensaje("No se ha seleccionado al auto inspeccionado", "ERROR", "Agregado fallido");
+                mostrarMensaje("No se ha seleccionado al auto inspeccionado", "Error", "Error al agregar");
                 return;
             }
         }
         else{
-            mostrarMensaje("No se puede agregar, la tabla esta de Autos esta vacía", "ERROR", "Agregado fallido");
+            mostrarMensaje("No se puede agregar, la tabla esta de Autos esta vacía", "Error", "Error al agregar");
             return;
         }        
 
@@ -599,13 +599,18 @@ public class AltaInspeccion extends javax.swing.JFrame {
             control.agregarMedicion(medicion);
             control.agregarObservacion(observacion);
               
-            mostrarMensaje("Se agrego una inspección exitosamente", "Info", "Exito al agregar");
+            mostrarMensaje("Se agrego una inspección exitosamente", "Info", "Éxito al agregar");
             cargarTablaAutos();
+            limpiarCampos();
         } catch (Exception ex) {
             mostrarMensaje("Hubo un error al agregar", "Error", "Error al agregar");
         }
     }//GEN-LAST:event_btnAgregarInspeccionActionPerformed
     
+    public void limpiarCampos(){
+        txtNroInspeccion.setText("");
+        txtFecha.setText("dd/MM/yyyy");
+    }
     private boolean validarCampos(String fecha, String nroInspeccionTxt) {
         if (!Validador.esTextoNoVacio(fecha) || !Validador.esTextoNoVacio(nroInspeccionTxt)) {
             mostrarMensaje("Complete todos los campos.", "Error", "Error al agregar");
@@ -613,7 +618,7 @@ public class AltaInspeccion extends javax.swing.JFrame {
         }
 
         if (!Validador.esNumero(nroInspeccionTxt)) {
-            mostrarMensaje("Número de inspección no válido.", "Error", "Error al agregar");
+            mostrarMensaje("Ingrese un número de inspección válido.", "Error", "Error al agregar");
             return false;
         }
 

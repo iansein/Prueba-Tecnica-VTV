@@ -31,6 +31,7 @@ public class ModificarInspeccion extends javax.swing.JFrame {
         initComponents();
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         cargarDatos(idInspeccion);
+        setResizable(false);
     }
 
 
@@ -116,7 +117,7 @@ public class ModificarInspeccion extends javax.swing.JFrame {
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/certant-logo.png"))); // NOI18N
 
-        btnLimpiarInspeccion.setBackground(new java.awt.Color(0, 102, 102));
+        btnLimpiarInspeccion.setBackground(new java.awt.Color(153, 102, 0));
         btnLimpiarInspeccion.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btnLimpiarInspeccion.setForeground(new java.awt.Color(255, 255, 255));
         btnLimpiarInspeccion.setText("LIMPIAR");
@@ -522,12 +523,12 @@ public class ModificarInspeccion extends javax.swing.JFrame {
                 inspectorSeleccionado = control.traerInspector(idInspector);
             }
             else{
-                mostrarMensaje("No se ha seleccionado al inspector a cargo", "ERROR", "Agregado fallido");
+                mostrarMensaje("No se ha seleccionado al inspector a cargo", "Error", "Error al modificar");
                 return;
             }
         }
         else{
-            mostrarMensaje("No se puede agregar, la tabla esta de Inspectores esta vacía", "ERROR", "Agregado fallido");
+            mostrarMensaje("No se puede modificar, la tabla esta de Inspectores esta vacía", "Error", "Error al modificar");
             return;
         }
 
@@ -538,12 +539,12 @@ public class ModificarInspeccion extends javax.swing.JFrame {
                 autoSeleccionado = control.traerAuto(idAuto);
             }
             else{
-                mostrarMensaje("No se ha seleccionado al auto inspeccionado", "ERROR", "Agregado fallido");
+                mostrarMensaje("No se ha seleccionado al auto inspeccionado", "Error", "Error al modificar");
                 return;
             }
         }
         else{
-            mostrarMensaje("No se puede agregar, la tabla esta de Autos esta vacía", "ERROR", "Agregado fallido");
+            mostrarMensaje("No se puede modificar, la tabla esta de Autos esta vacía", "Error", "Error al modificar");
             return;
         }
 
@@ -554,7 +555,7 @@ public class ModificarInspeccion extends javax.swing.JFrame {
                 System.out.println("Fecha obtenida: " + fecha);
             }
             catch(ParseException ex){
-                mostrarMensaje("Fecha inválida", "Error", "Error al agregar");
+                mostrarMensaje("Fecha inválida", "Error", "Error al modificar");
                 return;
             }
 
@@ -591,21 +592,26 @@ public class ModificarInspeccion extends javax.swing.JFrame {
             control.modificarMedicion(medicion);
             control.modificarObservacion(observacion);
 
-            mostrarMensaje("Se modificó la inspección exitosamente", "Info", "Exito al modificar");
-            cargarTablaAutos();
+            mostrarMensaje("Se modificó la inspección exitosamente", "Info", "Éxito al modificar");
+            
+            ConsultaInspeccion consulInspeccion = new ConsultaInspeccion();
+            consulInspeccion.setVisible(true);
+            consulInspeccion.setLocationRelativeTo(null);
+            this.dispose();
+            
         } catch (Exception ex) {
-            mostrarMensaje("Hubo un error al agregar", "Error", "Error al agregar");
+            mostrarMensaje("Hubo un error al modificar", "Error", "Error al modificar");
         }
     }//GEN-LAST:event_btnAgregarInspeccionActionPerformed
     
     private boolean validarCampos(String fecha, String nroInspeccionTxt) {
         if (!Validador.esTextoNoVacio(fecha) || !Validador.esTextoNoVacio(nroInspeccionTxt)) {
-            mostrarMensaje("Complete todos los campos.", "Error", "Error al agregar");
+            mostrarMensaje("Complete todos los campos.", "Error", "Error al Modificar");
             return false;
         }
 
         if (!Validador.esNumero(nroInspeccionTxt)) {
-            mostrarMensaje("Número de inspección no válido.", "Error", "Error al agregar");
+            mostrarMensaje("Número de inspección no válido.", "Error", "Error al Modificar");
             return false;
         }
 
@@ -764,7 +770,8 @@ public class ModificarInspeccion extends javax.swing.JFrame {
     }    
         
     private void btnLimpiarInspeccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarInspeccionActionPerformed
-
+        txtNroInspeccion.setText("");
+        txtFecha.setText("dd/MM/yyyy");
     }//GEN-LAST:event_btnLimpiarInspeccionActionPerformed
 
     private void cbEmergenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbEmergenciaActionPerformed

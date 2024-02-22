@@ -15,6 +15,7 @@ public class GestionModificadoYBorrado extends javax.swing.JFrame {
     public GestionModificadoYBorrado() {
         initComponents();
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setResizable(false);
     }
 
     @SuppressWarnings("unchecked")

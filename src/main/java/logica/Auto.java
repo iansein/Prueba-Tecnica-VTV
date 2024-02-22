@@ -27,19 +27,23 @@ public class Auto implements Serializable {
     @ManyToOne @JoinColumn(name = "propietario_id")
     private Propietario propietario;
     
-    @OneToOne(mappedBy = "auto", cascade = CascadeType.PERSIST)
+    @OneToOne(mappedBy = "auto", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     private Oblea oblea;
+    
+    @OneToOne(cascade = CascadeType.REMOVE, mappedBy = "autoInspeccionado")
+    private Inspeccion inspeccion;
 
     public Auto() {
     }
 
-    public Auto(int id, String dominio, String marca, String modelo, Propietario propietario) {
+    public Auto(int id, String dominio, String marca, String modelo, Propietario propietario, Inspeccion inspeccion) {
         this.id = id;
         this.dominio = dominio;
         this.marca = marca;
         this.modelo = modelo;
         this.propietario = propietario;
         this.oblea = null;
+        this.inspeccion = inspeccion;
     }
 
     public int getId() {
@@ -49,6 +53,16 @@ public class Auto implements Serializable {
     public void setId(int id) {
         this.id = id;
     }
+
+    public Inspeccion getInspeccion() {
+        return inspeccion;
+    }
+
+    public void setInspeccion(Inspeccion inspeccion) {
+        this.inspeccion = inspeccion;
+    }
+    
+    
 
     public String getDominio() {
         return dominio;

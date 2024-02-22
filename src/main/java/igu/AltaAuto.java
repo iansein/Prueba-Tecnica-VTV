@@ -7,7 +7,6 @@ import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 import logica.Controladora;
-import logica.Inspector;
 import logica.Propietario;
 
 /**
@@ -20,6 +19,7 @@ public class AltaAuto extends javax.swing.JFrame {
     public AltaAuto() {
         initComponents();
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setResizable(false);
     }
 
     @SuppressWarnings("unchecked")
@@ -85,6 +85,11 @@ public class AltaAuto extends javax.swing.JFrame {
         btnLimpiarAuto.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btnLimpiarAuto.setForeground(new java.awt.Color(255, 255, 255));
         btnLimpiarAuto.setText("LIMPIAR");
+        btnLimpiarAuto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarAutoActionPerformed(evt);
+            }
+        });
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/certant-logo.png"))); // NOI18N
 
@@ -239,20 +244,26 @@ public class AltaAuto extends javax.swing.JFrame {
 
         if (dominio.isEmpty() || marca.isEmpty() || modelo.isEmpty()) {
 
-            mostrarMensaje("Todos los campos del auto deben estar llenos.", "Error", "Error");
+            mostrarMensaje("Complete todos los campos.", "Error", "Error");
             return;
         }
       
         if (filaSeleccionada != -1) {
             int idPropietario = (int) tablaPropietarios.getValueAt(filaSeleccionada, 0);
             Propietario propietarioSeleccionado = control.traerPropietario(idPropietario);
-            control.agregarAuto(dominio,marca,modelo,propietarioSeleccionado);                     
+            control.agregarAuto(dominio,marca,modelo,propietarioSeleccionado);      
+            mostrarMensaje("Se agregó el auto exitosamente", "Info", "Éxito al agregar");
+            limpiarCampos();
         }
     }//GEN-LAST:event_btnAgregarAutoActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         cargarTabla();
     }//GEN-LAST:event_formWindowOpened
+
+    private void btnLimpiarAutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarAutoActionPerformed
+        limpiarCampos();
+    }//GEN-LAST:event_btnLimpiarAutoActionPerformed
     private void cargarTabla() {
         DefaultTableModel modeloTabla = new DefaultTableModel(){
 
@@ -290,6 +301,12 @@ public class AltaAuto extends javax.swing.JFrame {
         JDialog dialog = optionPane.createDialog(titulo);
         dialog.setAlwaysOnTop(true);
         dialog.setVisible(true);
+    }
+    
+    public void limpiarCampos(){
+        txtDominio.setText("");
+        txtMarca.setText("");
+        txtModelo.setText("");
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
