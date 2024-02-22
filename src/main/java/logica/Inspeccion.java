@@ -11,6 +11,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -30,9 +31,13 @@ public class Inspeccion implements Serializable {
     private Date fechaInspeccion;
     private String estadoInspeccion;
     private boolean exento;
+    
     @OneToOne
+    @JoinColumn(name = "inspector_id")
     private Inspector inspector;
+    
     @OneToOne
+    @JoinColumn(name = "auto_id")
     private Auto autoInspeccionado;
     
     @OneToOne(cascade = {CascadeType.REMOVE}, mappedBy="inspeccion")

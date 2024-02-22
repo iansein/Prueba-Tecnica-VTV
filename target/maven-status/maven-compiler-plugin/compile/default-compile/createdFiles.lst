@@ -1,5 +1,6 @@
 persistencia\MedicionJpaController.class
 com\mycompany\prueba\tecnica\vtv\PruebaTecnicaVTV.class
+igu\AltaAuto$4.class
 igu\GestionModificadoYBorrado$9.class
 logica\Oblea.class
 igu\ConsultaInspeccion$1.class
@@ -57,6 +58,7 @@ logica\Observacion.class
 igu\AltaInspeccion.class
 igu\GestionModificadoYBorrado.class
 persistencia\ObleaJpaController.class
+igu\ModificarAuto$4.class
 igu\ModificarInspector$2.class
 igu\Principal$3.class
 igu\ModificarAuto.class

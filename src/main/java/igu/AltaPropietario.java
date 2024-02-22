@@ -18,6 +18,7 @@ public class AltaPropietario extends javax.swing.JFrame {
     public AltaPropietario() {
         initComponents();
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setResizable(false);
     }
 
     @SuppressWarnings("unchecked")
@@ -192,17 +193,17 @@ public class AltaPropietario extends javax.swing.JFrame {
             !Validador.esTextoNoVacio(apellido) || 
             !Validador.esTextoNoVacio(dniStr) || 
             !Validador.esTextoNoVacio(telefonoStr)) {
-            mostrarMensaje("Todos los campos son obligatorios.", "Error", "Error de Validación");
+            mostrarMensaje("Complete todos los campos.", "Error", "Error al agregar");
             return;
         }
 
         if (!Validador.esNumero(dniStr)) {
-            mostrarMensaje("El DNI debe contener solo números.", "Error", "Error de Validación");
+            mostrarMensaje("El DNI debe contener solo números.", "Error", "Error al agregar");
             return;
         }
 
         if (!Validador.esNumero(telefonoStr)) {
-            mostrarMensaje("El teléfono debe contener solo números.", "Error", "Error de Validación");
+            mostrarMensaje("El teléfono debe contener solo números.", "Error", "Error al agregar");
             return;
         }
 
@@ -210,10 +211,10 @@ public class AltaPropietario extends javax.swing.JFrame {
             int dni = Integer.parseInt(dniStr);
             int telefono = Integer.parseInt(telefonoStr);
             control.agregarPropietario(nombre, apellido, dni, telefono);
-            mostrarMensaje("Se ha agregado el propietario exitosamente", "Info", "Agregado exitoso");
+            mostrarMensaje("Se ha agregado al propietario exitosamente", "Info", "Éxito al agregar");
             limpiarCampos();
         } catch (NumberFormatException e) {
-            mostrarMensaje("Hubo un problema al convertir los valores numéricos.", "Error", "Error de Validación");
+            mostrarMensaje("Hubo un problema al convertir los valores numéricos.", "Error", "Error al agregar");
         }
     }//GEN-LAST:event_btnAgregarPropietarioActionPerformed
 

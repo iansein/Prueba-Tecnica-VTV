@@ -20,6 +20,7 @@ public class ConsultaPropietario extends javax.swing.JFrame {
     public ConsultaPropietario() {
         initComponents();
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setResizable(false);
     }
     
     @SuppressWarnings("unchecked")
@@ -41,8 +42,11 @@ public class ConsultaPropietario extends javax.swing.JFrame {
             }
         });
 
+        jPanel1.setBackground(new java.awt.Color(3, 88, 140));
+
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
-        jLabel1.setText("BORRAR y MODIFICAR PROPIETARIO");
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("BORRAR Y MODIFICAR PROPIETARIO");
 
         jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
@@ -59,6 +63,9 @@ public class ConsultaPropietario extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tablaPropietarios);
 
+        btnEliminarPropietario.setBackground(new java.awt.Color(153, 0, 0));
+        btnEliminarPropietario.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        btnEliminarPropietario.setForeground(new java.awt.Color(255, 255, 255));
         btnEliminarPropietario.setText("ELIMINAR");
         btnEliminarPropietario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -66,6 +73,9 @@ public class ConsultaPropietario extends javax.swing.JFrame {
             }
         });
 
+        btnModificarPropietario.setBackground(new java.awt.Color(0, 102, 0));
+        btnModificarPropietario.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        btnModificarPropietario.setForeground(new java.awt.Color(255, 255, 255));
         btnModificarPropietario.setText("MODIFICAR");
         btnModificarPropietario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -83,7 +93,7 @@ public class ConsultaPropietario extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnEliminarPropietario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnModificarPropietario, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE))
+                    .addComponent(btnModificarPropietario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(22, 22, 22))
         );
         jPanel2Layout.setVerticalGroup(
@@ -113,7 +123,7 @@ public class ConsultaPropietario extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(44, 44, 44)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -150,17 +160,17 @@ public class ConsultaPropietario extends javax.swing.JFrame {
                 int idPropietario = Integer.parseInt(String.valueOf(tablaPropietarios.getValueAt(tablaPropietarios.getSelectedRow(), 0)));
                 control.borrarPropietario(idPropietario);
                 
-                mostrarMensaje("Se ha eliminado al propietario exitosamente", "INFO", "Eliminado exitoso");
+                mostrarMensaje("Se ha eliminado al propietario exitosamente", "Info", "Éxito al eliminar");
                 
                 cargarTabla();
                 
             }
             else{
-                mostrarMensaje("No se ha seleccionado un registro", "ERROR", "Eliminado fallido");
+                mostrarMensaje("No se ha seleccionado un registro", "Error", "Error al eliminar");
             }
         }
         else{
-            mostrarMensaje("No se puede eliminar, la tabla esta vacía", "ERROR", "Eliminado fallido");
+            mostrarMensaje("No se puede eliminar, la tabla esta vacía", "Error", "Error al eliminar");
         }
     }//GEN-LAST:event_btnEliminarPropietarioActionPerformed
 
@@ -176,11 +186,11 @@ public class ConsultaPropietario extends javax.swing.JFrame {
                 
             }
             else{
-                mostrarMensaje("No se ha seleccionado un registro", "ERROR", "Modificado fallido");
+                mostrarMensaje("No se ha seleccionado un registro", "Error", "Error al modificar");
             }
         }
         else{
-            mostrarMensaje("No se puede modificar, la tabla esta vacía", "ERROR", "Modificado fallido");
+            mostrarMensaje("No se puede modificar, la tabla esta vacía", "Error", "Error al modificar");
         }
         
     }//GEN-LAST:event_btnModificarPropietarioActionPerformed

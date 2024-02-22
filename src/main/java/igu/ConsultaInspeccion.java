@@ -19,6 +19,7 @@ public class ConsultaInspeccion extends javax.swing.JFrame {
     public ConsultaInspeccion() {
         initComponents();
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setResizable(false);
     }
 
     @SuppressWarnings("unchecked")
@@ -40,8 +41,11 @@ public class ConsultaInspeccion extends javax.swing.JFrame {
             }
         });
 
+        jPanel1.setBackground(new java.awt.Color(3, 88, 140));
+
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
-        jLabel1.setText("BORRAR y MODIFICAR INSPECCIÓN");
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("BORRAR Y MODIFICAR INSPECCIÓN");
 
         jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
@@ -58,6 +62,9 @@ public class ConsultaInspeccion extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tablaInspecciones);
 
+        btnEliminarInspeccion.setBackground(new java.awt.Color(153, 0, 0));
+        btnEliminarInspeccion.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        btnEliminarInspeccion.setForeground(new java.awt.Color(255, 255, 255));
         btnEliminarInspeccion.setText("ELIMINAR");
         btnEliminarInspeccion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -65,6 +72,9 @@ public class ConsultaInspeccion extends javax.swing.JFrame {
             }
         });
 
+        btnModificarInspeccion.setBackground(new java.awt.Color(0, 102, 0));
+        btnModificarInspeccion.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        btnModificarInspeccion.setForeground(new java.awt.Color(255, 255, 255));
         btnModificarInspeccion.setText("MODIFICAR");
         btnModificarInspeccion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -82,7 +92,7 @@ public class ConsultaInspeccion extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnEliminarInspeccion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnModificarInspeccion, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE))
+                    .addComponent(btnModificarInspeccion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(22, 22, 22))
         );
         jPanel2Layout.setVerticalGroup(
@@ -107,19 +117,19 @@ public class ConsultaInspeccion extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(87, 87, 87)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(97, 97, 97)
+                        .addComponent(jLabel1)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(42, 42, 42))
         );
@@ -145,16 +155,16 @@ public class ConsultaInspeccion extends javax.swing.JFrame {
                 int idInspeccion = Integer.parseInt(String.valueOf(tablaInspecciones.getValueAt(tablaInspecciones.getSelectedRow(), 0)));
                 control.borrarInspeccion(idInspeccion);
 
-                mostrarMensaje("Se ha eliminado la inspección exitosamente", "INFO", "Eliminado exitoso");
+                mostrarMensaje("Se ha eliminado la inspección exitosamente", "Info", "Éxito al eliminar");
 
                 cargarTabla();
             }
             else{
-                mostrarMensaje("No se ha seleccionado un registro", "ERROR", "Eliminado fallido");
+                mostrarMensaje("No se ha seleccionado un registro", "Error", "Error al eliminar");
             }
         }
         else{
-            mostrarMensaje("No se puede eliminar, la tabla esta vacía", "ERROR", "Eliminado fallido");
+            mostrarMensaje("No se puede eliminar, la tabla esta vacía", "Error", "Error al eliminar");
         }
     }//GEN-LAST:event_btnEliminarInspeccionActionPerformed
 
@@ -169,11 +179,11 @@ public class ConsultaInspeccion extends javax.swing.JFrame {
                 modificar.setLocationRelativeTo(null);
             }
             else{
-                mostrarMensaje("No se ha seleccionado un registro", "ERROR", "Modificado fallido");
+                mostrarMensaje("No se ha seleccionado un registro", "Error", "Error al modificar");
             }
         }
         else{
-            mostrarMensaje("No se puede modificar, la tabla esta vacía", "ERROR", "Modificado fallido");
+            mostrarMensaje("No se puede modificar, la tabla esta vacía", "Error", "Error al modificar");
         }
     }//GEN-LAST:event_btnModificarInspeccionActionPerformed
 
