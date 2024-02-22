@@ -24,7 +24,7 @@ public class GestionAltas extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         btnGestionAltaAuto = new javax.swing.JButton();
         btnGestionAltasPropietario = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnGestionAltaInspeccion = new javax.swing.JButton();
         btnGestionAltaInspector = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -52,10 +52,10 @@ public class GestionAltas extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setText("ALTA INSPECCION");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnGestionAltaInspeccion.setText("ALTA INSPECCION");
+        btnGestionAltaInspeccion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnGestionAltaInspeccionActionPerformed(evt);
             }
         });
 
@@ -78,7 +78,7 @@ public class GestionAltas extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jButton3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnGestionAltaInspeccion, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnGestionAltasPropietario, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 286, Short.MAX_VALUE)
                         .addComponent(btnGestionAltaInspector, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnGestionAltaAuto, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
@@ -96,7 +96,7 @@ public class GestionAltas extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(btnGestionAltasPropietario, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnGestionAltaInspeccion, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -131,9 +131,11 @@ public class GestionAltas extends javax.swing.JFrame {
         altaP.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnGestionAltasPropietarioActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    private void btnGestionAltaInspeccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionAltaInspeccionActionPerformed
+        AltaInspeccion altaInspeccion = new AltaInspeccion();
+        altaInspeccion.setVisible(true);
+        altaInspeccion.setLocationRelativeTo(null);
+    }//GEN-LAST:event_btnGestionAltaInspeccionActionPerformed
 
     private void btnGestionAltaInspectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionAltaInspectorActionPerformed
         AltaInspector altaI = new AltaInspector();
@@ -143,9 +145,9 @@ public class GestionAltas extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGestionAltaAuto;
+    private javax.swing.JButton btnGestionAltaInspeccion;
     private javax.swing.JButton btnGestionAltaInspector;
     private javax.swing.JButton btnGestionAltasPropietario;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     public javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
