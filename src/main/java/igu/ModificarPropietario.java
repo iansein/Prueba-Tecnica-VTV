@@ -63,6 +63,7 @@ public class ModificarPropietario extends javax.swing.JFrame {
 
         btnModificarPropietario.setBackground(new java.awt.Color(0, 102, 0));
         btnModificarPropietario.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        btnModificarPropietario.setForeground(new java.awt.Color(255, 255, 255));
         btnModificarPropietario.setText("MODIFICAR");
         btnModificarPropietario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -72,6 +73,7 @@ public class ModificarPropietario extends javax.swing.JFrame {
 
         btnLimpiarPropietario.setBackground(new java.awt.Color(153, 102, 0));
         btnLimpiarPropietario.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        btnLimpiarPropietario.setForeground(new java.awt.Color(255, 255, 255));
         btnLimpiarPropietario.setText("LIMPIAR");
         btnLimpiarPropietario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -263,7 +265,7 @@ public class ModificarPropietario extends javax.swing.JFrame {
         propietario = controladora.traerPropietario(idPropietario);
         txtNombrePropietario.setText(propietario.getNombre());
         txtApellidoPropietario.setText(propietario.getApellido());
-        txtDniPropietario.setText(String.valueOf(propietario.getTelefono()));
+        txtDniPropietario.setText(String.valueOf(propietario.getDni()));
         txtTelefonoPropietario.setText(String.valueOf(propietario.getTelefono()));
     }
 }

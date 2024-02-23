@@ -20,13 +20,13 @@ public class Validador {
     }
 
     public static Date formatearFecha(String fechaTexto) throws ParseException {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         sdf.setLenient(false);
         return sdf.parse(fechaTexto);
     }
 
     public static String formatearFecha(Date fecha) {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         return sdf.format(fecha);
     }
 

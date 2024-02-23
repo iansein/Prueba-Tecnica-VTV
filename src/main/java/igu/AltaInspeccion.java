@@ -197,7 +197,7 @@ public class AltaInspeccion extends javax.swing.JFrame {
 
         cbSuspension.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Apta", "Condicional", "Rechazada" }));
 
-        cbVidrios.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Apta", "Condicional", "Rechazada", " " }));
+        cbVidrios.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Apta", "Condicional", "Rechazada" }));
 
         cbEspejos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Apta", "Condicional", "Rechazada" }));
 
@@ -307,7 +307,7 @@ public class AltaInspeccion extends javax.swing.JFrame {
         jLabel21.setForeground(new java.awt.Color(0, 0, 0));
         jLabel21.setText("Chasis");
 
-        cbChasis.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Apta", "Condicional", "Rechazada", " " }));
+        cbChasis.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Apta", "Condicional", "Rechazada" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
