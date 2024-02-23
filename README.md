@@ -11,6 +11,8 @@
 ![image](https://github.com/iansein/Prueba-Tecnica-VTV/assets/78178685/f60a7c8d-1dde-4b30-86f4-94d6ca2fa8fc)
 
 ## Luego se debe crear una base de datos con el nombre "vtv". Yo la cree desde PHPMYADMIN.
-![image](https://github.com/iansein/Prueba-Tecnica-VTV/assets/78178685/225b3b90-3799-4886-bce0-4aa1cb85b5b5)
-## Una vez dentro de la base de datos, se debe ejecutar el SCRIPT que deje en los archivos, el cual se llama "scriptBD.txt"
-![image](https://github.com/iansein/Prueba-Tecnica-VTV/assets/78178685/420b1a08-ea1b-49db-b1d6-a690e3e9e9cb)
+![image](https://github.com/iansein/Prueba-Tecnica-VTV/assets/78178685/499ece99-756a-4061-8731-5ffcf880108a)
+
+## Una vez dentro de la base de datos, se debe ejecutar el SCRIPT que deje en los archivos, el cual se llama "scriptBD.txt" y darle a "Go"
+![image](https://github.com/iansein/Prueba-Tecnica-VTV/assets/78178685/ef841909-b307-40c6-ac3d-e7c8bd6b8f1f)
+
