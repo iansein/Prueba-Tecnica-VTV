@@ -30,7 +30,7 @@ public class Auto implements Serializable {
     @OneToOne(mappedBy = "auto", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     private Oblea oblea;
     
-    @OneToOne(cascade = CascadeType.REMOVE, mappedBy = "autoInspeccionado")
+    @OneToOne(mappedBy = "autoInspeccionado", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     private Inspeccion inspeccion;
 
     public Auto() {
@@ -62,8 +62,6 @@ public class Auto implements Serializable {
         this.inspeccion = inspeccion;
     }
     
-    
-
     public String getDominio() {
         return dominio;
     }

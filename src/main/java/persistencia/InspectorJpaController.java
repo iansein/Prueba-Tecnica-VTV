@@ -75,6 +75,7 @@ public class InspectorJpaController implements Serializable {
 
     public void destroy(int id) throws NonexistentEntityException {
         EntityManager em = null;
+        
         try {
             em = getEntityManager();
             em.getTransaction().begin();

@@ -16,6 +16,7 @@ import jakarta.persistence.criteria.Root;
 import java.io.Serializable;
 import java.util.List;
 import logica.Auto;
+import logica.Inspeccion;
 import logica.Propietario;
 import persistencia.exceptions.NonexistentEntityException;
 
@@ -109,14 +110,23 @@ public class AutoJpaController implements Serializable {
             try {
                 auto = em.getReference(Auto.class, id);
                 auto.getId();
+                System.out.println("HOLA" + auto.getId());
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The auto with id " + id + " no longer exists.", enfe);
             }
+
+            Inspeccion inspeccion = auto.getInspeccion();
+            if (inspeccion != null) {
+                System.out.println("Buenas" + inspeccion.getId());
+                em.remove(inspeccion);
+            }
+
             Propietario propietario = auto.getPropietario();
             if (propietario != null) {
                 propietario.getAutos().remove(auto);
                 propietario = em.merge(propietario);
             }
+
             em.remove(auto);
             em.getTransaction().commit();
         } finally {

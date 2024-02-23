@@ -582,7 +582,9 @@ public class AltaInspeccion extends javax.swing.JFrame {
             inspeccion.setAutoInspeccionado(autoSeleccionado);
             inspeccion.setInspector(inspectorSeleccionado);
             
-            if(estado == "Apto"){
+            System.out.println("HOLA:" + autoSeleccionado.getDominio());
+            
+            if(estado.equals("Apto")){
                 Date fechaVencimiento = Validador.formatearFechaVencimiento(fechaParseada);
                 Oblea oblea = new Oblea();
                 oblea.setFechaEmision(fechaParseada);
@@ -594,6 +596,11 @@ public class AltaInspeccion extends javax.swing.JFrame {
             
             medicion.setInspeccion(inspeccion);
             observacion.setInspeccion(inspeccion);
+            
+            autoSeleccionado.setInspeccion(inspeccion);
+            System.out.println(autoSeleccionado.getInspeccion().getEstadoInspeccion());
+            
+            control.modificarAuto(autoSeleccionado);
             
             control.agregarInspeccion(inspeccion);
             control.agregarMedicion(medicion);

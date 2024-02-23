@@ -40,9 +40,10 @@ public class Inspeccion implements Serializable {
     @JoinColumn(name = "auto_id")
     private Auto autoInspeccionado;
     
-    @OneToOne(cascade = {CascadeType.REMOVE}, mappedBy="inspeccion")
+    @OneToOne(mappedBy="inspeccion", cascade = {CascadeType.REMOVE})
     private Observacion observacion;
-    @OneToOne(cascade = {CascadeType.REMOVE}, mappedBy="inspeccion")
+    
+    @OneToOne(mappedBy="inspeccion",cascade = {CascadeType.REMOVE})
     private Medicion medicion;
 
     public Inspeccion() {

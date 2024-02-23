@@ -99,7 +99,7 @@ public class Controladora {
     }
 
     public void borrarAuto(int idAuto) {
-        controlPersis.borrarAuto    (idAuto);
+        controlPersis.borrarAuto(idAuto);
     }
 
     public void agregarObservacion(Observacion observacion) {
