@@ -67,6 +67,7 @@ igu\ListadoVehiculoPropietario$2.class
 igu\AltaInspeccion$5.class
 igu\ConsultaAuto$2.class
 igu\ModificarAuto$1.class
+logica\Observacion.class
 igu\Principal$6.class
 igu\AltaInspeccion.class
 igu\GestionInformes$9.class
