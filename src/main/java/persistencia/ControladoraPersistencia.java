@@ -23,6 +23,7 @@ public class ControladoraPersistencia {
     ObservacionJpaController observacionJpa = new ObservacionJpaController();
     MedicionJpaController medicionJpa = new MedicionJpaController();
     InspeccionJpaController inspeccionJpa = new InspeccionJpaController();
+    ObleaJpaController obleaJpa = new ObleaJpaController();
 
     public void agregarPropietario(Propietario propietario) {
         propietarioJpa.create(propietario);
@@ -162,5 +163,25 @@ public class ControladoraPersistencia {
         } catch (Exception ex) {
             Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    public List<Auto> traerAutosAptos() {
+        return autoJpa.findAutosConInspeccionApta();
+    }
+
+    public void borrarOblea(int idOblea) {
+        try {
+            obleaJpa.destroy(idOblea);
+        } catch (NonexistentEntityException ex) {
+            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public List<Auto> traerAutosCondicionales() {
+       return autoJpa.findAutosConInspeccionCondicional();
+    }
+
+    public List<Auto> traerAutosRechazados() {
+       return autoJpa.findAutosConInspeccionRechazado();
     }
 }

@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package igu;
 
 import java.awt.event.WindowAdapter;
@@ -17,7 +13,6 @@ public class Principal extends javax.swing.JFrame {
     public Principal() {
         initComponents();
         setResizable(false);
-        
     }
 
     @SuppressWarnings("unchecked")
@@ -144,7 +139,17 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnGestionAltasActionPerformed
     
     private void btnGestionInformesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionInformesActionPerformed
-
+       this.setEnabled(false);
+       GestionInformes gestionInformes = new GestionInformes();
+       gestionInformes.setVisible(true);
+       gestionInformes.setLocationRelativeTo(null);
+       gestionInformes.addWindowListener(new WindowAdapter() {
+        @Override
+        public void windowClosed(WindowEvent e) {
+            setEnabled(true);
+            toFront();
+        }
+         });
     }//GEN-LAST:event_btnGestionInformesActionPerformed
 
     private void btnGestionModificacionesYBajas1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionModificacionesYBajas1ActionPerformed

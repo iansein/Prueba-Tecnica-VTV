@@ -171,6 +171,42 @@ public class AutoJpaController implements Serializable {
             em.close();
         }
     }
+    
+    public List<Auto> findAutosConInspeccionApta() {
+        EntityManager em = getEntityManager();
+        try {
+            TypedQuery<Auto> query = em.createQuery(
+                "SELECT DISTINCT a FROM Auto a WHERE a.inspeccion.estadoInspeccion = 'Apto'", Auto.class
+            );
+            return query.getResultList();
+        } finally {
+            em.close();
+        }
+    }
+    
+    public List<Auto> findAutosConInspeccionCondicional() {
+        EntityManager em = getEntityManager();
+        try {
+            TypedQuery<Auto> query = em.createQuery(
+                "SELECT DISTINCT a FROM Auto a WHERE a.inspeccion.estadoInspeccion = 'Condicional'", Auto.class
+            );
+            return query.getResultList();
+        } finally {
+            em.close();
+        }
+    }
+    
+    public List<Auto> findAutosConInspeccionRechazado() {
+        EntityManager em = getEntityManager();
+        try {
+            TypedQuery<Auto> query = em.createQuery(
+                "SELECT DISTINCT a FROM Auto a WHERE a.inspeccion.estadoInspeccion = 'Rechazado'", Auto.class
+            );
+            return query.getResultList();
+        } finally {
+            em.close();
+        }
+    }  
 
     public Auto findAuto(int id) {
         EntityManager em = getEntityManager();
