@@ -20,7 +20,8 @@
 ## Si se abre desde Intellij IDEA se deben recargar las dependecias con maven:
 ![image](https://github.com/iansein/Prueba-Tecnica-VTV/assets/78178685/5d9e343e-abc9-4dea-abd6-f3d0bc793feb)
 
-Luego se deberá ejecutar el archivo main:
+## Luego se deberá ejecutar el archivo main:
+
 ![image](https://github.com/iansein/Prueba-Tecnica-VTV/assets/78178685/5cd73d08-0ad0-4d2c-85f5-082d0f5a5f61)
 
 
