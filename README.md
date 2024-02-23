@@ -21,7 +21,7 @@
 ![image](https://github.com/iansein/Prueba-Tecnica-VTV/assets/78178685/ef841909-b307-40c6-ac3d-e7c8bd6b8f1f)
 
 # Como ejecutar:
-## Si se abre desde Intellij IDEA se deben recargar las dependecias con maven:
+## Si se abre desde Intellij IDEA se deben recargar las dependecias con maven. El panel se encuentra a la derecha.
 ![image](https://github.com/iansein/Prueba-Tecnica-VTV/assets/78178685/5d9e343e-abc9-4dea-abd6-f3d0bc793feb)
 
 ## Luego se deberá ejecutar el archivo main:
