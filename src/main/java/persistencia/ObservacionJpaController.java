@@ -81,7 +81,9 @@ public class ObservacionJpaController implements Serializable {
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The observacion with id " + id + " no longer exists.", enfe);
             }
+            
             em.remove(observacion);
+
             em.getTransaction().commit();
         } finally {
             if (em != null) {

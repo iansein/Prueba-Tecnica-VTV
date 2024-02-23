@@ -582,7 +582,8 @@ public class AltaInspeccion extends javax.swing.JFrame {
             inspeccion.setAutoInspeccionado(autoSeleccionado);
             inspeccion.setInspector(inspectorSeleccionado);
             
-            if(estado == "Apto"){
+            
+            if(estado.equals("Apto")){
                 Date fechaVencimiento = Validador.formatearFechaVencimiento(fechaParseada);
                 Oblea oblea = new Oblea();
                 oblea.setFechaEmision(fechaParseada);

@@ -99,7 +99,7 @@ public class Controladora {
     }
 
     public void borrarAuto(int idAuto) {
-        controlPersis.borrarAuto    (idAuto);
+        controlPersis.borrarAuto(idAuto);
     }
 
     public void agregarObservacion(Observacion observacion) {
@@ -151,5 +151,20 @@ public class Controladora {
         controlPersis.modificarObservacion(observacion);
     }
 
-    
+    public List<Auto> traerAutosAptos() {
+       return controlPersis.traerAutosAptos();
+    }
+
+    public void borrarOblea(int idOblea) {
+       controlPersis.borrarOblea(idOblea);
+    }
+
+    public List<Auto> traerAutosCondicionales() {
+        return controlPersis.traerAutosCondicionales();
+    }
+
+    public List<Auto> traerAutosRechazados() {
+        return controlPersis.traerAutosRechazados();
+    }
+
 }

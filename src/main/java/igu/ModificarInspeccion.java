@@ -571,7 +571,8 @@ public class ModificarInspeccion extends javax.swing.JFrame {
             inspeccion.setEstadoInspeccion(estado);
             inspeccion.setAutoInspeccionado(autoSeleccionado);
             inspeccion.setInspector(inspectorSeleccionado);
-
+            
+            
             if(estado.equals("Apto")){
                 Date fechaVencimiento = Validador.formatearFechaVencimiento(fechaParseada);
                 Oblea oblea = new Oblea();
@@ -582,7 +583,9 @@ public class ModificarInspeccion extends javax.swing.JFrame {
                 control.modificarAuto(autoSeleccionado);
             }
             else{
-                autoSeleccionado.setOblea(null);
+                if(autoSeleccionado.getOblea() != null){
+                    control.borrarOblea(autoSeleccionado.getOblea().getId());
+                }
             }
 
             medicion.setInspeccion(inspeccion);

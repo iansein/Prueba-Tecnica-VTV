@@ -43,6 +43,7 @@ public class InspeccionJpaController implements Serializable {
             em = getEntityManager();
             em.getTransaction().begin();
             em.persist(inspeccion);
+
             em.getTransaction().commit();
         } finally {
             if (em != null) {
@@ -86,6 +87,7 @@ public class InspeccionJpaController implements Serializable {
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The inspeccion with id " + id + " no longer exists.", enfe);
             }
+
             em.remove(inspeccion);
             em.getTransaction().commit();
         } finally {

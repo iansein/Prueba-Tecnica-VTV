@@ -27,10 +27,10 @@ public class Auto implements Serializable {
     @ManyToOne @JoinColumn(name = "propietario_id")
     private Propietario propietario;
     
-    @OneToOne(mappedBy = "auto", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    @OneToOne(mappedBy = "auto", cascade = {CascadeType.REMOVE})
     private Oblea oblea;
     
-    @OneToOne(cascade = CascadeType.REMOVE, mappedBy = "autoInspeccionado")
+    @OneToOne(mappedBy = "autoInspeccionado", cascade = {CascadeType.REMOVE})
     private Inspeccion inspeccion;
 
     public Auto() {
@@ -62,8 +62,6 @@ public class Auto implements Serializable {
         this.inspeccion = inspeccion;
     }
     
-    
-
     public String getDominio() {
         return dominio;
     }

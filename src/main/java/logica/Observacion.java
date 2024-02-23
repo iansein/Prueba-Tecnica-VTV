@@ -18,7 +18,7 @@ public class Observacion {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @OneToOne
+    @OneToOne(cascade= CascadeType.REMOVE)
     @JoinColumn(name = "inspeccion_id")
     private Inspeccion inspeccion;
 

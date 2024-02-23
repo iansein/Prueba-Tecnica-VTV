@@ -74,7 +74,11 @@ public class Oblea implements Serializable {
         this.auto = auto;
     }
 
+    public String getFechaEmisionFormateada() {
+        return Validador.formatearFecha(this.fechaEmision);
+    }
     
-    
-    
+    public String getFechaVencimientoFormateada() {
+        return Validador.formatearFecha(this.fechaVencimiento);
+    }   
 }

@@ -84,8 +84,9 @@ public class MedicionJpaController implements Serializable {
                 medicion.getId();
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The medicion with id " + id + " no longer exists.", enfe);
-            }
+            }     
             em.remove(medicion);
+
             em.getTransaction().commit();
         } finally {
             if (em != null) {

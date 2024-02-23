@@ -4,8 +4,13 @@
  */
 package logica;
 
+import jakarta.persistence.CascadeType;
 import java.io.Serializable;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 
 /**
  *
@@ -13,15 +18,29 @@ import jakarta.persistence.Entity;
  */
 @Entity
 public class Inspector extends Persona implements Serializable {
-
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
     private int nroInspector;
+    @OneToOne(mappedBy = "inspector", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    private Inspeccion inspeccion;
 
     public Inspector() {
     }
-
-    public Inspector(int id, String nombre, String apellido, int telefono, int dni, int nroInspector) {
+    
+    public Inspector(int id, String nombre, String apellido, int telefono, int dni, int nroInspector, Inspeccion inspeccion) {
         super(id, nombre, apellido, dni, telefono);
         this.nroInspector = nroInspector;
+        this.inspeccion = inspeccion;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getNroInspector() {
@@ -31,9 +50,16 @@ public class Inspector extends Persona implements Serializable {
     public void setNroInspector(int nroInspector) {
         this.nroInspector = nroInspector;
     }
-    
-    @Override
-    public String toString() {
-        return "Id: " + getId() + " | "+ "Nombre: " + getNombre() + " | " + "Apellido: " + getApellido();
+
+    public Inspeccion getInspeccion() {
+        return inspeccion;
     }
+
+    public void setInspeccion(Inspeccion inspeccion) {
+        this.inspeccion = inspeccion;
+    }
+
+    
+    
+    
 }
