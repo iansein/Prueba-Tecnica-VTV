@@ -184,4 +184,8 @@ public class ControladoraPersistencia {
     public List<Auto> traerAutosRechazados() {
         return autoJpa.findAutosConInspeccionRechazado();
     }
+
+    public boolean existePersonaConDNI(int dni) {
+        return propietarioJpa.existePersonaConDNI(dni);
+    }
 }

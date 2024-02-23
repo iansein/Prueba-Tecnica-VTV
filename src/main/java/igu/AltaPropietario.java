@@ -206,9 +206,16 @@ public class AltaPropietario extends javax.swing.JFrame {
             return;
         }
 
-        try {
+        try {         
+            
             int dni = Integer.parseInt(dniStr);
             int telefono = Integer.parseInt(telefonoStr);
+            
+            if (control.existePersonaConDNI(dni)) {
+                mostrarMensaje("Ya existe una persona con el mismo DNI.", "Error", "Error al agregar");
+                return;
+            }               
+            
             control.agregarPropietario(nombre, apellido, dni, telefono);
             mostrarMensaje("Se ha agregado al propietario exitosamente", "Info", "Éxito al agregar");
             limpiarCampos();

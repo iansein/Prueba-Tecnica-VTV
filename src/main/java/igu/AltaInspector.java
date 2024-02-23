@@ -245,6 +245,12 @@ public class AltaInspector extends javax.swing.JFrame {
         try {
             int dni = Integer.parseInt(dniStr);
             int telefono = Integer.parseInt(telefonoStr);
+            
+            if (control.existePersonaConDNI(dni)) {
+                mostrarMensaje("Ya existe una persona con el mismo DNI.", "Error", "Error al agregar");
+                return;
+            }
+            
             int nroInspector = Integer.parseInt(nroInspectorStr);
 
             control.agregarInspector(nombre, apellido, dni, nroInspector, telefono);

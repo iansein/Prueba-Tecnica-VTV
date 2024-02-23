@@ -167,4 +167,9 @@ public class Controladora {
         return controlPersis.traerAutosRechazados();
     }
 
+    public boolean existePersonaConDNI(int dni) {
+        return controlPersis.existePersonaConDNI(dni);
+    }
+
+
 }
