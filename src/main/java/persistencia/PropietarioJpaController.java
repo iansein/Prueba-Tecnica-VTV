@@ -142,6 +142,30 @@ public class PropietarioJpaController implements Serializable {
         }
     }
 
+    public boolean existePersonaConDNI(int dni) {
+        EntityManager em = null;
+        try {
+            em = getEntityManager();
+
+            // Verificar en la tabla de Propietarios
+            Query propietarioQuery = em.createQuery("SELECT COUNT(p) FROM Propietario p WHERE p.dni = :dni");
+            propietarioQuery.setParameter("dni", dni);
+            Long propietarioCount = (Long) propietarioQuery.getSingleResult();
+
+            // Verificar en la tabla de Inspectores
+            Query inspectorQuery = em.createQuery("SELECT COUNT(i) FROM Inspector i WHERE i.dni = :dni");
+            inspectorQuery.setParameter("dni", dni);
+            Long inspectorCount = (Long) inspectorQuery.getSingleResult();
+
+            // Devolver true si hay al menos una persona con ese DNI en alguna de las tablas
+            return (propietarioCount + inspectorCount) > 0;
+        } finally {
+            if (em != null) {
+                em.close();
+            }
+        }
+    }
+
     public List<Propietario> findPropietarioEntities() {
         return findPropietarioEntities(true, -1, -1);
     }

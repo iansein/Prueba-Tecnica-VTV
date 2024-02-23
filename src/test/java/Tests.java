@@ -100,7 +100,7 @@ public class Tests {
 
         String fechaFormateada = inspeccion.getFechaInspeccionFormateada();
 
-        assertEquals("2022/02/21", fechaFormateada);
+        assertEquals("21/02/2022", fechaFormateada);
     }
 
     @Test

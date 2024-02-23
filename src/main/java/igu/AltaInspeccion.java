@@ -517,7 +517,7 @@ public class AltaInspeccion extends javax.swing.JFrame {
     }//GEN-LAST:event_cbEmergenciaActionPerformed
 
     private void btnLimpiarInspeccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarInspeccionActionPerformed
-
+        limpiarCampos();
     }//GEN-LAST:event_btnLimpiarInspeccionActionPerformed
 
     private void btnAgregarInspeccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarInspeccionActionPerformed

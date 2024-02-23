@@ -149,7 +149,7 @@ public class GestionListadoPropietarios extends javax.swing.JFrame {
                     listadoVehiculoPropietario.setVisible(true);
                     listadoVehiculoPropietario.setLocationRelativeTo(null);
                 } else {
-                    mostrarMensaje("El propietario no tiene mas de un vehículo", "Error", "Error al inspeccionar inspecciones");
+                    mostrarMensaje("El propietario no tiene mas de un vehículo", "Error", "Error al inspeccionar");
                 }
 
             } else {
