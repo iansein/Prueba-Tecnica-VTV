@@ -18,7 +18,7 @@ public class ModificarAuto extends javax.swing.JFrame {
 
     Controladora controladora = null;
     Auto auto = new Auto();
-    
+
     public ModificarAuto(int idAuto) {
         controladora = new Controladora();
         initComponents();
@@ -26,7 +26,6 @@ public class ModificarAuto extends javax.swing.JFrame {
         cargarDatos(idAuto);
         setResizable(false);
     }
-
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -237,10 +236,10 @@ public class ModificarAuto extends javax.swing.JFrame {
         String dominio = txtDominio.getText();
         String marca = txtMarca.getText();
         String modelo = txtModelo.getText();
-        
-         if (!Validador.esTextoNoVacio(dominio) || 
-            !Validador.esTextoNoVacio(marca) || 
-            !Validador.esTextoNoVacio(modelo)){
+
+        if (!Validador.esTextoNoVacio(dominio)
+                || !Validador.esTextoNoVacio(marca)
+                || !Validador.esTextoNoVacio(modelo)) {
             mostrarMensaje("Complete todos los campos", "Error", "Error al modificar");
             return;
         }
@@ -256,8 +255,8 @@ public class ModificarAuto extends javax.swing.JFrame {
         if (filaSeleccionada != -1) {
             int idPropietario = (int) tablaPropietarios.getValueAt(filaSeleccionada, 0);
             Propietario propietarioSeleccionado = controladora.traerPropietario(idPropietario);
-            controladora.modificarAuto(auto,dominio,marca,modelo,propietarioSeleccionado);
-            
+            controladora.modificarAuto(auto, dominio, marca, modelo, propietarioSeleccionado);
+
             mostrarMensaje("Modificación realizada exitosamente", "Info", "Éxito al modificar");
 
             ConsultaAuto consulAuto = new ConsultaAuto();
@@ -266,14 +265,14 @@ public class ModificarAuto extends javax.swing.JFrame {
             this.dispose();
         }
     }//GEN-LAST:event_btnModificarAutoActionPerformed
-    
-    public void limpiarCampos(){
+
+    public void limpiarCampos() {
         txtDominio.setText("");
         txtMarca.setText("");
         txtModelo.setText("");
     }
 
-    
+
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         cargarTabla();
     }//GEN-LAST:event_formWindowOpened
@@ -282,45 +281,43 @@ public class ModificarAuto extends javax.swing.JFrame {
         limpiarCampos();
     }//GEN-LAST:event_btnLimpiarAutoActionPerformed
 
-    public void mostrarMensaje(String mensaje, String tipo, String titulo){
+    public void mostrarMensaje(String mensaje, String tipo, String titulo) {
         JOptionPane optionPane = new JOptionPane(mensaje);
-        if(tipo.equals("Info")){
+        if (tipo.equals("Info")) {
             optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
-        }
-        else if(tipo.equals("Error")){
+        } else if (tipo.equals("Error")) {
             optionPane.setMessageType(JOptionPane.ERROR_MESSAGE);
         }
         JDialog dialog = optionPane.createDialog(titulo);
         dialog.setAlwaysOnTop(true);
         dialog.setVisible(true);
     }
-    
+
     private void cargarTabla() {
-        DefaultTableModel modeloTabla = new DefaultTableModel(){
+        DefaultTableModel modeloTabla = new DefaultTableModel() {
 
-             @Override
-             public boolean isCellEditable(int row, int column){
-                 return false;
-             }
-        }; 
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
 
-         String titulos[] = {"Id", "Nombre", "Apellido", "DNI", "Telefono"};
-         modeloTabla.setColumnIdentifiers(titulos);
+        String titulos[] = {"Id", "Nombre", "Apellido", "DNI", "Telefono"};
+        modeloTabla.setColumnIdentifiers(titulos);
 
-         List<Propietario> listaPropietarios = controladora.traerPropietarios();
+        List<Propietario> listaPropietarios = controladora.traerPropietarios();
 
-         if(listaPropietarios != null){
-             for(Propietario propietario: listaPropietarios){
-                 Object[] objeto = {propietario.getId(), propietario.getNombre(), propietario.getApellido(), propietario.getDni(), propietario.getTelefono()};
+        if (listaPropietarios != null) {
+            for (Propietario propietario : listaPropietarios) {
+                Object[] objeto = {propietario.getId(), propietario.getNombre(), propietario.getApellido(), propietario.getDni(), propietario.getTelefono()};
 
-                 modeloTabla.addRow(objeto);
-             }
-         }
+                modeloTabla.addRow(objeto);
+            }
+        }
 
-
-         tablaPropietarios.setModel(modeloTabla);
+        tablaPropietarios.setModel(modeloTabla);
     }
-    
+
     private void cargarDatos(int idAuto) {
         auto = controladora.traerAuto(idAuto);
         txtDominio.setText(auto.getDominio());

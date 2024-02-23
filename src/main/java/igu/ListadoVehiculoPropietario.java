@@ -16,6 +16,7 @@ public class ListadoVehiculoPropietario extends javax.swing.JFrame {
 
     Controladora control = new Controladora();
     Propietario propietario;
+
     public ListadoVehiculoPropietario(int idPropietario) {
         propietario = control.traerPropietario(idPropietario);
         initComponents();
@@ -136,7 +137,7 @@ public class ListadoVehiculoPropietario extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void cargarTabla() {
-        
+
         DefaultTableModel modeloTabla = new DefaultTableModel() {
 
             @Override
@@ -150,12 +151,11 @@ public class ListadoVehiculoPropietario extends javax.swing.JFrame {
 
         List<Inspeccion> listaInspecciones = control.traerInspecciones();
         List<Auto> listaAutos = propietario.getAutos();
-        
-        
+
         if (listaInspecciones != null) {
             for (Inspeccion inspeccion : listaInspecciones) {
-                for(Auto auto: listaAutos){
-                    if(auto.getId() == inspeccion.getAutoInspeccionado().getId()){
+                for (Auto auto : listaAutos) {
+                    if (auto.getId() == inspeccion.getAutoInspeccionado().getId()) {
                         Object[] objeto = {inspeccion.getId(), inspeccion.getEstadoInspeccion(), inspeccion.getFechaInspeccionFormateada(),
                             inspeccion.getNumeroInspeccion(), inspeccion.isExento(), inspeccion.getAutoInspeccionado().getDominio(), inspeccion.getAutoInspeccionado().getMarca(),
                             inspeccion.getAutoInspeccionado().getModelo(), inspeccion.getInspector().getNroInspector()};

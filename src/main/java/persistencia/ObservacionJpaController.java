@@ -1,4 +1,4 @@
-    package persistencia;
+package persistencia;
 
 import java.io.Serializable;
 import java.util.List;
@@ -21,11 +21,11 @@ public class ObservacionJpaController implements Serializable {
     public ObservacionJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
-    
-    public ObservacionJpaController(){
+
+    public ObservacionJpaController() {
         emf = Persistence.createEntityManagerFactory("vtvPU");
     }
-    
+
     private EntityManagerFactory emf = null;
 
     public EntityManager getEntityManager() {
@@ -81,7 +81,7 @@ public class ObservacionJpaController implements Serializable {
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The observacion with id " + id + " no longer exists.", enfe);
             }
-            
+
             em.remove(observacion);
 
             em.getTransaction().commit();
@@ -137,5 +137,5 @@ public class ObservacionJpaController implements Serializable {
             em.close();
         }
     }
-    
+
 }

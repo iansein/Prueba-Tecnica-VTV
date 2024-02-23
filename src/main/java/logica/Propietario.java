@@ -13,19 +13,17 @@ import java.util.List;
  */
 @Entity
 public class Propietario extends Persona implements Serializable {
-     
-    @OneToMany(mappedBy="propietario", cascade = CascadeType.REMOVE)
+
+    @OneToMany(mappedBy = "propietario", cascade = CascadeType.REMOVE)
     private List<Auto> autos = new ArrayList<>();
-    
-    
+
     public Propietario() {
     }
 
     public Propietario(int id, String nombre, String apellido, List<Auto> autos, int dni, int telefono) {
-        super(id,nombre,apellido,dni, telefono);
+        super(id, nombre, apellido, dni, telefono);
         this.autos = autos;
     }
-
 
     public List<Auto> getAutos() {
         return autos;
@@ -33,5 +31,5 @@ public class Propietario extends Persona implements Serializable {
 
     public void setAutos(List<Auto> autos) {
         this.autos = autos;
-    }  
+    }
 }

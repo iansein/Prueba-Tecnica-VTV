@@ -1,9 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package logica;
-
 
 import java.io.Serializable;
 import jakarta.persistence.Entity;
@@ -18,16 +13,15 @@ import java.util.Date;
  *
  * @author Ian
  */
-
 @Entity
 public class Oblea implements Serializable {
-    
+
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private Date fechaEmision;
     private Date fechaVencimiento;
-    
+
     @OneToOne
     @JoinColumn(name = "auto_id")
     private Auto auto;
@@ -77,8 +71,8 @@ public class Oblea implements Serializable {
     public String getFechaEmisionFormateada() {
         return Validador.formatearFecha(this.fechaEmision);
     }
-    
+
     public String getFechaVencimientoFormateada() {
         return Validador.formatearFecha(this.fechaVencimiento);
-    }   
+    }
 }

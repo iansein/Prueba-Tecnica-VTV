@@ -10,7 +10,6 @@ import javax.swing.JFrame;
  */
 public class GestionAltas extends javax.swing.JFrame {
 
-
     public GestionAltas() {
         initComponents();
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -147,29 +146,29 @@ public class GestionAltas extends javax.swing.JFrame {
         alta.setVisible(true);
         alta.setLocationRelativeTo(null);
         alta.setLocationRelativeTo(null);
-          setEnabled(false); 
-            alta.addWindowListener(new WindowAdapter() {
-                @Override
-                public void windowClosed(WindowEvent e) {
-                    setEnabled(true);
-                    toFront();
-                }
-         });
+        setEnabled(false);
+        alta.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosed(WindowEvent e) {
+                setEnabled(true);
+                toFront();
+            }
+        });
     }//GEN-LAST:event_btnGestionAltaAutoActionPerformed
 
     private void btnGestionAltasPropietarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionAltasPropietarioActionPerformed
         AltaPropietario altaP = new AltaPropietario();
         altaP.setVisible(true);
         altaP.setLocationRelativeTo(null);
-         altaP.setLocationRelativeTo(null);
-          setEnabled(false); 
-            altaP.addWindowListener(new WindowAdapter() {
-                @Override
-                public void windowClosed(WindowEvent e) {
-                    setEnabled(true);
-                    toFront();
-                }
-         });
+        altaP.setLocationRelativeTo(null);
+        setEnabled(false);
+        altaP.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosed(WindowEvent e) {
+                setEnabled(true);
+                toFront();
+            }
+        });
     }//GEN-LAST:event_btnGestionAltasPropietarioActionPerformed
 
     private void btnGestionAltaInspeccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionAltaInspeccionActionPerformed
@@ -177,29 +176,29 @@ public class GestionAltas extends javax.swing.JFrame {
         altaInspeccion.setVisible(true);
         altaInspeccion.setLocationRelativeTo(null);
         altaInspeccion.setLocationRelativeTo(null);
-          setEnabled(false); 
-            altaInspeccion.addWindowListener(new WindowAdapter() {
-                @Override
-                public void windowClosed(WindowEvent e) {
-                    setEnabled(true);
-                    toFront();
-                }
-         });
+        setEnabled(false);
+        altaInspeccion.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosed(WindowEvent e) {
+                setEnabled(true);
+                toFront();
+            }
+        });
     }//GEN-LAST:event_btnGestionAltaInspeccionActionPerformed
 
     private void btnGestionAltaInspectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionAltaInspectorActionPerformed
         AltaInspector altaI = new AltaInspector();
         altaI.setVisible(true);
         altaI.setLocationRelativeTo(null);
-         altaI.setLocationRelativeTo(null);
-          setEnabled(false); 
-            altaI.addWindowListener(new WindowAdapter() {
-                @Override
-                public void windowClosed(WindowEvent e) {
-                    setEnabled(true);
-                    toFront();
-                }
-         });
+        altaI.setLocationRelativeTo(null);
+        setEnabled(false);
+        altaI.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosed(WindowEvent e) {
+                setEnabled(true);
+                toFront();
+            }
+        });
     }//GEN-LAST:event_btnGestionAltaInspectorActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

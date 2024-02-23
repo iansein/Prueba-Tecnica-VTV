@@ -15,7 +15,7 @@ public class ModificarInspector extends javax.swing.JFrame {
 
     Controladora controladora = null;
     Inspector inspector = new Inspector();
-    
+
     public ModificarInspector(int idInspector) {
         controladora = new Controladora();
         initComponents();
@@ -194,19 +194,18 @@ public class ModificarInspector extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnModificarInspectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarInspectorActionPerformed
-        
+
         String nombre = txtNombreInspector.getText().trim();
         String apellido = txtApellidoInspector.getText().trim();
         String dniStr = txtDniInspector.getText().trim();
         String telefonoStr = txtTelefonoInspector.getText().trim();
         String nroInspectorStr = txtNroInspector.getText().trim();
 
-
-        if (!Validador.esTextoNoVacio(nombre) || 
-            !Validador.esTextoNoVacio(apellido) || 
-            !Validador.esTextoNoVacio(dniStr) || 
-            !Validador.esTextoNoVacio(telefonoStr) ||
-            !Validador.esTextoNoVacio(nroInspectorStr)) {
+        if (!Validador.esTextoNoVacio(nombre)
+                || !Validador.esTextoNoVacio(apellido)
+                || !Validador.esTextoNoVacio(dniStr)
+                || !Validador.esTextoNoVacio(telefonoStr)
+                || !Validador.esTextoNoVacio(nroInspectorStr)) {
             mostrarMensaje("Complete todos los campos.", "Error", "Error al modificar");
             return;
         }
@@ -228,20 +227,19 @@ public class ModificarInspector extends javax.swing.JFrame {
             int dni = Integer.parseInt(dniStr);
             int telefono = Integer.parseInt(telefonoStr);
             int nroInspector = Integer.parseInt(nroInspectorStr);
-            
-            controladora.modificarInspector(inspector,nombre, apellido, dni,nroInspector, telefono);
+
+            controladora.modificarInspector(inspector, nombre, apellido, dni, nroInspector, telefono);
             mostrarMensaje("Se ha modificado al inspector exitosamente", "Info", "Éxito al modificar");
 
             ConsultaInspector consulInspector = new ConsultaInspector();
             consulInspector.setVisible(true);
             consulInspector.setLocationRelativeTo(null);
             this.dispose();
-            
+
         } catch (NumberFormatException e) {
             mostrarMensaje("Hubo un problema al convertir los valores numéricos.", "Error", "Error al modificar");
-        }   
-        
-        
+        }
+
         ConsultaInspector consulInspector = new ConsultaInspector();
         consulInspector.setVisible(true);
         consulInspector.setLocationRelativeTo(null);
@@ -253,22 +251,21 @@ public class ModificarInspector extends javax.swing.JFrame {
         txtApellidoInspector.setText("");
         txtDniInspector.setText("");
     }//GEN-LAST:event_btnLimpiarInspectorActionPerformed
-    public void mostrarMensaje(String mensaje, String tipo, String titulo){
+    public void mostrarMensaje(String mensaje, String tipo, String titulo) {
         JOptionPane optionPane = new JOptionPane(mensaje);
-        if(tipo.equals("Info")){
+        if (tipo.equals("Info")) {
             optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
-        }
-        else if(tipo.equals("Error")){
+        } else if (tipo.equals("Error")) {
             optionPane.setMessageType(JOptionPane.ERROR_MESSAGE);
         }
         JDialog dialog = optionPane.createDialog(titulo);
         dialog.setAlwaysOnTop(true);
         dialog.setVisible(true);
     }
-    
+
     private void cargarDatos(int idInspector) {
         inspector = controladora.traerInspector(idInspector);
-        
+
         txtNombreInspector.setText(inspector.getNombre());
         txtApellidoInspector.setText(inspector.getApellido());
         txtDniInspector.setText(String.valueOf(inspector.getDni()));

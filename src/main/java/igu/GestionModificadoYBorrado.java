@@ -11,7 +11,6 @@ import javax.swing.table.DefaultTableModel;
  */
 public class GestionModificadoYBorrado extends javax.swing.JFrame {
 
-
     public GestionModificadoYBorrado() {
         initComponents();
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -138,14 +137,14 @@ public class GestionModificadoYBorrado extends javax.swing.JFrame {
         ConsultaInspeccion consuInspeccion = new ConsultaInspeccion();
         consuInspeccion.setVisible(true);
         consuInspeccion.setLocationRelativeTo(null);
-          setEnabled(false); 
-            consuInspeccion.addWindowListener(new WindowAdapter() {
-                @Override
-                public void windowClosed(WindowEvent e) {
-                    setEnabled(true);
-                    toFront();
-                }
-         });
+        setEnabled(false);
+        consuInspeccion.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosed(WindowEvent e) {
+                setEnabled(true);
+                toFront();
+            }
+        });
     }//GEN-LAST:event_btnInspeccionActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -156,42 +155,42 @@ public class GestionModificadoYBorrado extends javax.swing.JFrame {
         ConsultaPropietario consuPropietario = new ConsultaPropietario();
         consuPropietario.setVisible(true);
         consuPropietario.setLocationRelativeTo(null);
-        setEnabled(false); 
-            consuPropietario.addWindowListener(new WindowAdapter() {
-                @Override
-                public void windowClosed(WindowEvent e) {
-                    setEnabled(true);
-                    toFront();
-                }
-         });
+        setEnabled(false);
+        consuPropietario.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosed(WindowEvent e) {
+                setEnabled(true);
+                toFront();
+            }
+        });
     }//GEN-LAST:event_btnModificacionYBorradoPropietarioActionPerformed
 
     private void btnModificacionYBorradoInspectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificacionYBorradoInspectorActionPerformed
         ConsultaInspector consuInspector = new ConsultaInspector();
         consuInspector.setVisible(true);
         consuInspector.setLocationRelativeTo(null);
-         setEnabled(false); 
-            consuInspector.addWindowListener(new WindowAdapter() {
-                @Override
-                public void windowClosed(WindowEvent e) {
-                    setEnabled(true);
-                    toFront();
-                }
-         });
+        setEnabled(false);
+        consuInspector.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosed(WindowEvent e) {
+                setEnabled(true);
+                toFront();
+            }
+        });
     }//GEN-LAST:event_btnModificacionYBorradoInspectorActionPerformed
 
     private void btnModificacionYBorradoAutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificacionYBorradoAutoActionPerformed
         ConsultaAuto consuAuto = new ConsultaAuto();
         consuAuto.setVisible(true);
         consuAuto.setLocationRelativeTo(null);
-        setEnabled(false); 
-            consuAuto.addWindowListener(new WindowAdapter() {
-                @Override
-                public void windowClosed(WindowEvent e) {
-                    setEnabled(true);
-                    toFront();
-                }
-         });
+        setEnabled(false);
+        consuAuto.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosed(WindowEvent e) {
+                setEnabled(true);
+                toFront();
+            }
+        });
     }//GEN-LAST:event_btnModificacionYBorradoAutoActionPerformed
 
 
@@ -205,16 +204,16 @@ public class GestionModificadoYBorrado extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void cargarTabla() {
-      
-      DefaultTableModel modeloTabla = new DefaultTableModel(){
-          
-          @Override
-          public boolean isCellEditable(int row, int column){
-              return false;
-          }
-      }; 
-      
-      String titulos[] = {"id", "nombre", "apellido", "DNI"};
-      modeloTabla.setColumnIdentifiers(titulos);
+
+        DefaultTableModel modeloTabla = new DefaultTableModel() {
+
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+
+        String titulos[] = {"id", "nombre", "apellido", "DNI"};
+        modeloTabla.setColumnIdentifiers(titulos);
     }
 }

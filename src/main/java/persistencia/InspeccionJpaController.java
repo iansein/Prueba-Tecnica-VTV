@@ -26,11 +26,11 @@ public class InspeccionJpaController implements Serializable {
     public InspeccionJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
-    
-    public InspeccionJpaController(){
+
+    public InspeccionJpaController() {
         emf = Persistence.createEntityManagerFactory("vtvPU");
     }
-    
+
     private EntityManagerFactory emf = null;
 
     public EntityManager getEntityManager() {
@@ -142,5 +142,5 @@ public class InspeccionJpaController implements Serializable {
             em.close();
         }
     }
-    
+
 }

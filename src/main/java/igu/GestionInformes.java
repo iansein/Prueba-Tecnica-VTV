@@ -1,16 +1,15 @@
 package igu;
+
 import igu.ListadoAutosAptos;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
-
 
 /**
  *
  * @author Ian
  */
 public class GestionInformes extends javax.swing.JFrame {
-
 
     public GestionInformes() {
         initComponents();
@@ -159,33 +158,33 @@ public class GestionInformes extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnInspeccionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInspeccionesActionPerformed
-         ListadoInspecciones inspecciones = new ListadoInspecciones();
-         inspecciones.setVisible(true);
+        ListadoInspecciones inspecciones = new ListadoInspecciones();
+        inspecciones.setVisible(true);
         inspecciones.setLocationRelativeTo(null);
-         inspecciones.setLocationRelativeTo(null);
-          setEnabled(false); 
-            inspecciones.addWindowListener(new WindowAdapter() {
-                @Override
-                public void windowClosed(WindowEvent e) {
-                    setEnabled(true);
-                    toFront();
-                }
-         }); 
+        inspecciones.setLocationRelativeTo(null);
+        setEnabled(false);
+        inspecciones.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosed(WindowEvent e) {
+                setEnabled(true);
+                toFront();
+            }
+        });
     }//GEN-LAST:event_btnInspeccionesActionPerformed
 
     private void btnAutosRechazadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAutosRechazadosActionPerformed
-         ListadoAutosRechazados autosRechazados = new ListadoAutosRechazados();
-         autosRechazados.setVisible(true);
+        ListadoAutosRechazados autosRechazados = new ListadoAutosRechazados();
+        autosRechazados.setVisible(true);
         autosRechazados.setLocationRelativeTo(null);
-         autosRechazados.setLocationRelativeTo(null);
-          setEnabled(false); 
-            autosRechazados.addWindowListener(new WindowAdapter() {
-                @Override
-                public void windowClosed(WindowEvent e) {
-                    setEnabled(true);
-                    toFront();
-                }
-         }); 
+        autosRechazados.setLocationRelativeTo(null);
+        setEnabled(false);
+        autosRechazados.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosed(WindowEvent e) {
+                setEnabled(true);
+                toFront();
+            }
+        });
     }//GEN-LAST:event_btnAutosRechazadosActionPerformed
 
     private void btnAutosPropietariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAutosPropietariosActionPerformed
@@ -193,14 +192,14 @@ public class GestionInformes extends javax.swing.JFrame {
         autosPropietarios.setVisible(true);
         autosPropietarios.setLocationRelativeTo(null);
         autosPropietarios.setLocationRelativeTo(null);
-          setEnabled(false); 
-            autosPropietarios.addWindowListener(new WindowAdapter() {
-                @Override
-                public void windowClosed(WindowEvent e) {
-                    setEnabled(true);
-                    toFront();
-                }
-         }); 
+        setEnabled(false);
+        autosPropietarios.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosed(WindowEvent e) {
+                setEnabled(true);
+                toFront();
+            }
+        });
     }//GEN-LAST:event_btnAutosPropietariosActionPerformed
 
     private void btnAutosCondicionalesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAutosCondicionalesActionPerformed
@@ -208,29 +207,29 @@ public class GestionInformes extends javax.swing.JFrame {
         autosCondicionales.setVisible(true);
         autosCondicionales.setLocationRelativeTo(null);
         autosCondicionales.setLocationRelativeTo(null);
-        setEnabled(false); 
+        setEnabled(false);
         autosCondicionales.addWindowListener(new WindowAdapter() {
-                @Override
+            @Override
             public void windowClosed(WindowEvent e) {
                 setEnabled(true);
                 toFront();
             }
-         });  
+        });
     }//GEN-LAST:event_btnAutosCondicionalesActionPerformed
 
     private void btnAutosAptosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAutosAptosActionPerformed
         ListadoAutosAptos autosAptos = new ListadoAutosAptos();
-         autosAptos.setVisible(true);
+        autosAptos.setVisible(true);
         autosAptos.setLocationRelativeTo(null);
-         autosAptos.setLocationRelativeTo(null);
-          setEnabled(false); 
-            autosAptos.addWindowListener(new WindowAdapter() {
-                @Override
-                public void windowClosed(WindowEvent e) {
-                    setEnabled(true);
-                    toFront();
-                }
-         });    
+        autosAptos.setLocationRelativeTo(null);
+        setEnabled(false);
+        autosAptos.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosed(WindowEvent e) {
+                setEnabled(true);
+                toFront();
+            }
+        });
     }//GEN-LAST:event_btnAutosAptosActionPerformed
 
 

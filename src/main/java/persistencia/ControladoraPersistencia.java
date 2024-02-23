@@ -16,7 +16,7 @@ import persistencia.exceptions.NonexistentEntityException;
  * @author Ian
  */
 public class ControladoraPersistencia {
-    
+
     PropietarioJpaController propietarioJpa = new PropietarioJpaController();
     InspectorJpaController inspectorJpa = new InspectorJpaController();
     AutoJpaController autoJpa = new AutoJpaController();
@@ -42,7 +42,7 @@ public class ControladoraPersistencia {
     }
 
     public Propietario traerPropietario(int idPropietario) {
-       return propietarioJpa.findPropietario(idPropietario);
+        return propietarioJpa.findPropietario(idPropietario);
     }
 
     public void modificarPropietario(Propietario propietario) {
@@ -58,11 +58,11 @@ public class ControladoraPersistencia {
     }
 
     public List<Inspector> traerInspectores() {
-       return inspectorJpa.findInspectorEntities();
+        return inspectorJpa.findInspectorEntities();
     }
 
     public Inspector traerInspector(int idInspector) {
-       return inspectorJpa.findInspector(idInspector);
+        return inspectorJpa.findInspector(idInspector);
     }
 
     public void modificarInspector(Inspector inspector) {
@@ -106,15 +106,15 @@ public class ControladoraPersistencia {
     }
 
     public void agregarObservacion(Observacion observacion) {
-       observacionJpa.create(observacion);
+        observacionJpa.create(observacion);
     }
 
     public void agregarMedicion(Medicion medicion) {
-       medicionJpa.create(medicion);
+        medicionJpa.create(medicion);
     }
 
     public Auto traerAuto(int idAuto) {
-       return autoJpa.findAuto(idAuto);
+        return autoJpa.findAuto(idAuto);
     }
 
     public void agregarInspeccion(Inspeccion inspeccion) {
@@ -122,11 +122,11 @@ public class ControladoraPersistencia {
     }
 
     public List<Auto> traerAutosSinObleas() {
-       return autoJpa.findAutosSinOblea();
+        return autoJpa.findAutosSinOblea();
     }
 
     public List<Inspeccion> traerInspecciones() {
-       return inspeccionJpa.findInspeccionEntities();
+        return inspeccionJpa.findInspeccionEntities();
     }
 
     public void borrarInspeccion(int idInspeccion) {
@@ -138,7 +138,7 @@ public class ControladoraPersistencia {
     }
 
     public Inspeccion traerInspeccion(int idInspeccion) {
-       return inspeccionJpa.findInspeccion(idInspeccion);
+        return inspeccionJpa.findInspeccion(idInspeccion);
     }
 
     public void modificarInspeccion(Inspeccion inspeccion) {
@@ -178,10 +178,10 @@ public class ControladoraPersistencia {
     }
 
     public List<Auto> traerAutosCondicionales() {
-       return autoJpa.findAutosConInspeccionCondicional();
+        return autoJpa.findAutosConInspeccionCondicional();
     }
 
     public List<Auto> traerAutosRechazados() {
-       return autoJpa.findAutosConInspeccionRechazado();
+        return autoJpa.findAutosConInspeccionRechazado();
     }
 }

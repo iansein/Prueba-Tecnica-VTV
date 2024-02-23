@@ -12,10 +12,10 @@ import logica.Validador;
  * @author Ian
  */
 public class ModificarPropietario extends javax.swing.JFrame {
-    
+
     Controladora controladora = null;
     Propietario propietario = new Propietario();
-    
+
     public ModificarPropietario(int idPropietario) {
         controladora = new Controladora();
         initComponents();
@@ -186,16 +186,16 @@ public class ModificarPropietario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnModificarPropietarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarPropietarioActionPerformed
-      
+
         String nombre = txtNombrePropietario.getText().trim();
         String apellido = txtApellidoPropietario.getText().trim();
         String dniStr = txtDniPropietario.getText().trim();
         String telefonoStr = txtTelefonoPropietario.getText().trim();
 
-        if (!Validador.esTextoNoVacio(nombre) || 
-            !Validador.esTextoNoVacio(apellido) || 
-            !Validador.esTextoNoVacio(dniStr) || 
-            !Validador.esTextoNoVacio(telefonoStr)) {
+        if (!Validador.esTextoNoVacio(nombre)
+                || !Validador.esTextoNoVacio(apellido)
+                || !Validador.esTextoNoVacio(dniStr)
+                || !Validador.esTextoNoVacio(telefonoStr)) {
             mostrarMensaje("Complete todos los campos.", "Error", "Error al modificar");
             return;
         }
@@ -219,10 +219,10 @@ public class ModificarPropietario extends javax.swing.JFrame {
             consulPropietario.setVisible(true);
             consulPropietario.setLocationRelativeTo(null);
             this.dispose();
-            
+
         } catch (NumberFormatException e) {
             mostrarMensaje("Hubo un problema al convertir los valores numéricos.", "Error", "Error al modificar");
-        }    
+        }
     }//GEN-LAST:event_btnModificarPropietarioActionPerformed
 
     private void btnLimpiarPropietarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarPropietarioActionPerformed
@@ -230,12 +230,11 @@ public class ModificarPropietario extends javax.swing.JFrame {
         txtApellidoPropietario.setText("");
         txtTelefonoPropietario.setText("");
     }//GEN-LAST:event_btnLimpiarPropietarioActionPerformed
-        public void mostrarMensaje(String mensaje, String tipo, String titulo){
+    public void mostrarMensaje(String mensaje, String tipo, String titulo) {
         JOptionPane optionPane = new JOptionPane(mensaje);
-        if(tipo.equals("Info")){
+        if (tipo.equals("Info")) {
             optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
-        }
-        else if(tipo.equals("Error")){
+        } else if (tipo.equals("Error")) {
             optionPane.setMessageType(JOptionPane.ERROR_MESSAGE);
         }
         JDialog dialog = optionPane.createDialog(titulo);

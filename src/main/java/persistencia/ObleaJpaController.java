@@ -25,11 +25,11 @@ public class ObleaJpaController implements Serializable {
     public ObleaJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
-    
-    public ObleaJpaController(){
+
+    public ObleaJpaController() {
         emf = Persistence.createEntityManagerFactory("vtvPU");
     }
-    
+
     private EntityManagerFactory emf = null;
 
     public EntityManager getEntityManager() {
@@ -139,5 +139,5 @@ public class ObleaJpaController implements Serializable {
             em.close();
         }
     }
-    
+
 }

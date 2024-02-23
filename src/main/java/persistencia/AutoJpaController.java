@@ -29,11 +29,11 @@ public class AutoJpaController implements Serializable {
     public AutoJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
-    
-    public AutoJpaController(){
+
+    public AutoJpaController() {
         emf = Persistence.createEntityManagerFactory("vtvPU");
     }
-    
+
     private EntityManagerFactory emf = null;
 
     public EntityManager getEntityManager() {
@@ -164,49 +164,49 @@ public class AutoJpaController implements Serializable {
         EntityManager em = getEntityManager();
         try {
             TypedQuery<Auto> query = em.createQuery(
-                "SELECT a FROM Auto a WHERE a.id NOT IN (SELECT o.auto.id FROM Oblea o)", Auto.class
+                    "SELECT a FROM Auto a WHERE a.id NOT IN (SELECT o.auto.id FROM Oblea o)", Auto.class
             );
             return query.getResultList();
         } finally {
             em.close();
         }
     }
-    
+
     public List<Auto> findAutosConInspeccionApta() {
         EntityManager em = getEntityManager();
         try {
             TypedQuery<Auto> query = em.createQuery(
-                "SELECT DISTINCT a FROM Auto a WHERE a.inspeccion.estadoInspeccion = 'Apto'", Auto.class
+                    "SELECT DISTINCT a FROM Auto a WHERE a.inspeccion.estadoInspeccion = 'Apto'", Auto.class
             );
             return query.getResultList();
         } finally {
             em.close();
         }
     }
-    
+
     public List<Auto> findAutosConInspeccionCondicional() {
         EntityManager em = getEntityManager();
         try {
             TypedQuery<Auto> query = em.createQuery(
-                "SELECT DISTINCT a FROM Auto a WHERE a.inspeccion.estadoInspeccion = 'Condicional'", Auto.class
+                    "SELECT DISTINCT a FROM Auto a WHERE a.inspeccion.estadoInspeccion = 'Condicional'", Auto.class
             );
             return query.getResultList();
         } finally {
             em.close();
         }
     }
-    
+
     public List<Auto> findAutosConInspeccionRechazado() {
         EntityManager em = getEntityManager();
         try {
             TypedQuery<Auto> query = em.createQuery(
-                "SELECT DISTINCT a FROM Auto a WHERE a.inspeccion.estadoInspeccion = 'Rechazado'", Auto.class
+                    "SELECT DISTINCT a FROM Auto a WHERE a.inspeccion.estadoInspeccion = 'Rechazado'", Auto.class
             );
             return query.getResultList();
         } finally {
             em.close();
         }
-    }  
+    }
 
     public Auto findAuto(int id) {
         EntityManager em = getEntityManager();
@@ -230,5 +230,4 @@ public class AutoJpaController implements Serializable {
         }
     }
 
-    
 }

@@ -14,11 +14,12 @@ import jakarta.persistence.OneToOne;
  */
 @Entity
 public class Observacion {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @OneToOne(cascade= CascadeType.REMOVE)
+    @OneToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "inspeccion_id")
     private Inspeccion inspeccion;
 
@@ -32,7 +33,7 @@ public class Observacion {
 
     public Observacion() {
     }
-    
+
     public Observacion(int id, Inspeccion inspeccion, String luces, String patente, String espejos, String chasis, String vidrios, String seguridad, String emergencia) {
         this.id = id;
         this.inspeccion = inspeccion;
@@ -116,8 +117,5 @@ public class Observacion {
     public void setEmergencia(String emergencia) {
         this.emergencia = emergencia;
     }
-    
-    
-    
 
 }

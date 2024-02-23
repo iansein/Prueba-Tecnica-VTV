@@ -1,4 +1,3 @@
-
 package igu;
 
 import java.util.List;
@@ -14,7 +13,7 @@ import logica.Propietario;
  * @author Ian
  */
 public class ConsultaPropietario extends javax.swing.JFrame {
-    
+
     Controladora control = new Controladora();
 
     public ConsultaPropietario() {
@@ -22,7 +21,7 @@ public class ConsultaPropietario extends javax.swing.JFrame {
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setResizable(false);
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -154,60 +153,55 @@ public class ConsultaPropietario extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void btnEliminarPropietarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarPropietarioActionPerformed
-        if(tablaPropietarios.getRowCount() > 0){
-            if(tablaPropietarios.getSelectedRow() != -1){
-                
+        if (tablaPropietarios.getRowCount() > 0) {
+            if (tablaPropietarios.getSelectedRow() != -1) {
+
                 int idPropietario = Integer.parseInt(String.valueOf(tablaPropietarios.getValueAt(tablaPropietarios.getSelectedRow(), 0)));
                 control.borrarPropietario(idPropietario);
-                
+
                 mostrarMensaje("Se ha eliminado al propietario exitosamente", "Info", "Éxito al eliminar");
-                
+
                 cargarTabla();
-                
-            }
-            else{
+
+            } else {
                 mostrarMensaje("No se ha seleccionado un registro", "Error", "Error al eliminar");
             }
-        }
-        else{
+        } else {
             mostrarMensaje("No se puede eliminar, la tabla esta vacía", "Error", "Error al eliminar");
         }
     }//GEN-LAST:event_btnEliminarPropietarioActionPerformed
 
     private void btnModificarPropietarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarPropietarioActionPerformed
-        
-           if(tablaPropietarios.getRowCount() > 0){
-            if(tablaPropietarios.getSelectedRow() != -1){
+
+        if (tablaPropietarios.getRowCount() > 0) {
+            if (tablaPropietarios.getSelectedRow() != -1) {
                 int idPropietario = Integer.parseInt(String.valueOf(tablaPropietarios.getValueAt(tablaPropietarios.getSelectedRow(), 0)));
-                
+
                 ModificarPropietario modificar = new ModificarPropietario(idPropietario);
                 modificar.setVisible(true);
                 modificar.setLocationRelativeTo(null);
-                
-            }
-            else{
+
+            } else {
                 mostrarMensaje("No se ha seleccionado un registro", "Error", "Error al modificar");
             }
-        }
-        else{
+        } else {
             mostrarMensaje("No se puede modificar, la tabla esta vacía", "Error", "Error al modificar");
         }
-        
+
     }//GEN-LAST:event_btnModificarPropietarioActionPerformed
-    
-    public void mostrarMensaje(String mensaje, String tipo, String titulo){
+
+    public void mostrarMensaje(String mensaje, String tipo, String titulo) {
         JOptionPane optionPane = new JOptionPane(mensaje);
-        if(tipo.equals("Info")){
+        if (tipo.equals("Info")) {
             optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
-        }
-        else if(tipo.equals("Error")){
+        } else if (tipo.equals("Error")) {
             optionPane.setMessageType(JOptionPane.ERROR_MESSAGE);
         }
         JDialog dialog = optionPane.createDialog(titulo);
         dialog.setAlwaysOnTop(true);
         dialog.setVisible(true);
     }
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEliminarPropietario;
     private javax.swing.JButton btnModificarPropietario;
@@ -219,28 +213,27 @@ public class ConsultaPropietario extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void cargarTabla() {
-     DefaultTableModel modeloTabla = new DefaultTableModel(){
-          
-          @Override
-          public boolean isCellEditable(int row, int column){
-              return false;
-          }
-      }; 
-      
-      String titulos[] = {"Id", "Nombre", "Apellido", "DNI", "Telefono"};
-      modeloTabla.setColumnIdentifiers(titulos);
-      
-      List<Propietario> listaPropietarios = control.traerPropietarios();
-      
-      if(listaPropietarios != null){
-          for(Propietario propietario: listaPropietarios){
-              Object[] objeto = {propietario.getId(), propietario.getNombre(), propietario.getApellido(), propietario.getDni(), propietario.getTelefono()};
-              
-              modeloTabla.addRow(objeto);
-          }
-      }
-      
-      
-      tablaPropietarios.setModel(modeloTabla);    
+        DefaultTableModel modeloTabla = new DefaultTableModel() {
+
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+
+        String titulos[] = {"Id", "Nombre", "Apellido", "DNI", "Telefono"};
+        modeloTabla.setColumnIdentifiers(titulos);
+
+        List<Propietario> listaPropietarios = control.traerPropietarios();
+
+        if (listaPropietarios != null) {
+            for (Propietario propietario : listaPropietarios) {
+                Object[] objeto = {propietario.getId(), propietario.getNombre(), propietario.getApellido(), propietario.getDni(), propietario.getTelefono()};
+
+                modeloTabla.addRow(objeto);
+            }
+        }
+
+        tablaPropietarios.setModel(modeloTabla);
     }
 }

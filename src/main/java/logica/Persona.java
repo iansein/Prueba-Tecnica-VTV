@@ -11,7 +11,7 @@ import jakarta.persistence.MappedSuperclass;
  */
 @MappedSuperclass
 public class Persona {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -22,9 +22,8 @@ public class Persona {
 
     public Persona() {
     }
-    
 
-    public Persona(int id,String nombre, String apellido, int dni, int telefono) {
+    public Persona(int id, String nombre, String apellido, int dni, int telefono) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.dni = dni;
@@ -71,6 +70,5 @@ public class Persona {
     public void setId(int id) {
         this.id = id;
     }
-    
-    
+
 }

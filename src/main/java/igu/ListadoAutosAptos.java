@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package igu;
 
 import java.util.List;
@@ -15,39 +11,40 @@ import logica.Controladora;
  * @author Ian
  */
 public class ListadoAutosAptos extends javax.swing.JFrame {
+
     Controladora control = new Controladora();
-    
+
     public ListadoAutosAptos() {
         initComponents();
         setResizable(false);
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
-    
-    private void cargarTabla() {
-        DefaultTableModel modeloTabla = new DefaultTableModel(){
 
-             @Override
-             public boolean isCellEditable(int row, int column){
-                 return false;
-             }
-         }; 
-      
-      String titulos[] = {"Id", "Dominio", "Marca", "Modelo", "Nombre Propietario","Oblea emisión", "Oblea vencimiento"};
-      modeloTabla.setColumnIdentifiers(titulos);
-      
-      List<Auto> listaAutos = control.traerAutosAptos();
-      
-      if(listaAutos != null){
-          for(Auto auto: listaAutos){
-              Object[] objeto = {auto.getId(), auto.getDominio(), auto.getMarca(), auto.getModelo(), auto.getPropietario().getNombre(),
-              auto.getOblea().getFechaEmisionFormateada(), auto.getOblea().getFechaVencimientoFormateada()};
-              modeloTabla.addRow(objeto);
-          }
-      }
-      
-      tablaAptos.setModel(modeloTabla);
-        
-    }    
+    private void cargarTabla() {
+        DefaultTableModel modeloTabla = new DefaultTableModel() {
+
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+
+        String titulos[] = {"Id", "Dominio", "Marca", "Modelo", "Nombre Propietario", "Oblea emisión", "Oblea vencimiento"};
+        modeloTabla.setColumnIdentifiers(titulos);
+
+        List<Auto> listaAutos = control.traerAutosAptos();
+
+        if (listaAutos != null) {
+            for (Auto auto : listaAutos) {
+                Object[] objeto = {auto.getId(), auto.getDominio(), auto.getMarca(), auto.getModelo(), auto.getPropietario().getNombre(),
+                    auto.getOblea().getFechaEmisionFormateada(), auto.getOblea().getFechaVencimientoFormateada()};
+                modeloTabla.addRow(objeto);
+            }
+        }
+
+        tablaAptos.setModel(modeloTabla);
+
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

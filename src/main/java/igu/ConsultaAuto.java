@@ -8,13 +8,12 @@ import javax.swing.table.DefaultTableModel;
 import logica.Auto;
 import logica.Controladora;
 
-
 /**
  *
  * @author Ian
  */
 public class ConsultaAuto extends javax.swing.JFrame {
-    
+
     Controladora control = new Controladora();
 
     public ConsultaAuto() {
@@ -150,8 +149,8 @@ public class ConsultaAuto extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEliminarAutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarAutoActionPerformed
-        if(tablaAutos.getRowCount() > 0){
-            if(tablaAutos.getSelectedRow() != -1){
+        if (tablaAutos.getRowCount() > 0) {
+            if (tablaAutos.getSelectedRow() != -1) {
 
                 int idAuto = Integer.parseInt(String.valueOf(tablaAutos.getValueAt(tablaAutos.getSelectedRow(), 0)));
                 control.borrarAuto(idAuto);
@@ -160,32 +159,28 @@ public class ConsultaAuto extends javax.swing.JFrame {
 
                 cargarTabla();
 
-            }
-            else{
+            } else {
                 mostrarMensaje("No se ha seleccionado un registro", "Error", "Error al eliminar");
             }
-        }
-        else{
+        } else {
             mostrarMensaje("No se puede eliminar, la tabla esta vacía", "Error", "Error al eliminar");
         }
     }//GEN-LAST:event_btnEliminarAutoActionPerformed
 
     private void btnModificarAutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarAutoActionPerformed
 
-        if(tablaAutos.getRowCount() > 0){
-            if(tablaAutos.getSelectedRow() != -1){
+        if (tablaAutos.getRowCount() > 0) {
+            if (tablaAutos.getSelectedRow() != -1) {
                 int idInspector = Integer.parseInt(String.valueOf(tablaAutos.getValueAt(tablaAutos.getSelectedRow(), 0)));
 
                 ModificarAuto modificar = new ModificarAuto(idInspector);
                 modificar.setVisible(true);
                 modificar.setLocationRelativeTo(null);
 
-            }
-            else{
+            } else {
                 mostrarMensaje("No se ha seleccionado un registro", "Error", "Error al modificar");
             }
-        }
-        else{
+        } else {
             mostrarMensaje("No se puede modificar, la tabla esta vacía", "Error", "Error al modificar");
         }
     }//GEN-LAST:event_btnModificarAutoActionPerformed
@@ -194,44 +189,43 @@ public class ConsultaAuto extends javax.swing.JFrame {
         cargarTabla();
     }//GEN-LAST:event_formWindowOpened
 
-    public void mostrarMensaje(String mensaje, String tipo, String titulo){
+    public void mostrarMensaje(String mensaje, String tipo, String titulo) {
         JOptionPane optionPane = new JOptionPane(mensaje);
-        if(tipo.equals("Info")){
+        if (tipo.equals("Info")) {
             optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
-        }
-        else if(tipo.equals("Error")){
+        } else if (tipo.equals("Error")) {
             optionPane.setMessageType(JOptionPane.ERROR_MESSAGE);
         }
         JDialog dialog = optionPane.createDialog(titulo);
         dialog.setAlwaysOnTop(true);
         dialog.setVisible(true);
     }
-    
-    private void cargarTabla() {
-        DefaultTableModel modeloTabla = new DefaultTableModel(){
 
-             @Override
-             public boolean isCellEditable(int row, int column){
-                 return false;
-             }
-         }; 
-      
-      String titulos[] = {"Id", "Dominio", "Marca", "Modelo", "Nombre Propietario"};
-      modeloTabla.setColumnIdentifiers(titulos);
-      
-      List<Auto> listaAutos = control.traerAutos();
-      
-      if(listaAutos != null){
-          for(Auto auto: listaAutos){
-              Object[] objeto = {auto.getId(), auto.getDominio(), auto.getMarca(), auto.getModelo(), auto.getPropietario().getNombre()};
-              modeloTabla.addRow(objeto);
-          }
-      }
-      
-      tablaAutos.setModel(modeloTabla);
-        
-    }    
-    
+    private void cargarTabla() {
+        DefaultTableModel modeloTabla = new DefaultTableModel() {
+
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+
+        String titulos[] = {"Id", "Dominio", "Marca", "Modelo", "Nombre Propietario"};
+        modeloTabla.setColumnIdentifiers(titulos);
+
+        List<Auto> listaAutos = control.traerAutos();
+
+        if (listaAutos != null) {
+            for (Auto auto : listaAutos) {
+                Object[] objeto = {auto.getId(), auto.getDominio(), auto.getMarca(), auto.getModelo(), auto.getPropietario().getNombre()};
+                modeloTabla.addRow(objeto);
+            }
+        }
+
+        tablaAutos.setModel(modeloTabla);
+
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEliminarAuto;
     private javax.swing.JButton btnModificarAuto;

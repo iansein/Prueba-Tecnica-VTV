@@ -1,4 +1,3 @@
-
 package logica;
 
 import jakarta.persistence.CascadeType;
@@ -15,21 +14,22 @@ import jakarta.persistence.OneToOne;
  *
  * @author Ian
  */
-
 @Entity
 public class Auto implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String dominio;
     private String marca;
     private String modelo;
-    @ManyToOne @JoinColumn(name = "propietario_id")
+    @ManyToOne
+    @JoinColumn(name = "propietario_id")
     private Propietario propietario;
-    
+
     @OneToOne(mappedBy = "auto", cascade = {CascadeType.REMOVE})
     private Oblea oblea;
-    
+
     @OneToOne(mappedBy = "autoInspeccionado", cascade = {CascadeType.REMOVE})
     private Inspeccion inspeccion;
 
@@ -61,7 +61,7 @@ public class Auto implements Serializable {
     public void setInspeccion(Inspeccion inspeccion) {
         this.inspeccion = inspeccion;
     }
-    
+
     public String getDominio() {
         return dominio;
     }

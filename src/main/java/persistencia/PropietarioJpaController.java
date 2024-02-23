@@ -23,11 +23,11 @@ public class PropietarioJpaController implements Serializable {
     public PropietarioJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
-    
-    public PropietarioJpaController(){
+
+    public PropietarioJpaController() {
         emf = Persistence.createEntityManagerFactory("vtvPU");
     }
-    
+
     private EntityManagerFactory emf = null;
 
     public EntityManager getEntityManager() {
@@ -187,5 +187,5 @@ public class PropietarioJpaController implements Serializable {
             em.close();
         }
     }
-    
+
 }

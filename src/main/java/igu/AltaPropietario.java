@@ -1,4 +1,3 @@
-
 package igu;
 
 import javax.swing.JDialog;
@@ -12,9 +11,9 @@ import logica.Validador;
  * @author Ian
  */
 public class AltaPropietario extends javax.swing.JFrame {
-    
+
     Controladora control = new Controladora();
-    
+
     public AltaPropietario() {
         initComponents();
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -189,10 +188,10 @@ public class AltaPropietario extends javax.swing.JFrame {
         String dniStr = txtDniPropietario.getText().trim();
         String telefonoStr = txtTelefonoPropietario.getText().trim();
 
-        if (!Validador.esTextoNoVacio(nombre) || 
-            !Validador.esTextoNoVacio(apellido) || 
-            !Validador.esTextoNoVacio(dniStr) || 
-            !Validador.esTextoNoVacio(telefonoStr)) {
+        if (!Validador.esTextoNoVacio(nombre)
+                || !Validador.esTextoNoVacio(apellido)
+                || !Validador.esTextoNoVacio(dniStr)
+                || !Validador.esTextoNoVacio(telefonoStr)) {
             mostrarMensaje("Complete todos los campos.", "Error", "Error al agregar");
             return;
         }
@@ -221,25 +220,25 @@ public class AltaPropietario extends javax.swing.JFrame {
     private void btnLimpiarPropietarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarPropietarioActionPerformed
         limpiarCampos();
     }//GEN-LAST:event_btnLimpiarPropietarioActionPerformed
-    
-    public void limpiarCampos(){
+
+    public void limpiarCampos() {
         txtNombrePropietario.setText("");
         txtApellidoPropietario.setText("");
         txtDniPropietario.setText("");
         txtTelefonoPropietario.setText("");
     }
-    public void mostrarMensaje(String mensaje, String tipo, String titulo){
+
+    public void mostrarMensaje(String mensaje, String tipo, String titulo) {
         JOptionPane optionPane = new JOptionPane(mensaje);
-        if(tipo.equals("Info")){
+        if (tipo.equals("Info")) {
             optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
-        }
-        else if(tipo.equals("Error")){
-                optionPane.setMessageType(JOptionPane.ERROR_MESSAGE);
+        } else if (tipo.equals("Error")) {
+            optionPane.setMessageType(JOptionPane.ERROR_MESSAGE);
         }
         JDialog dialog = optionPane.createDialog(titulo);
         dialog.setAlwaysOnTop(true);
         dialog.setVisible(true);
-    }    
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregarPropietario;

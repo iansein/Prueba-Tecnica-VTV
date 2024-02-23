@@ -13,39 +13,38 @@ import logica.Inspeccion;
 public class ListadoInspecciones extends javax.swing.JFrame {
 
     Controladora control = new Controladora();
-    
+
     public ListadoInspecciones() {
         initComponents();
-         setResizable(false);
+        setResizable(false);
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
-    
+
     private void cargarTabla() {
-        DefaultTableModel modeloTabla = new DefaultTableModel(){
+        DefaultTableModel modeloTabla = new DefaultTableModel() {
 
-             @Override
-             public boolean isCellEditable(int row, int column){
-                 return false;
-             }
-         }; 
-      
-      String titulos[] = {"Id", "Estado", "Fecha", "Nro", "Exento", "Dominio", "Marca", "Modelo", "Nro Inspector a Cargo"};
-      modeloTabla.setColumnIdentifiers(titulos);
-      
-      List<Inspeccion> listaInspecciones = control.traerInspecciones();
-      
-      if(listaInspecciones != null){
-          for(Inspeccion inspeccion: listaInspecciones){
-              Object[] objeto = {inspeccion.getId(), inspeccion.getEstadoInspeccion(), inspeccion.getFechaInspeccionFormateada(),
-              inspeccion.getNumeroInspeccion(), inspeccion.isExento(),inspeccion.getAutoInspeccionado().getDominio(), inspeccion.getAutoInspeccionado().getMarca(),
-              inspeccion.getAutoInspeccionado().getModelo(), inspeccion.getInspector().getNroInspector()};
-              modeloTabla.addRow(objeto);
-          }
-      }
-      
-      tablaInspecciones.setModel(modeloTabla);
-    }  
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
 
+        String titulos[] = {"Id", "Estado", "Fecha", "Nro", "Exento", "Dominio", "Marca", "Modelo", "Nro Inspector a Cargo"};
+        modeloTabla.setColumnIdentifiers(titulos);
+
+        List<Inspeccion> listaInspecciones = control.traerInspecciones();
+
+        if (listaInspecciones != null) {
+            for (Inspeccion inspeccion : listaInspecciones) {
+                Object[] objeto = {inspeccion.getId(), inspeccion.getEstadoInspeccion(), inspeccion.getFechaInspeccionFormateada(),
+                    inspeccion.getNumeroInspeccion(), inspeccion.isExento(), inspeccion.getAutoInspeccionado().getDominio(), inspeccion.getAutoInspeccionado().getMarca(),
+                    inspeccion.getAutoInspeccionado().getModelo(), inspeccion.getInspector().getNroInspector()};
+                modeloTabla.addRow(objeto);
+            }
+        }
+
+        tablaInspecciones.setModel(modeloTabla);
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

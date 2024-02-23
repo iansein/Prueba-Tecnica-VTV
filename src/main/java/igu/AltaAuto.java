@@ -14,8 +14,9 @@ import logica.Propietario;
  * @author Ian
  */
 public class AltaAuto extends javax.swing.JFrame {
+
     Controladora control = new Controladora();
-    
+
     public AltaAuto() {
         initComponents();
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -235,11 +236,11 @@ public class AltaAuto extends javax.swing.JFrame {
         String modelo = txtModelo.getText();
 
         int filaSeleccionada = tablaPropietarios.getSelectedRow();
-      
+
         if (filaSeleccionada == -1) {
-        
-        mostrarMensaje("Debes seleccionar un propietario de la tabla.", "Error", "Error");
-        return;
+
+            mostrarMensaje("Debes seleccionar un propietario de la tabla.", "Error", "Error");
+            return;
         }
 
         if (dominio.isEmpty() || marca.isEmpty() || modelo.isEmpty()) {
@@ -247,11 +248,11 @@ public class AltaAuto extends javax.swing.JFrame {
             mostrarMensaje("Complete todos los campos.", "Error", "Error");
             return;
         }
-      
+
         if (filaSeleccionada != -1) {
             int idPropietario = (int) tablaPropietarios.getValueAt(filaSeleccionada, 0);
             Propietario propietarioSeleccionado = control.traerPropietario(idPropietario);
-            control.agregarAuto(dominio,marca,modelo,propietarioSeleccionado);      
+            control.agregarAuto(dominio, marca, modelo, propietarioSeleccionado);
             mostrarMensaje("Se agregó el auto exitosamente", "Info", "Éxito al agregar");
             limpiarCampos();
         }
@@ -265,45 +266,44 @@ public class AltaAuto extends javax.swing.JFrame {
         limpiarCampos();
     }//GEN-LAST:event_btnLimpiarAutoActionPerformed
     private void cargarTabla() {
-        DefaultTableModel modeloTabla = new DefaultTableModel(){
+        DefaultTableModel modeloTabla = new DefaultTableModel() {
 
-             @Override
-             public boolean isCellEditable(int row, int column){
-                 return false;
-             }
-         }; 
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
 
-         String titulos[] = {"Id", "Nombre", "Apellido", "DNI", "Telefono"};
-         modeloTabla.setColumnIdentifiers(titulos);
-         tablaPropietarios.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-         
-         List<Propietario> listaPropietarios = control.traerPropietarios();
+        String titulos[] = {"Id", "Nombre", "Apellido", "DNI", "Telefono"};
+        modeloTabla.setColumnIdentifiers(titulos);
+        tablaPropietarios.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
-         if(listaPropietarios != null){
-             for(Propietario propietario: listaPropietarios){
-                 Object[] objeto = {propietario.getId(), propietario.getNombre(), propietario.getApellido(), propietario.getDni(), propietario.getTelefono()};
+        List<Propietario> listaPropietarios = control.traerPropietarios();
 
-                 modeloTabla.addRow(objeto);
-             }
-         }
-         
-         tablaPropietarios.setModel(modeloTabla);      
-    }  
-    
-    public void mostrarMensaje(String mensaje, String tipo, String titulo){
-        JOptionPane optionPane = new JOptionPane(mensaje);
-        if(tipo.equals("Info")){
-            optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
+        if (listaPropietarios != null) {
+            for (Propietario propietario : listaPropietarios) {
+                Object[] objeto = {propietario.getId(), propietario.getNombre(), propietario.getApellido(), propietario.getDni(), propietario.getTelefono()};
+
+                modeloTabla.addRow(objeto);
+            }
         }
-        else if(tipo.equals("Error")){
-                optionPane.setMessageType(JOptionPane.ERROR_MESSAGE);
+
+        tablaPropietarios.setModel(modeloTabla);
+    }
+
+    public void mostrarMensaje(String mensaje, String tipo, String titulo) {
+        JOptionPane optionPane = new JOptionPane(mensaje);
+        if (tipo.equals("Info")) {
+            optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
+        } else if (tipo.equals("Error")) {
+            optionPane.setMessageType(JOptionPane.ERROR_MESSAGE);
         }
         JDialog dialog = optionPane.createDialog(titulo);
         dialog.setAlwaysOnTop(true);
         dialog.setVisible(true);
     }
-    
-    public void limpiarCampos(){
+
+    public void limpiarCampos() {
         txtDominio.setText("");
         txtMarca.setText("");
         txtModelo.setText("");
