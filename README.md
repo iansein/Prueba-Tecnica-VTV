@@ -21,5 +21,6 @@
 ![image](https://github.com/iansein/Prueba-Tecnica-VTV/assets/78178685/5d9e343e-abc9-4dea-abd6-f3d0bc793feb)
 
 Luego se deberá ejecutar el archivo main:
-![image](https://github.com/iansein/Prueba-Tecnica-VTV/assets/78178685/c56a794c-3da7-4719-97a1-800cff02b6f3)
+![image](https://github.com/iansein/Prueba-Tecnica-VTV/assets/78178685/5cd73d08-0ad0-4d2c-85f5-082d0f5a5f61)
+
 
