@@ -13,36 +13,36 @@ import logica.Controladora;
 public class ListadoAutosCondicionales extends javax.swing.JFrame {
 
     Controladora control = new Controladora();
+
     public ListadoAutosCondicionales() {
         initComponents();
         setResizable(false);
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
-    
+
     private void cargarTabla() {
-        DefaultTableModel modeloTabla = new DefaultTableModel(){
+        DefaultTableModel modeloTabla = new DefaultTableModel() {
 
-             @Override
-             public boolean isCellEditable(int row, int column){
-                 return false;
-             }
-         }; 
-      
-      String titulos[] = {"Id", "Dominio", "Marca", "Modelo", "Nombre Propietario"};
-      modeloTabla.setColumnIdentifiers(titulos);
-      
-      List<Auto> listaAutos = control.traerAutosCondicionales();
-      
-      if(listaAutos != null){
-          for(Auto auto: listaAutos){
-              Object[] objeto = {auto.getId(), auto.getDominio(), auto.getMarca(), auto.getModelo(), auto.getPropietario().getNombre()};
-              modeloTabla.addRow(objeto);
-          }
-      }
-      
-      tablaCondicionales.setModel(modeloTabla);
-    }  
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
 
+        String titulos[] = {"Id", "Dominio", "Marca", "Modelo", "Nombre Propietario"};
+        modeloTabla.setColumnIdentifiers(titulos);
+
+        List<Auto> listaAutos = control.traerAutosCondicionales();
+
+        if (listaAutos != null) {
+            for (Auto auto : listaAutos) {
+                Object[] objeto = {auto.getId(), auto.getDominio(), auto.getMarca(), auto.getModelo(), auto.getPropietario().getNombre()};
+                modeloTabla.addRow(objeto);
+            }
+        }
+
+        tablaCondicionales.setModel(modeloTabla);
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -140,7 +140,6 @@ public class ListadoAutosCondicionales extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         cargarTabla();
     }//GEN-LAST:event_formWindowOpened
-
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

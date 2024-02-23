@@ -10,6 +10,7 @@ import java.util.Date;
  * @author Ian
  */
 public class Validador {
+
     public static boolean esTextoNoVacio(String texto) {
         return texto != null && !texto.trim().isEmpty();
     }
@@ -17,18 +18,17 @@ public class Validador {
     public static boolean esNumero(String numero) {
         return numero != null && numero.matches("\\d+");
     }
-    
+
     public static Date formatearFecha(String fechaTexto) throws ParseException {
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
         sdf.setLenient(false);
         return sdf.parse(fechaTexto);
     }
-    
+
     public static String formatearFecha(Date fecha) {
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
         return sdf.format(fecha);
     }
-    
 
     private static Date sumarUnAnio(Date fecha) {
         Calendar calendar = Calendar.getInstance();
@@ -38,9 +38,8 @@ public class Validador {
     }
 
     public static Date formatearFechaVencimiento(Date fecha) {
-        // Sumar un año a la fecha
         Date fechaVencimiento = sumarUnAnio(fecha);
         return fechaVencimiento;
     }
-    
+
 }

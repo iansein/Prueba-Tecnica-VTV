@@ -1,4 +1,3 @@
-
 package igu;
 
 import java.util.List;
@@ -9,7 +8,6 @@ import javax.swing.table.DefaultTableModel;
 import logica.Controladora;
 import logica.Inspector;
 
-
 /**
  *
  * @author Ian
@@ -17,7 +15,7 @@ import logica.Inspector;
 public class ConsultaInspector extends javax.swing.JFrame {
 
     Controladora control = new Controladora();
-    
+
     public ConsultaInspector() {
         initComponents();
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -151,8 +149,8 @@ public class ConsultaInspector extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEliminarInspectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarInspectorActionPerformed
-        if(tablaInspectores.getRowCount() > 0){
-            if(tablaInspectores.getSelectedRow() != -1){
+        if (tablaInspectores.getRowCount() > 0) {
+            if (tablaInspectores.getSelectedRow() != -1) {
 
                 int idInspector = Integer.parseInt(String.valueOf(tablaInspectores.getValueAt(tablaInspectores.getSelectedRow(), 0)));
                 control.borrarInspector(idInspector);
@@ -161,32 +159,28 @@ public class ConsultaInspector extends javax.swing.JFrame {
 
                 cargarTabla();
 
-            }
-            else{
+            } else {
                 mostrarMensaje("No se ha seleccionado un registro", "Error", "Error al eliminar");
             }
-        }
-        else{
+        } else {
             mostrarMensaje("No se puede eliminar, la tabla esta vacía", "Error", "Error al eliminar");
         }
     }//GEN-LAST:event_btnEliminarInspectorActionPerformed
 
     private void btnModificarInspectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarInspectorActionPerformed
 
-        if(tablaInspectores.getRowCount() > 0){
-            if(tablaInspectores.getSelectedRow() != -1){
+        if (tablaInspectores.getRowCount() > 0) {
+            if (tablaInspectores.getSelectedRow() != -1) {
                 int idInspector = Integer.parseInt(String.valueOf(tablaInspectores.getValueAt(tablaInspectores.getSelectedRow(), 0)));
 
                 ModificarInspector modificar = new ModificarInspector(idInspector);
                 modificar.setVisible(true);
                 modificar.setLocationRelativeTo(null);
 
-            }
-            else{
+            } else {
                 mostrarMensaje("No se ha seleccionado un registro", "ERROR", "Error al modificar");
             }
-        }
-        else{
+        } else {
             mostrarMensaje("No se puede modificar, la tabla esta vacía", "ERROR", "Error al modificar");
         }
 
@@ -195,45 +189,43 @@ public class ConsultaInspector extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         cargarTabla();
     }//GEN-LAST:event_formWindowOpened
-    public void mostrarMensaje(String mensaje, String tipo, String titulo){
+    public void mostrarMensaje(String mensaje, String tipo, String titulo) {
         JOptionPane optionPane = new JOptionPane(mensaje);
-        if(tipo.equals("Info")){
+        if (tipo.equals("Info")) {
             optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
-        }
-        else if(tipo.equals("Error")){
+        } else if (tipo.equals("Error")) {
             optionPane.setMessageType(JOptionPane.ERROR_MESSAGE);
         }
         JDialog dialog = optionPane.createDialog(titulo);
         dialog.setAlwaysOnTop(true);
         dialog.setVisible(true);
     }
-    
-    private void cargarTabla() {
-        DefaultTableModel modeloTabla = new DefaultTableModel(){
 
-             @Override
-             public boolean isCellEditable(int row, int column){
-                 return false;
-             }
-         }; 
-      
-      String titulos[] = {"Id", "Nombre", "Apellido", "DNI", "Nro Inspector", "Telefono"};
-      modeloTabla.setColumnIdentifiers(titulos);
-      
-      List<Inspector> listaInspectores = control.traerInspectores();
-      
-      if(listaInspectores != null){
-          for(Inspector inspector: listaInspectores){
-              Object[] objeto = {inspector.getId(), inspector.getNombre(), inspector.getApellido(), 
-                  inspector.getDni(), inspector.getTelefono(), inspector.getNroInspector()};
-              
-              modeloTabla.addRow(objeto);
-          }
-      }
-      
-      
-      tablaInspectores.setModel(modeloTabla);
-        
+    private void cargarTabla() {
+        DefaultTableModel modeloTabla = new DefaultTableModel() {
+
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+
+        String titulos[] = {"Id", "Nombre", "Apellido", "DNI", "Nro Inspector", "Telefono"};
+        modeloTabla.setColumnIdentifiers(titulos);
+
+        List<Inspector> listaInspectores = control.traerInspectores();
+
+        if (listaInspectores != null) {
+            for (Inspector inspector : listaInspectores) {
+                Object[] objeto = {inspector.getId(), inspector.getNombre(), inspector.getApellido(),
+                    inspector.getDni(), inspector.getTelefono(), inspector.getNroInspector()};
+
+                modeloTabla.addRow(objeto);
+            }
+        }
+
+        tablaInspectores.setModel(modeloTabla);
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -245,6 +237,5 @@ public class ConsultaInspector extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tablaInspectores;
     // End of variables declaration//GEN-END:variables
-    
 
 }

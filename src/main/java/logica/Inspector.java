@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package logica;
 
 import jakarta.persistence.CascadeType;
@@ -18,7 +14,7 @@ import jakarta.persistence.OneToOne;
  */
 @Entity
 public class Inspector extends Persona implements Serializable {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -28,7 +24,7 @@ public class Inspector extends Persona implements Serializable {
 
     public Inspector() {
     }
-    
+
     public Inspector(int id, String nombre, String apellido, int telefono, int dni, int nroInspector, Inspeccion inspeccion) {
         super(id, nombre, apellido, dni, telefono);
         this.nroInspector = nroInspector;
@@ -59,7 +55,4 @@ public class Inspector extends Persona implements Serializable {
         this.inspeccion = inspeccion;
     }
 
-    
-    
-    
 }

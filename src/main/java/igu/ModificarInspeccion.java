@@ -22,18 +22,18 @@ import logica.Validador;
  * @author Ian
  */
 public class ModificarInspeccion extends javax.swing.JFrame {
+
     Controladora control = new Controladora();
     Auto autoSeleccionado;
     Inspector inspectorSeleccionado;
     Inspeccion inspeccion = new Inspeccion();
-    
+
     public ModificarInspeccion(int idInspeccion) {
         initComponents();
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         cargarDatos(idInspeccion);
         setResizable(false);
     }
-
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -516,45 +516,40 @@ public class ModificarInspeccion extends javax.swing.JFrame {
             return;
         }
 
-        if(tablaInspectores.getRowCount() > 0){
-            if(tablaInspectores.getSelectedRow() != -1){
+        if (tablaInspectores.getRowCount() > 0) {
+            if (tablaInspectores.getSelectedRow() != -1) {
 
                 int idInspector = Integer.parseInt(String.valueOf(tablaInspectores.getValueAt(tablaInspectores.getSelectedRow(), 0)));
                 inspectorSeleccionado = control.traerInspector(idInspector);
-            }
-            else{
+            } else {
                 mostrarMensaje("No se ha seleccionado al inspector a cargo", "Error", "Error al modificar");
                 return;
             }
-        }
-        else{
+        } else {
             mostrarMensaje("No se puede modificar, la tabla esta de Inspectores esta vacía", "Error", "Error al modificar");
             return;
         }
 
-        if(tablaAutos.getRowCount() > 0){
-            if(tablaAutos.getSelectedRow() != -1){
+        if (tablaAutos.getRowCount() > 0) {
+            if (tablaAutos.getSelectedRow() != -1) {
 
                 int idAuto = Integer.parseInt(String.valueOf(tablaAutos.getValueAt(tablaAutos.getSelectedRow(), 0)));
                 autoSeleccionado = control.traerAuto(idAuto);
-            }
-            else{
+            } else {
                 mostrarMensaje("No se ha seleccionado al auto inspeccionado", "Error", "Error al modificar");
                 return;
             }
-        }
-        else{
+        } else {
             mostrarMensaje("No se puede modificar, la tabla esta de Autos esta vacía", "Error", "Error al modificar");
             return;
         }
 
         try {
             Date fechaParseada;
-            try{
+            try {
                 fechaParseada = Validador.formatearFecha(fecha);
                 System.out.println("Fecha obtenida: " + fecha);
-            }
-            catch(ParseException ex){
+            } catch (ParseException ex) {
                 mostrarMensaje("Fecha inválida", "Error", "Error al modificar");
                 return;
             }
@@ -571,9 +566,8 @@ public class ModificarInspeccion extends javax.swing.JFrame {
             inspeccion.setEstadoInspeccion(estado);
             inspeccion.setAutoInspeccionado(autoSeleccionado);
             inspeccion.setInspector(inspectorSeleccionado);
-            
-            
-            if(estado.equals("Apto")){
+
+            if (estado.equals("Apto")) {
                 Date fechaVencimiento = Validador.formatearFechaVencimiento(fechaParseada);
                 Oblea oblea = new Oblea();
                 oblea.setFechaEmision(fechaParseada);
@@ -581,9 +575,8 @@ public class ModificarInspeccion extends javax.swing.JFrame {
                 oblea.setAuto(autoSeleccionado);
                 autoSeleccionado.setOblea(oblea);
                 control.modificarAuto(autoSeleccionado);
-            }
-            else{
-                if(autoSeleccionado.getOblea() != null){
+            } else {
+                if (autoSeleccionado.getOblea() != null) {
                     control.borrarOblea(autoSeleccionado.getOblea().getId());
                 }
             }
@@ -596,17 +589,17 @@ public class ModificarInspeccion extends javax.swing.JFrame {
             control.modificarObservacion(observacion);
 
             mostrarMensaje("Se modificó la inspección exitosamente", "Info", "Éxito al modificar");
-            
+
             ConsultaInspeccion consulInspeccion = new ConsultaInspeccion();
             consulInspeccion.setVisible(true);
             consulInspeccion.setLocationRelativeTo(null);
             this.dispose();
-            
+
         } catch (Exception ex) {
             mostrarMensaje("Hubo un error al modificar", "Error", "Error al modificar");
         }
     }//GEN-LAST:event_btnAgregarInspeccionActionPerformed
-    
+
     private boolean validarCampos(String fecha, String nroInspeccionTxt) {
         if (!Validador.esTextoNoVacio(fecha) || !Validador.esTextoNoVacio(nroInspeccionTxt)) {
             mostrarMensaje("Complete todos los campos.", "Error", "Error al Modificar");
@@ -620,7 +613,7 @@ public class ModificarInspeccion extends javax.swing.JFrame {
 
         return true;
     }
-    
+
     private Observacion crearObservacion() {
         String observacionEstadoChasis = (String) cbChasis.getSelectedItem();
         String observacionEstadoPatente = (String) cbPatente.getSelectedItem();
@@ -656,7 +649,7 @@ public class ModificarInspeccion extends javax.swing.JFrame {
         medicion.setDireccion(medicionEstadoDireccion);
         medicion.setSistemaDeFrenos(medicionEstadoSistemaDeFrenos);
         medicion.setContaminacionAmbiental(medicionEstadoContaminacion);
-        
+
         medicion.setInspeccion(inspeccion);
 
         return medicion;
@@ -666,7 +659,7 @@ public class ModificarInspeccion extends javax.swing.JFrame {
         String exento = (String) cbExento.getSelectedItem();
         return exento.equals("Si");
     }
-    
+
     public String determinarEstadoVehiculo() {
         String medicionEstadoTrenDelantero = (String) cbTrenDelantero.getSelectedItem();
         String medicionEstadoSuspension = (String) cbSuspension.getSelectedItem();
@@ -679,7 +672,6 @@ public class ModificarInspeccion extends javax.swing.JFrame {
         String observacionEstadoVidrios = (String) cbVidrios.getSelectedItem();
         String observacionEstadoSeguridad = (String) cbSeguridad.getSelectedItem();
         String observacionEstadoEmergencia = (String) cbEmergencia.getSelectedItem();
-    
 
         boolean hayObservacionRechazada = Stream.of(observacionEstadoPatente, observacionEstadoLuces, observacionEstadoEspejos,
                 observacionEstadoVidrios, observacionEstadoSeguridad, observacionEstadoEmergencia)
@@ -706,72 +698,71 @@ public class ModificarInspeccion extends javax.swing.JFrame {
         }
 
         return "Apto";
-   }    
-    public void mostrarMensaje(String mensaje, String tipo, String titulo){
+    }
+
+    public void mostrarMensaje(String mensaje, String tipo, String titulo) {
         JOptionPane optionPane = new JOptionPane(mensaje);
-        if(tipo.equals("Info")){
+        if (tipo.equals("Info")) {
             optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
-        }
-        else if(tipo.equals("Error")){
+        } else if (tipo.equals("Error")) {
             optionPane.setMessageType(JOptionPane.ERROR_MESSAGE);
         }
         JDialog dialog = optionPane.createDialog(titulo);
         dialog.setAlwaysOnTop(true);
         dialog.setVisible(true);
     }
-    
+
     private void cargarTablaInspectores() {
-        DefaultTableModel modeloTabla = new DefaultTableModel(){
+        DefaultTableModel modeloTabla = new DefaultTableModel() {
 
-             @Override
-             public boolean isCellEditable(int row, int column){
-                 return false;
-             }
-         }; 
-      
-      String titulos[] = {"Id", "Nombre", "Apellido", "DNI", "Nro Inspector", "Telefono"};
-      modeloTabla.setColumnIdentifiers(titulos);
-      
-      List<Inspector> listaInspectores = control.traerInspectores();
-      
-      if(listaInspectores != null){
-          for(Inspector inspector: listaInspectores){
-              Object[] objeto = {inspector.getId(), inspector.getNombre(), inspector.getApellido(), 
-                  inspector.getDni(), inspector.getTelefono(), inspector.getNroInspector()};
-              
-              modeloTabla.addRow(objeto);
-          }
-      }
-      
-      
-      tablaInspectores.setModel(modeloTabla);
-        
-    }    
-    
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+
+        String titulos[] = {"Id", "Nombre", "Apellido", "DNI", "Nro Inspector", "Telefono"};
+        modeloTabla.setColumnIdentifiers(titulos);
+
+        List<Inspector> listaInspectores = control.traerInspectores();
+
+        if (listaInspectores != null) {
+            for (Inspector inspector : listaInspectores) {
+                Object[] objeto = {inspector.getId(), inspector.getNombre(), inspector.getApellido(),
+                    inspector.getDni(), inspector.getTelefono(), inspector.getNroInspector()};
+
+                modeloTabla.addRow(objeto);
+            }
+        }
+
+        tablaInspectores.setModel(modeloTabla);
+
+    }
+
     private void cargarTablaAutos() {
-        DefaultTableModel modeloTabla = new DefaultTableModel(){
+        DefaultTableModel modeloTabla = new DefaultTableModel() {
 
-             @Override
-             public boolean isCellEditable(int row, int column){
-                 return false;
-             }
-         }; 
-      
-      String titulos[] = {"Id", "Dominio", "Marca", "Modelo", "Nombre Propietario"};
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+
+        String titulos[] = {"Id", "Dominio", "Marca", "Modelo", "Nombre Propietario"};
         modeloTabla.setColumnIdentifiers(titulos);
 
         List<Auto> listaAutos = control.traerAutos();
 
-        if(listaAutos != null){
-            for(Auto auto: listaAutos){
+        if (listaAutos != null) {
+            for (Auto auto : listaAutos) {
                 Object[] objeto = {auto.getId(), auto.getDominio(), auto.getMarca(), auto.getModelo(), auto.getPropietario().getNombre()};
                 modeloTabla.addRow(objeto);
             }
         }
 
-        tablaAutos.setModel(modeloTabla);        
-    }    
-        
+        tablaAutos.setModel(modeloTabla);
+    }
+
     private void btnLimpiarInspeccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarInspeccionActionPerformed
         txtNroInspeccion.setText("");
         txtFecha.setText("dd/MM/yyyy");
@@ -793,29 +784,29 @@ public class ModificarInspeccion extends javax.swing.JFrame {
         cargarTablaAutos();
         cargarTablaInspectores();
     }//GEN-LAST:event_formWindowOpened
-      
+
     private void cargarDatos(int idInspeccion) {
-    inspeccion = control.traerInspeccion(idInspeccion);
-    
-    if (inspeccion != null && inspeccion.getObservacion() != null) {
-        txtFecha.setText(inspeccion.getFechaInspeccionFormateada());
-        txtNroInspeccion.setText(String.valueOf(inspeccion.getNumeroInspeccion())); 
-        System.out.println(inspeccion.getObservacion().getPatente());
-        cbChasis.setSelectedItem(inspeccion.getObservacion().getChasis());
-        cbEmergencia.setSelectedItem(inspeccion.getObservacion().getEmergencia());
-        cbEspejos.setSelectedItem(inspeccion.getObservacion().getEspejos());
-        cbLuces.setSelectedItem(inspeccion.getObservacion().getLuces());
-        cbPatente.setSelectedItem(inspeccion.getObservacion().getPatente());
-        cbSeguridad.setSelectedItem(inspeccion.getObservacion().getSeguridad());
-        cbVidrios.setSelectedItem(inspeccion.getObservacion().getVidrios());
-        
-        cbContaminacionAmbiental.setSelectedItem(inspeccion.getMedicion().getContaminacionAmbiental());
-        cbDireccion.setSelectedItem(inspeccion.getMedicion().getDireccion());
-        cbSistemaDeFrenos.setSelectedItem(inspeccion.getMedicion().getSistemaDeFrenos());
-        cbSuspension.setSelectedItem(inspeccion.getMedicion().getSuspension());
-        cbTrenDelantero.setSelectedItem(inspeccion.getMedicion().getTrenDelantero());
+        inspeccion = control.traerInspeccion(idInspeccion);
+
+        if (inspeccion != null && inspeccion.getObservacion() != null) {
+            txtFecha.setText(inspeccion.getFechaInspeccionFormateada());
+            txtNroInspeccion.setText(String.valueOf(inspeccion.getNumeroInspeccion()));
+            System.out.println(inspeccion.getObservacion().getPatente());
+            cbChasis.setSelectedItem(inspeccion.getObservacion().getChasis());
+            cbEmergencia.setSelectedItem(inspeccion.getObservacion().getEmergencia());
+            cbEspejos.setSelectedItem(inspeccion.getObservacion().getEspejos());
+            cbLuces.setSelectedItem(inspeccion.getObservacion().getLuces());
+            cbPatente.setSelectedItem(inspeccion.getObservacion().getPatente());
+            cbSeguridad.setSelectedItem(inspeccion.getObservacion().getSeguridad());
+            cbVidrios.setSelectedItem(inspeccion.getObservacion().getVidrios());
+
+            cbContaminacionAmbiental.setSelectedItem(inspeccion.getMedicion().getContaminacionAmbiental());
+            cbDireccion.setSelectedItem(inspeccion.getMedicion().getDireccion());
+            cbSistemaDeFrenos.setSelectedItem(inspeccion.getMedicion().getSistemaDeFrenos());
+            cbSuspension.setSelectedItem(inspeccion.getMedicion().getSuspension());
+            cbTrenDelantero.setSelectedItem(inspeccion.getMedicion().getTrenDelantero());
+        }
     }
-}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregarInspeccion;

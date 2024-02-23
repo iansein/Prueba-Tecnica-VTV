@@ -14,8 +14,9 @@ import logica.Inspeccion;
  * @author Ian
  */
 public class ConsultaInspeccion extends javax.swing.JFrame {
+
     Controladora control = new Controladora();
-    
+
     public ConsultaInspeccion() {
         initComponents();
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -149,8 +150,8 @@ public class ConsultaInspeccion extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEliminarInspeccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarInspeccionActionPerformed
-        if(tablaInspecciones.getRowCount() > 0){
-            if(tablaInspecciones.getSelectedRow() != -1){
+        if (tablaInspecciones.getRowCount() > 0) {
+            if (tablaInspecciones.getSelectedRow() != -1) {
 
                 int idInspeccion = Integer.parseInt(String.valueOf(tablaInspecciones.getValueAt(tablaInspecciones.getSelectedRow(), 0)));
                 control.borrarInspeccion(idInspeccion);
@@ -158,31 +159,27 @@ public class ConsultaInspeccion extends javax.swing.JFrame {
                 mostrarMensaje("Se ha eliminado la inspección exitosamente", "Info", "Éxito al eliminar");
 
                 cargarTabla();
-            }
-            else{
+            } else {
                 mostrarMensaje("No se ha seleccionado un registro", "Error", "Error al eliminar");
             }
-        }
-        else{
+        } else {
             mostrarMensaje("No se puede eliminar, la tabla esta vacía", "Error", "Error al eliminar");
         }
     }//GEN-LAST:event_btnEliminarInspeccionActionPerformed
 
     private void btnModificarInspeccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarInspeccionActionPerformed
 
-        if(tablaInspecciones.getRowCount() > 0){
-            if(tablaInspecciones.getSelectedRow() != -1){
+        if (tablaInspecciones.getRowCount() > 0) {
+            if (tablaInspecciones.getSelectedRow() != -1) {
                 int idInspeccion = Integer.parseInt(String.valueOf(tablaInspecciones.getValueAt(tablaInspecciones.getSelectedRow(), 0)));
 
                 ModificarInspeccion modificar = new ModificarInspeccion(idInspeccion);
                 modificar.setVisible(true);
                 modificar.setLocationRelativeTo(null);
-            }
-            else{
+            } else {
                 mostrarMensaje("No se ha seleccionado un registro", "Error", "Error al modificar");
             }
-        }
-        else{
+        } else {
             mostrarMensaje("No se puede modificar, la tabla esta vacía", "Error", "Error al modificar");
         }
     }//GEN-LAST:event_btnModificarInspeccionActionPerformed
@@ -191,46 +188,45 @@ public class ConsultaInspeccion extends javax.swing.JFrame {
         cargarTabla();
     }//GEN-LAST:event_formWindowOpened
     private void cargarTabla() {
-        DefaultTableModel modeloTabla = new DefaultTableModel(){
+        DefaultTableModel modeloTabla = new DefaultTableModel() {
 
-             @Override
-             public boolean isCellEditable(int row, int column){
-                 return false;
-             }
-         }; 
-      
-      String titulos[] = {"Id", "Nro Inspección", "Fecha", "Estado", "Exento", "Inspector a cargo", "Dominio auto"};
-      modeloTabla.setColumnIdentifiers(titulos);
-      
-      List<Inspeccion> listaInspecciones = control.traerInspecciones();
-     
-        if(listaInspecciones != null){
-          for(Inspeccion inspeccion: listaInspecciones){
-              System.out.println(inspeccion.getId());
-              Auto autoInspeccionado = inspeccion.getAutoInspeccionado();
-              String dominio = (autoInspeccionado != null) ? autoInspeccionado.getDominio() : "N/A";
-              Object[] objeto = {
-                  inspeccion.getId(),
-                  inspeccion.getNumeroInspeccion(),
-                  inspeccion.getFechaInspeccionFormateada(),
-                  inspeccion.getEstadoInspeccion(),
-                  inspeccion.isExento(),
-                  inspeccion.getInspector().getNroInspector(),
-                  dominio
-              };
-              System.out.println();
-              modeloTabla.addRow(objeto);
-          }
-       }
-       tablaInspecciones.setModel(modeloTabla);
-    }    
-    
-    public void mostrarMensaje(String mensaje, String tipo, String titulo){
-        JOptionPane optionPane = new JOptionPane(mensaje);
-        if(tipo.equals("Info")){
-            optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+
+        String titulos[] = {"Id", "Nro Inspección", "Fecha", "Estado", "Exento", "Inspector a cargo", "Dominio auto"};
+        modeloTabla.setColumnIdentifiers(titulos);
+
+        List<Inspeccion> listaInspecciones = control.traerInspecciones();
+
+        if (listaInspecciones != null) {
+            for (Inspeccion inspeccion : listaInspecciones) {
+                System.out.println(inspeccion.getId());
+                Auto autoInspeccionado = inspeccion.getAutoInspeccionado();
+                String dominio = (autoInspeccionado != null) ? autoInspeccionado.getDominio() : "N/A";
+                Object[] objeto = {
+                    inspeccion.getId(),
+                    inspeccion.getNumeroInspeccion(),
+                    inspeccion.getFechaInspeccionFormateada(),
+                    inspeccion.getEstadoInspeccion(),
+                    inspeccion.isExento(),
+                    inspeccion.getInspector().getNroInspector(),
+                    dominio
+                };
+                System.out.println();
+                modeloTabla.addRow(objeto);
+            }
         }
-        else if(tipo.equals("Error")){
+        tablaInspecciones.setModel(modeloTabla);
+    }
+
+    public void mostrarMensaje(String mensaje, String tipo, String titulo) {
+        JOptionPane optionPane = new JOptionPane(mensaje);
+        if (tipo.equals("Info")) {
+            optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
+        } else if (tipo.equals("Error")) {
             optionPane.setMessageType(JOptionPane.ERROR_MESSAGE);
         }
         JDialog dialog = optionPane.createDialog(titulo);

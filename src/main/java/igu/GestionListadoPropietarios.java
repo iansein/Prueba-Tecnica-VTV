@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package igu;
 
 import java.util.List;
@@ -9,10 +5,8 @@ import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
-import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
-import logica.Auto;
 import logica.Controladora;
 import logica.Propietario;
 
@@ -25,8 +19,8 @@ public class GestionListadoPropietarios extends javax.swing.JFrame {
     Controladora control = new Controladora();
     Propietario propietario = new Propietario();
     private DefaultTableModel modeloTabla;
-    private TableRowSorter<DefaultTableModel> sorter; 
-    
+    private TableRowSorter<DefaultTableModel> sorter;
+
     public GestionListadoPropietarios() {
         initComponents();
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -142,75 +136,71 @@ public class GestionListadoPropietarios extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
+
     private void btnInspeccionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInspeccionarActionPerformed
-                                                  
-        if(tablaPropietarios.getRowCount() > 0){
-            if(tablaPropietarios.getSelectedRow() != -1){
+
+        if (tablaPropietarios.getRowCount() > 0) {
+            if (tablaPropietarios.getSelectedRow() != -1) {
                 int idPropietario = Integer.parseInt(String.valueOf(tablaPropietarios.getValueAt(tablaPropietarios.getSelectedRow(), 0)));
                 propietario = control.traerPropietario(idPropietario);
-                
-                if(propietario.getAutos().size() > 1){
+
+                if (propietario.getAutos().size() > 1) {
                     ListadoVehiculoPropietario listadoVehiculoPropietario = new ListadoVehiculoPropietario(idPropietario);
                     listadoVehiculoPropietario.setVisible(true);
                     listadoVehiculoPropietario.setLocationRelativeTo(null);
-                }
-                else{
+                } else {
                     mostrarMensaje("El propietario no tiene mas de un vehículo", "Error", "Error al inspeccionar inspecciones");
                 }
 
-            }
-            else{
+            } else {
                 mostrarMensaje("No se ha seleccionado un registro", "Error", "Error al modificar");
             }
-        }
-        else{
+        } else {
             mostrarMensaje("No se puede modificar, la tabla esta vacía", "Error", "Error al modificar");
         }
-        
+
     }//GEN-LAST:event_btnInspeccionarActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         cargarTabla();
     }//GEN-LAST:event_formWindowOpened
-    public void mostrarMensaje(String mensaje, String tipo, String titulo){
+    public void mostrarMensaje(String mensaje, String tipo, String titulo) {
         JOptionPane optionPane = new JOptionPane(mensaje);
-        if(tipo.equals("Info")){
+        if (tipo.equals("Info")) {
             optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
-        }
-        else if(tipo.equals("Error")){
-                optionPane.setMessageType(JOptionPane.ERROR_MESSAGE);
+        } else if (tipo.equals("Error")) {
+            optionPane.setMessageType(JOptionPane.ERROR_MESSAGE);
         }
         JDialog dialog = optionPane.createDialog(titulo);
         dialog.setAlwaysOnTop(true);
         dialog.setVisible(true);
     }
-      
+
     private void cargarTabla() {
-        DefaultTableModel modeloTabla = new DefaultTableModel(){
+        DefaultTableModel modeloTabla = new DefaultTableModel() {
 
-             @Override
-             public boolean isCellEditable(int row, int column){
-                 return false;
-             }
-         }; 
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
 
-         String titulos[] = {"Id", "Nombre", "Apellido", "DNI", "Telefono"};
-         modeloTabla.setColumnIdentifiers(titulos);
-         tablaPropietarios.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-         
-         List<Propietario> listaPropietarios = control.traerPropietarios();
+        String titulos[] = {"Id", "Nombre", "Apellido", "DNI", "Telefono"};
+        modeloTabla.setColumnIdentifiers(titulos);
+        tablaPropietarios.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
-         if(listaPropietarios != null){
-             for(Propietario propietario: listaPropietarios){
-                 Object[] objeto = {propietario.getId(), propietario.getNombre(), propietario.getApellido(), propietario.getDni(), propietario.getTelefono()};
+        List<Propietario> listaPropietarios = control.traerPropietarios();
 
-                 modeloTabla.addRow(objeto);
-             }
-         }
-         
-         tablaPropietarios.setModel(modeloTabla);      
-    }  
+        if (listaPropietarios != null) {
+            for (Propietario propietario : listaPropietarios) {
+                Object[] objeto = {propietario.getId(), propietario.getNombre(), propietario.getApellido(), propietario.getDni(), propietario.getTelefono()};
+
+                modeloTabla.addRow(objeto);
+            }
+        }
+
+        tablaPropietarios.setModel(modeloTabla);
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnInspeccionar;
     private javax.swing.JLabel jLabel1;

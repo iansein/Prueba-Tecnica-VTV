@@ -9,7 +9,6 @@ import java.awt.event.WindowEvent;
  */
 public class Principal extends javax.swing.JFrame {
 
-
     public Principal() {
         initComponents();
         setResizable(false);
@@ -125,45 +124,45 @@ public class Principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGestionAltasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionAltasActionPerformed
-         GestionAltas gestionAltas = new GestionAltas();
-         gestionAltas.setVisible(true);
-         gestionAltas.setLocationRelativeTo(null);
-          setEnabled(false); 
-            gestionAltas.addWindowListener(new WindowAdapter() {
-                @Override
-                public void windowClosed(WindowEvent e) {
-                    setEnabled(true);
-                    toFront();
-                }
-         });
+        GestionAltas gestionAltas = new GestionAltas();
+        gestionAltas.setVisible(true);
+        gestionAltas.setLocationRelativeTo(null);
+        setEnabled(false);
+        gestionAltas.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosed(WindowEvent e) {
+                setEnabled(true);
+                toFront();
+            }
+        });
     }//GEN-LAST:event_btnGestionAltasActionPerformed
-    
+
     private void btnGestionInformesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionInformesActionPerformed
-       this.setEnabled(false);
-       GestionInformes gestionInformes = new GestionInformes();
-       gestionInformes.setVisible(true);
-       gestionInformes.setLocationRelativeTo(null);
-       gestionInformes.addWindowListener(new WindowAdapter() {
-        @Override
-        public void windowClosed(WindowEvent e) {
-            setEnabled(true);
-            toFront();
-        }
-         });
+        this.setEnabled(false);
+        GestionInformes gestionInformes = new GestionInformes();
+        gestionInformes.setVisible(true);
+        gestionInformes.setLocationRelativeTo(null);
+        gestionInformes.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosed(WindowEvent e) {
+                setEnabled(true);
+                toFront();
+            }
+        });
     }//GEN-LAST:event_btnGestionInformesActionPerformed
 
     private void btnGestionModificacionesYBajas1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionModificacionesYBajas1ActionPerformed
-       this.setEnabled(false);
-       GestionModificadoYBorrado gestionModificadoYBorrado = new GestionModificadoYBorrado();
-       gestionModificadoYBorrado.setVisible(true);
-       gestionModificadoYBorrado.setLocationRelativeTo(null);
-       gestionModificadoYBorrado.addWindowListener(new WindowAdapter() {
-        @Override
-        public void windowClosed(WindowEvent e) {
-            setEnabled(true);
-            toFront();
-        }
-         });
+        this.setEnabled(false);
+        GestionModificadoYBorrado gestionModificadoYBorrado = new GestionModificadoYBorrado();
+        gestionModificadoYBorrado.setVisible(true);
+        gestionModificadoYBorrado.setLocationRelativeTo(null);
+        gestionModificadoYBorrado.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosed(WindowEvent e) {
+                setEnabled(true);
+                toFront();
+            }
+        });
     }//GEN-LAST:event_btnGestionModificacionesYBajas1ActionPerformed
 
 

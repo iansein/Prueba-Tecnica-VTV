@@ -9,9 +9,9 @@ import persistencia.ControladoraPersistencia;
  * @author Ian
  */
 public class Controladora {
-    
+
     ControladoraPersistencia controlPersis = new ControladoraPersistencia();
-    
+
     public void agregarPropietario(String nombre, String apellido, int dni, int telefono) {
         Propietario propietario = new Propietario();
         propietario.setNombre(nombre);
@@ -20,7 +20,7 @@ public class Controladora {
         propietario.setTelefono(telefono);
 
         controlPersis.agregarPropietario(propietario);
-        
+
     }
 
     public List<Propietario> traerPropietarios() {
@@ -28,7 +28,7 @@ public class Controladora {
     }
 
     public void borrarPropietario(int idPropietario) {
-       controlPersis.borrarPropietario(idPropietario);
+        controlPersis.borrarPropietario(idPropietario);
     }
 
     public Propietario traerPropietario(int idPropietario) {
@@ -59,7 +59,7 @@ public class Controladora {
     }
 
     public Inspector traerInspector(int idInspector) {
-       return controlPersis.traerInspector(idInspector);
+        return controlPersis.traerInspector(idInspector);
     }
 
     public void modificarInspector(Inspector inspector, String nombre, String apellido, int dni, int telefono, int nroInspector) {
@@ -73,7 +73,7 @@ public class Controladora {
     }
 
     public void borrarInspector(int idInspector) {
-       controlPersis.borrarInspector(idInspector);
+        controlPersis.borrarInspector(idInspector);
     }
 
     public void agregarAuto(String dominio, String marca, String modelo, Propietario propietarioSeleccionado) {
@@ -82,13 +82,13 @@ public class Controladora {
         auto.setMarca(marca);
         auto.setModelo(modelo);
         auto.setPropietario(propietarioSeleccionado);
- 
+
         controlPersis.agregarAuto(auto);
     }
 
     public List<Auto> traerAutos() {
-         return controlPersis.traerAutos();
-    }   
+        return controlPersis.traerAutos();
+    }
 
     public void modificarAuto(Auto auto, String dominio, String marca, String modelo, Propietario propietarioSeleccionado) {
         auto.setDominio(dominio);
@@ -116,23 +116,23 @@ public class Controladora {
 
     public void agregarInspeccion(Inspeccion inspeccion) {
 
-       controlPersis.agregarInspeccion(inspeccion);
+        controlPersis.agregarInspeccion(inspeccion);
     }
 
     public void modificarAuto(Auto autoSeleccionado) {
-       controlPersis.modificarAuto(autoSeleccionado);
+        controlPersis.modificarAuto(autoSeleccionado);
     }
 
     public List<Auto> traerAutosSinObleas() {
-      return controlPersis.traerAutosSinObleas();
+        return controlPersis.traerAutosSinObleas();
     }
 
     public List<Inspeccion> traerInspecciones() {
-       return controlPersis.traerInspecciones();
+        return controlPersis.traerInspecciones();
     }
 
     public void borrarInspeccion(int idInspeccion) {
-       controlPersis.borrarInspeccion(idInspeccion);
+        controlPersis.borrarInspeccion(idInspeccion);
     }
 
     public Inspeccion traerInspeccion(int idInspeccion) {
@@ -152,11 +152,11 @@ public class Controladora {
     }
 
     public List<Auto> traerAutosAptos() {
-       return controlPersis.traerAutosAptos();
+        return controlPersis.traerAutosAptos();
     }
 
     public void borrarOblea(int idOblea) {
-       controlPersis.borrarOblea(idOblea);
+        controlPersis.borrarOblea(idOblea);
     }
 
     public List<Auto> traerAutosCondicionales() {

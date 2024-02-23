@@ -22,10 +22,12 @@ import logica.Validador;
  * @author Ian
  */
 public class AltaInspeccion extends javax.swing.JFrame {
+
     Controladora control = new Controladora();
     Auto autoSeleccionado;
     Inspector inspectorSeleccionado;
     Inspeccion inspeccion = new Inspeccion();
+
     public AltaInspeccion() {
         initComponents();
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -525,65 +527,59 @@ public class AltaInspeccion extends javax.swing.JFrame {
         if (!validarCampos(fecha, nroInspeccionTxt)) {
             return;
         }
-        
-        if(tablaInspectores.getRowCount() > 0){
-            if(tablaInspectores.getSelectedRow() != -1){
+
+        if (tablaInspectores.getRowCount() > 0) {
+            if (tablaInspectores.getSelectedRow() != -1) {
 
                 int idInspector = Integer.parseInt(String.valueOf(tablaInspectores.getValueAt(tablaInspectores.getSelectedRow(), 0)));
                 inspectorSeleccionado = control.traerInspector(idInspector);
-            }
-            else{
+            } else {
                 mostrarMensaje("No se ha seleccionado al inspector a cargo", "Error", "Error al agregar");
                 return;
             }
-        }
-        else{
+        } else {
             mostrarMensaje("No se puede agregar, la tabla esta de Inspectores esta vacía", "Error", "Error al agregar");
             return;
         }
-        
-        if(tablaAutos.getRowCount() > 0){
-            if(tablaAutos.getSelectedRow() != -1){
+
+        if (tablaAutos.getRowCount() > 0) {
+            if (tablaAutos.getSelectedRow() != -1) {
 
                 int idAuto = Integer.parseInt(String.valueOf(tablaAutos.getValueAt(tablaAutos.getSelectedRow(), 0)));
                 autoSeleccionado = control.traerAuto(idAuto);
-            }
-            else{
+            } else {
                 mostrarMensaje("No se ha seleccionado al auto inspeccionado", "Error", "Error al agregar");
                 return;
             }
-        }
-        else{
+        } else {
             mostrarMensaje("No se puede agregar, la tabla esta de Autos esta vacía", "Error", "Error al agregar");
             return;
-        }        
+        }
 
         try {
             Date fechaParseada;
-            try{
-               fechaParseada = Validador.formatearFecha(fecha);
-               System.out.println("Fecha obtenida: " + fecha);
-            }
-            catch(ParseException ex){
+            try {
+                fechaParseada = Validador.formatearFecha(fecha);
+                System.out.println("Fecha obtenida: " + fecha);
+            } catch (ParseException ex) {
                 mostrarMensaje("Fecha inválida", "Error", "Error al agregar");
                 return;
             }
-            
+
             Observacion observacion = crearObservacion();
             Medicion medicion = crearMedicion();
             boolean exentoBool = obtenerExento();
             int nroInspeccion = Integer.parseInt(nroInspeccionTxt);
             String estado = determinarEstadoVehiculo();
-            
+
             inspeccion.setFechaInspeccion(fechaParseada);
             inspeccion.setExento(exentoBool);
             inspeccion.setNumeroInspeccion(nroInspeccion);
             inspeccion.setEstadoInspeccion(estado);
             inspeccion.setAutoInspeccionado(autoSeleccionado);
             inspeccion.setInspector(inspectorSeleccionado);
-            
-            
-            if(estado.equals("Apto")){
+
+            if (estado.equals("Apto")) {
                 Date fechaVencimiento = Validador.formatearFechaVencimiento(fechaParseada);
                 Oblea oblea = new Oblea();
                 oblea.setFechaEmision(fechaParseada);
@@ -592,14 +588,14 @@ public class AltaInspeccion extends javax.swing.JFrame {
                 autoSeleccionado.setOblea(oblea);
                 control.modificarAuto(autoSeleccionado);
             }
-            
+
             medicion.setInspeccion(inspeccion);
             observacion.setInspeccion(inspeccion);
-            
+
             control.agregarInspeccion(inspeccion);
             control.agregarMedicion(medicion);
             control.agregarObservacion(observacion);
-              
+
             mostrarMensaje("Se agrego una inspección exitosamente", "Info", "Éxito al agregar");
             cargarTablaAutos();
             limpiarCampos();
@@ -607,11 +603,12 @@ public class AltaInspeccion extends javax.swing.JFrame {
             mostrarMensaje("Hubo un error al agregar", "Error", "Error al agregar");
         }
     }//GEN-LAST:event_btnAgregarInspeccionActionPerformed
-    
-    public void limpiarCampos(){
+
+    public void limpiarCampos() {
         txtNroInspeccion.setText("");
         txtFecha.setText("dd/MM/yyyy");
     }
+
     private boolean validarCampos(String fecha, String nroInspeccionTxt) {
         if (!Validador.esTextoNoVacio(fecha) || !Validador.esTextoNoVacio(nroInspeccionTxt)) {
             mostrarMensaje("Complete todos los campos.", "Error", "Error al agregar");
@@ -625,7 +622,7 @@ public class AltaInspeccion extends javax.swing.JFrame {
 
         return true;
     }
-    
+
     private Observacion crearObservacion() {
         String observacionEstadoChasis = (String) cbChasis.getSelectedItem();
         String observacionEstadoPatente = (String) cbPatente.getSelectedItem();
@@ -661,7 +658,7 @@ public class AltaInspeccion extends javax.swing.JFrame {
         medicion.setDireccion(medicionEstadoDireccion);
         medicion.setSistemaDeFrenos(medicionEstadoSistemaDeFrenos);
         medicion.setContaminacionAmbiental(medicionEstadoContaminacion);
-        
+
         medicion.setInspeccion(inspeccion);
 
         return medicion;
@@ -671,7 +668,7 @@ public class AltaInspeccion extends javax.swing.JFrame {
         String exento = (String) cbExento.getSelectedItem();
         return exento.equals("Si");
     }
-    
+
     public String determinarEstadoVehiculo() {
         String medicionEstadoTrenDelantero = (String) cbTrenDelantero.getSelectedItem();
         String medicionEstadoSuspension = (String) cbSuspension.getSelectedItem();
@@ -684,7 +681,6 @@ public class AltaInspeccion extends javax.swing.JFrame {
         String observacionEstadoVidrios = (String) cbVidrios.getSelectedItem();
         String observacionEstadoSeguridad = (String) cbSeguridad.getSelectedItem();
         String observacionEstadoEmergencia = (String) cbEmergencia.getSelectedItem();
-    
 
         boolean hayObservacionRechazada = Stream.of(observacionEstadoPatente, observacionEstadoLuces, observacionEstadoEspejos,
                 observacionEstadoVidrios, observacionEstadoSeguridad, observacionEstadoEmergencia)
@@ -711,7 +707,7 @@ public class AltaInspeccion extends javax.swing.JFrame {
         }
 
         return "Apto";
-   }
+    }
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         cargarTablaInspectores();
         cargarTablaAutos();
@@ -720,73 +716,72 @@ public class AltaInspeccion extends javax.swing.JFrame {
     private void txtFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFechaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtFechaActionPerformed
-    
-    public void mostrarMensaje(String mensaje, String tipo, String titulo){
+
+    public void mostrarMensaje(String mensaje, String tipo, String titulo) {
         JOptionPane optionPane = new JOptionPane(mensaje);
-        if(tipo.equals("Info")){
+        if (tipo.equals("Info")) {
             optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
-        }
-        else if(tipo.equals("Error")){
+        } else if (tipo.equals("Error")) {
             optionPane.setMessageType(JOptionPane.ERROR_MESSAGE);
         }
         JDialog dialog = optionPane.createDialog(titulo);
         dialog.setAlwaysOnTop(true);
         dialog.setVisible(true);
-    }    
-    private void cargarTablaInspectores() {
-        DefaultTableModel modeloTabla = new DefaultTableModel(){
-
-             @Override
-             public boolean isCellEditable(int row, int column){
-                 return false;
-             }
-         }; 
-      
-      String titulos[] = {"Id", "Nombre", "Apellido", "DNI", "Nro Inspector", "Telefono"};
-      modeloTabla.setColumnIdentifiers(titulos);
-      
-      List<Inspector> listaInspectores = control.traerInspectores();
-      
-      if(listaInspectores != null){
-          for(Inspector inspector: listaInspectores){
-              Object[] objeto = {inspector.getId(), inspector.getNombre(), inspector.getApellido(), 
-                  inspector.getDni(), inspector.getTelefono(), inspector.getNroInspector()};
-              
-              modeloTabla.addRow(objeto);
-          }
-      }
-      
-      
-      tablaInspectores.setModel(modeloTabla);
-        
     }
-    private void cargarTablaAutos() {
-        DefaultTableModel modeloTabla = new DefaultTableModel(){
 
-             @Override
-             public boolean isCellEditable(int row, int column){
-                 return false;
-             }
-         }; 
-      
-      String titulos[] = {"Id", "Dominio", "Marca", "Modelo", "Nombre Propietario"};
-      modeloTabla.setColumnIdentifiers(titulos);
-      
-      List<Auto> listaAutos = control.traerAutosSinObleas();
-      
-      if(listaAutos != null){
-          for(Auto auto: listaAutos){
-              Object[] objeto = {auto.getId(), auto.getDominio(), auto.getMarca(), auto.getModelo(), auto.getPropietario().getNombre()};
-              modeloTabla.addRow(objeto);
-          }
-      }
-      
-      
-      tablaAutos.setModel(modeloTabla);
-        
-    }    
-  
-    
+    private void cargarTablaInspectores() {
+        DefaultTableModel modeloTabla = new DefaultTableModel() {
+
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+
+        String titulos[] = {"Id", "Nombre", "Apellido", "DNI", "Nro Inspector", "Telefono"};
+        modeloTabla.setColumnIdentifiers(titulos);
+
+        List<Inspector> listaInspectores = control.traerInspectores();
+
+        if (listaInspectores != null) {
+            for (Inspector inspector : listaInspectores) {
+                Object[] objeto = {inspector.getId(), inspector.getNombre(), inspector.getApellido(),
+                    inspector.getDni(), inspector.getTelefono(), inspector.getNroInspector()};
+
+                modeloTabla.addRow(objeto);
+            }
+        }
+
+        tablaInspectores.setModel(modeloTabla);
+
+    }
+
+    private void cargarTablaAutos() {
+        DefaultTableModel modeloTabla = new DefaultTableModel() {
+
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+
+        String titulos[] = {"Id", "Dominio", "Marca", "Modelo", "Nombre Propietario"};
+        modeloTabla.setColumnIdentifiers(titulos);
+
+        List<Auto> listaAutos = control.traerAutosSinObleas();
+
+        if (listaAutos != null) {
+            for (Auto auto : listaAutos) {
+                Object[] objeto = {auto.getId(), auto.getDominio(), auto.getMarca(), auto.getModelo(), auto.getPropietario().getNombre()};
+                modeloTabla.addRow(objeto);
+            }
+        }
+
+        tablaAutos.setModel(modeloTabla);
+
+    }
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregarInspeccion;
     private javax.swing.JButton btnLimpiarInspeccion;

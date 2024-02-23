@@ -1,4 +1,3 @@
-
 package logica;
 
 import jakarta.persistence.CascadeType;
@@ -15,14 +14,15 @@ import jakarta.persistence.OneToOne;
  */
 @Entity
 public class Medicion {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @OneToOne(cascade= CascadeType.REMOVE)
+    @OneToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "inspeccion_id")
     private Inspeccion inspeccion;
-    
+
     private String suspension;
     private String direccion;
     private String trenDelantero;
@@ -31,7 +31,7 @@ public class Medicion {
 
     public Medicion() {
     }
-    
+
     public Medicion(int id, Inspeccion inspeccion, String suspension, String direccion, String trenDelantero, String sistemaDeFrenos, String contaminacionAmbiental) {
         this.id = id;
         this.inspeccion = inspeccion;

@@ -25,11 +25,11 @@ public class MedicionJpaController implements Serializable {
     public MedicionJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
-    
-    public MedicionJpaController(){
+
+    public MedicionJpaController() {
         emf = Persistence.createEntityManagerFactory("vtvPU");
     }
-    
+
     private EntityManagerFactory emf = null;
 
     public EntityManager getEntityManager() {
@@ -84,7 +84,7 @@ public class MedicionJpaController implements Serializable {
                 medicion.getId();
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The medicion with id " + id + " no longer exists.", enfe);
-            }     
+            }
             em.remove(medicion);
 
             em.getTransaction().commit();
@@ -140,5 +140,5 @@ public class MedicionJpaController implements Serializable {
             em.close();
         }
     }
-    
+
 }

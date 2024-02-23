@@ -13,7 +13,7 @@ import logica.Validador;
 public class AltaInspector extends javax.swing.JFrame {
 
     Controladora control = new Controladora();
-    
+
     public AltaInspector() {
         initComponents();
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -213,19 +213,18 @@ public class AltaInspector extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAgregarInspectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarInspectorActionPerformed
-        
+
         String nombre = txtNombreInspector.getText().trim();
         String apellido = txtApellidoInspector.getText().trim();
         String dniStr = txtDniInspector.getText().trim();
         String telefonoStr = txtTelefono.getText().trim();
         String nroInspectorStr = txtNroInspector.getText().trim();
 
-
-        if (!Validador.esTextoNoVacio(nombre) || 
-            !Validador.esTextoNoVacio(apellido) || 
-            !Validador.esTextoNoVacio(dniStr) || 
-            !Validador.esTextoNoVacio(telefonoStr) ||
-            !Validador.esTextoNoVacio(nroInspectorStr)) {
+        if (!Validador.esTextoNoVacio(nombre)
+                || !Validador.esTextoNoVacio(apellido)
+                || !Validador.esTextoNoVacio(dniStr)
+                || !Validador.esTextoNoVacio(telefonoStr)
+                || !Validador.esTextoNoVacio(nroInspectorStr)) {
             mostrarMensaje("Complete todos los campos.", "Error", "Error al agregar");
             return;
         }
@@ -247,35 +246,34 @@ public class AltaInspector extends javax.swing.JFrame {
             int dni = Integer.parseInt(dniStr);
             int telefono = Integer.parseInt(telefonoStr);
             int nroInspector = Integer.parseInt(nroInspectorStr);
-            
-            control.agregarInspector(nombre, apellido, dni,nroInspector, telefono);
+
+            control.agregarInspector(nombre, apellido, dni, nroInspector, telefono);
             mostrarMensaje("Se ha agregado el inspector exitosamente", "Info", "Éxito al agregar");
-            
+
             limpiarCampos();
         } catch (NumberFormatException e) {
             mostrarMensaje("Hubo un problema al convertir los valores numéricos.", "Error", "Error de Validación");
-        }   
+        }
     }//GEN-LAST:event_btnAgregarInspectorActionPerformed
 
     private void btnLimpiarInspectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarInspectorActionPerformed
         limpiarCampos();
     }//GEN-LAST:event_btnLimpiarInspectorActionPerformed
-    
-     public void limpiarCampos(){
+
+    public void limpiarCampos() {
         txtNombreInspector.setText("");
         txtApellidoInspector.setText("");
         txtDniInspector.setText("");
         txtNroInspector.setText("");
         txtTelefono.setText("");
     }
-     
-    public void mostrarMensaje(String mensaje, String tipo, String titulo){
+
+    public void mostrarMensaje(String mensaje, String tipo, String titulo) {
         JOptionPane optionPane = new JOptionPane(mensaje);
-        if(tipo.equals("Info")){
+        if (tipo.equals("Info")) {
             optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
-        }
-        else if(tipo.equals("Error")){
-                optionPane.setMessageType(JOptionPane.ERROR_MESSAGE);
+        } else if (tipo.equals("Error")) {
+            optionPane.setMessageType(JOptionPane.ERROR_MESSAGE);
         }
         JDialog dialog = optionPane.createDialog(titulo);
         dialog.setAlwaysOnTop(true);

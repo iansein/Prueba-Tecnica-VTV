@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package persistencia;
 
 import java.io.Serializable;
@@ -25,11 +21,11 @@ public class InspectorJpaController implements Serializable {
     public InspectorJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
-    
-    public InspectorJpaController(){
+
+    public InspectorJpaController() {
         emf = Persistence.createEntityManagerFactory("vtvPU");
     }
-    
+
     private EntityManagerFactory emf = null;
 
     public EntityManager getEntityManager() {
@@ -75,7 +71,7 @@ public class InspectorJpaController implements Serializable {
 
     public void destroy(int id) throws NonexistentEntityException {
         EntityManager em = null;
-        
+
         try {
             em = getEntityManager();
             em.getTransaction().begin();
@@ -140,5 +136,5 @@ public class InspectorJpaController implements Serializable {
             em.close();
         }
     }
-    
+
 }
