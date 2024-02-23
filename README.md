@@ -2,7 +2,7 @@
  
 # Como levantar la BASE DE DATOS:
 
-## Para esta prueba utilice XAMPP para utilizar MySql como gestor de base de datos.
+## Para esta prueba utilicé XAMPP para utilizar MySql como gestor de base de datos.
 ![image](https://github.com/iansein/Prueba-Tecnica-VTV/assets/78178685/17aaeb81-8c4f-4f08-ac5b-4ff3b86643ea)
 ## En el archivo persistence.xml se deberá cambiar el puerto de MySql en la url si asi lo requiera y este no sea **3306**. El archivo persistence.xml se encuentra en esta ruta del proyecto:
 ![image](https://github.com/iansein/Prueba-Tecnica-VTV/assets/78178685/365a0851-5e23-4274-aa30-1bb5bf47fb1b)
