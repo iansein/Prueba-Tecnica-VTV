@@ -16,3 +16,10 @@
 ## Una vez dentro de la base de datos, se debe ejecutar el SCRIPT que deje en los archivos, el cual se llama "scriptBD.txt" y darle a "Go"
 ![image](https://github.com/iansein/Prueba-Tecnica-VTV/assets/78178685/ef841909-b307-40c6-ac3d-e7c8bd6b8f1f)
 
+# Como ejecutar:
+## Si se abre desde Intellij IDEA se deben recargar las dependecias con maven:
+![image](https://github.com/iansein/Prueba-Tecnica-VTV/assets/78178685/5d9e343e-abc9-4dea-abd6-f3d0bc793feb)
+
+Luego se deberá ejecutar el archivo main:
+![image](https://github.com/iansein/Prueba-Tecnica-VTV/assets/78178685/c56a794c-3da7-4719-97a1-800cff02b6f3)
+
