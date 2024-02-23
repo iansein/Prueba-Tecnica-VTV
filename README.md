@@ -1,4 +1,4 @@
-![image](https://github.com/iansein/Prueba-Tecnica-VTV/assets/78178685/5788bf32-95b7-41d9-a188-b617b1d9bba5)![image](https://github.com/iansein/Prueba-Tecnica-VTV/assets/78178685/f74d179e-1d89-4d10-8b23-67c8b8e4c69b)# Prueba Técnica VTV
+# Prueba Técnica VTV
  
 # Como levantar la BASE DE DATOS:
 
